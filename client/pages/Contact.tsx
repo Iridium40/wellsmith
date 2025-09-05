@@ -10,6 +10,7 @@ export default function Contact() {
       <div className="mt-8 rounded-2xl border bg-card p-6 shadow-sm">
         <p className="text-sm text-foreground/80">Email: <a className="text-primary hover:underline" href="mailto:kaycecsmith@yahoo.com">kaycecsmith@yahoo.com</a></p>
         <p className="mt-2 text-sm text-foreground/80">Preferred: complete the <Link className="text-primary hover:underline" to="/book-assessment#health-assessment">Health Assessment</Link> first so I can best support you.</p>
+        <p className="mt-2 text-sm text-foreground/80">Optavia Coach Profile: <a className="text-primary hover:underline" href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer">optavia.com/kaycesmith</a></p>
         <div className="mt-4">
           <Button asChild>
             <Link to="/book-assessment#health-assessment">Start Health Assessment</Link>
