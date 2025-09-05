@@ -16,7 +16,7 @@ export default function Recipes() {
         if (!res.ok) throw new Error("Failed to load Pinterest feed");
         const data = (await res.json()) as PinterestResponse | { error: string };
         if ("pins" in data) {
-          if (mounted) setPins(data.pins.filter((p) => !!p.image));
+          if (mounted) setPins(data.pins.filter((p) => !!p.image && !!p.title && !!p.description));
         } else {
           throw new Error((data as any).error || "Unable to parse feed");
         }
@@ -61,7 +61,8 @@ export default function Recipes() {
                 <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
                   <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105" loading="lazy" />
                 </div>
-                <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title || "Recipe"}</h3>
+                <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title}</h3>
+                <p className="text-xs text-muted-foreground line-clamp-2">{p.description}</p>
                 <p className="text-xs text-muted-foreground">View on Pinterest</p>
               </a>
             ))}
