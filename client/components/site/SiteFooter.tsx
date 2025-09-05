@@ -34,8 +34,8 @@ export default function SiteFooter() {
             <Link to="/recipes" className="hover:text-foreground">
               Lean & Green Recipe Ideas
             </Link>
-            <Link to="/get-started" className="hover:text-foreground">
-              Get Started with OPTAVIA
+            <Link to="/book-assessment" className="hover:text-foreground">
+              Book Assessment
             </Link>
             <Link to="/connect" className="hover:text-foreground">
               Start Your Journey
