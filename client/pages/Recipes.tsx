@@ -31,9 +31,10 @@ export default function Recipes() {
     (async () => {
       try {
         setLoading(true);
+        const board = encodeURIComponent("https://www.pinterest.com/optavia/lean-green/");
         const endpoints = [
-          "/api/pinterest",
-          "/.netlify/functions/api/pinterest",
+          `/api/pinterest?board=${board}`,
+          `/.netlify/functions/api/pinterest?board=${board}`,
         ];
         let data: PinterestResponse | { error: string } | null = null;
         let lastErr: any;
