@@ -10,7 +10,7 @@ export default function SiteFooter() {
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F7dd70f497a9043dc839cb18bfe5c702c?format=webp&width=800"
                 alt="WellSmith logo"
-                className="h-10 w-auto"
+                className="h-16 w-auto md:h-20"
                 loading="lazy"
                 decoding="async"
               />
