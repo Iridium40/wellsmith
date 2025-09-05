@@ -15,6 +15,9 @@ import Contact from "@/pages/Contact";
 import BookAssessment from "@/pages/BookAssessment";
 import ProgramOverview from "@/pages/ProgramOverview";
 import FAQs from "@/pages/FAQs";
+import MyStory from "@/pages/MyStory";
+import WhyCoaching from "@/pages/WhyCoaching";
+import GetStarted from "@/pages/GetStarted";
 
 const queryClient = new QueryClient();
 
@@ -31,8 +34,11 @@ const App = () => (
             <Route path="/program" element={<ProgramOverview />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/recipes" element={<Recipes />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/connect" element={<Contact />} />
             <Route path="/book-assessment" element={<BookAssessment />} />
+            <Route path="/my-story" element={<MyStory />} />
+            <Route path="/why-coaching" element={<WhyCoaching />} />
+            <Route path="/get-started" element={<GetStarted />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
