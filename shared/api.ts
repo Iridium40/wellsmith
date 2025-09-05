@@ -54,6 +54,7 @@ export interface HealthAssessmentResponse {
 
 export interface PinterestPin {
   title: string;
+  description: string;
   link: string;
   image: string;
 }
