@@ -122,7 +122,7 @@ export default function BookAssessment() {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fcea412340625499eb0e8d30f0a2923f9?format=webp&width=800"
                   alt="Kayce Smith"
-                  className="h-64 w-64 rounded-xl object-contain border bg-white p-1 shadow-sm"
+                  className="h-[450px] w-[405px] rounded-xl object-contain border bg-white p-1 shadow-sm"
                   loading="lazy"
                   decoding="async"
                 />
