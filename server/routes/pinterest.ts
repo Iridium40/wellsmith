@@ -55,9 +55,14 @@ function extractImageFromItem(item: any): string | undefined {
   // 4) content:encoded OR description HTML, pick first <img src="...">
   const html = item["content:encoded"] || item.content || item.description || "";
   if (typeof html === "string") {
+    // srcset first URL
+    const srcset = html.match(/<img[^>]+srcset=["']([^"']+)["']/i);
+    if (srcset) {
+      const first = srcset[1].split(",")[0]?.trim().split(" ")[0];
+      if (first) return first;
+    }
     const imgTag = html.match(/<img[^>]+src=["']([^"']+)["']/i);
     if (imgTag) return imgTag[1];
-    // sometimes data-pin-media has the image
     const dataMedia = html.match(/data-pin-media=["']([^"']+)["']/i);
     if (dataMedia) return dataMedia[1];
   }
@@ -81,12 +86,17 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     const parser = new XMLParser({ ignoreAttributes: false });
     const data = parser.parse(xml);
 
-    const items: any[] = data?.rss?.channel?.item || [];
-    const pins: PinterestPin[] = items.map((it) => ({
-      title: String(it.title ?? ""),
-      link: String(it.link ?? ""),
-      image: extractImageFromItem(it) || "",
-    })).filter((p) => p.image && p.link);
+    const rawItems: any = data?.rss?.channel?.item;
+    const items: any[] = Array.isArray(rawItems) ? rawItems : rawItems ? [rawItems] : [];
+
+    const pins: PinterestPin[] = items
+      .map((it) => {
+        const title = typeof it?.title === "string" ? it.title : String(it?.title?.["#text"] ?? "");
+        const link = typeof it?.link === "string" ? it.link : String(it?.link?.["#text"] ?? "");
+        const image = extractImageFromItem(it) || "";
+        return { title, link, image } as PinterestPin;
+      })
+      .filter((p) => !!p.link);
 
     const resp: PinterestResponse = { pins };
     res.json(resp);
