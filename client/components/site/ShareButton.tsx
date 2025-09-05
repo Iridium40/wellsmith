@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Share2, QrCode, Facebook, Twitter, Linkedin, MessageCircle, Mail, Copy, Check } from "lucide-react";
+import { Share2, QrCode, Facebook, Instagram, Mail, Copy, Check } from "lucide-react";
 
 type ShareButtonProps = {
   url?: string;
