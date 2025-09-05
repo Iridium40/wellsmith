@@ -3,8 +3,18 @@ import Disclaimer from "@/components/site/Disclaimer";
 export default function WhyCoaching() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Client Support</h1>
-      <p className="mt-3 text-lg text-muted-foreground">Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®, hydration guidance, and coaching resources—everything in one place.</p>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Client Support</h1>
+          <p className="mt-3 text-lg text-muted-foreground">Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®, hydration guidance, and coaching resources—everything in one place.</p>
+        </div>
+        <div className="sm:pt-1">
+          <a
+            href="/book-with-kayce"
+            className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
+          >Book with Kayce</a>
+        </div>
+      </div>
 
       {/* Client Success */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -55,12 +65,6 @@ export default function WhyCoaching() {
         <p className="mt-2">Former client turned coach—six years of experience helping busy moms and families build sustainable habits with compassion and accountability.</p>
       </div>
 
-      <div className="mt-8">
-        <a
-          href="/book-with-kayce"
-          className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
-        >Book with Kayce</a>
-      </div>
 
       <Disclaimer className="mt-10" />
     </div>
