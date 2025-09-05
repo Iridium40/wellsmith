@@ -86,8 +86,27 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     const parser = new XMLParser({ ignoreAttributes: false });
     const data = parser.parse(xml);
 
-    const rawItems: any = data?.rss?.channel?.item;
-    const items: any[] = Array.isArray(rawItems) ? rawItems : rawItems ? [rawItems] : [];
+    // Normalize items across different RSS formats
+    const toArray = (v: any): any[] => (Array.isArray(v) ? v : v ? [v] : []);
+
+    let items: any[] = [];
+    if (data?.rss) {
+      const ch = data.rss.channel;
+      if (Array.isArray(ch)) {
+        for (const c of ch) items.push(...toArray(c?.item));
+      } else {
+        items = toArray(ch?.item);
+      }
+    } else if (data?.["rdf:RDF"]) {
+      items = toArray(data["rdf:RDF"].item);
+    } else if (data?.feed) {
+      // Atom feeds use "entry"; map to similar shape
+      items = toArray(data.feed.entry).map((e: any) => ({
+        title: e?.title?.["#text"] || e?.title || "",
+        link: e?.link?.["@_href"] || e?.link || "",
+        content: e?.content?.["#text"] || e?.content || "",
+      }));
+    }
 
     const pins: PinterestPin[] = items
       .map((it) => {
