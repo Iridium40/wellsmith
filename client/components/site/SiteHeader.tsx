@@ -10,7 +10,6 @@ const navItems = [
   { to: "/success-stories", label: "Success Stories" },
   { to: "/faqs", label: "FAQs" },
   { to: "/recipes", label: "Lean & Green Recipes" },
-  { to: "/resources", label: "Resources" },
   { to: "/contact", label: "Contact" },
 ];
 
