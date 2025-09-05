@@ -123,8 +123,8 @@ export default function BookAssessment() {
                   Calendar will appear here once connected.
                 </div>
               ) : !unlocked ? (
-                <div className="p-6 text-sm text-muted-foreground">
-                  Please complete the Health Assessment to unlock booking.
+                <div className="p-6 flex justify-center">
+                  <ShareButton size="lg" title="Book Your Free Health Assessment" description="Complete this quick assessment and book time with Kayce." />
                 </div>
               ) : (
                 <iframe
