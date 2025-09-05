@@ -6,7 +6,7 @@ export default function WhyCoaching() {
       <div className="flex flex-col gap-3 sm:gap-4">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Client Support</h1>
         <p className="text-lg text-muted-foreground">Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®, hydration guidance, and coaching resources—everything in one place.</p>
-        <div className="mt-2 sm:self-end">
+        <div className="mt-4 self-center">
           <a
             href="/book-with-kayce"
             className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
