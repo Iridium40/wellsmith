@@ -33,10 +33,10 @@ export default function WhyCoaching() {
 
       <div className="mt-8">
         <a
-          href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"}
+          href={import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/kayce-smithhealthwellness/clientsupport"}
           target="_blank" rel="noreferrer"
           className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
-        >Connect with Kayce</a>
+        >Book with Kayce</a>
       </div>
 
       <Disclaimer className="mt-10" />
