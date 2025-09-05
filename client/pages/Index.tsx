@@ -123,8 +123,8 @@ export default function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid items-center gap-6 rounded-2xl border bg-gradient-to-br from-primary/10 to-accent/10 p-8 text-center shadow-sm md:grid-cols-2 md:text-left">
           <div>
-            <h3 className="text-2xl font-bold">Ready to start your own journey?</h3>
-            <p className="mt-2 text-muted-foreground">Connect through OPTAVIA's official system and I'll guide you every step.</p>
+            <h3 className="text-2xl font-bold">Have more questions?</h3>
+            <p className="mt-2 text-muted-foreground">Book time with me and I'll answer all of your questions.</p>
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
