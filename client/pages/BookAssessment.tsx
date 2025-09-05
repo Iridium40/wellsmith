@@ -117,23 +117,25 @@ export default function BookAssessment() {
                 )}
               </div>
             </div>
-            <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
-              {!calendlyUrl ? (
+            {!calendlyUrl ? (
+              <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
                 <div className="p-6 text-sm text-muted-foreground">
                   Calendar will appear here once connected.
                 </div>
-              ) : !unlocked ? (
-                <div className="p-6 flex justify-center">
-                  <ShareButton size="lg" title="Book Your Free Health Assessment" description="Complete this quick assessment and book time with Kayce." />
-                </div>
-              ) : (
+              </div>
+            ) : !unlocked ? (
+              <div className="flex justify-center">
+                <ShareButton size="lg" title="Book Your Free Health Assessment" description="Complete this quick assessment and book time with Kayce." />
+              </div>
+            ) : (
+              <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
                 <iframe
                   title="Book with Kayce — Calendly"
                   src={`${calendlyUrl}`}
                   className="h-[640px] w-full rounded-lg"
                 />
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
