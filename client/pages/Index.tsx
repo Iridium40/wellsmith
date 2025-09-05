@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Disclaimer from "@/components/site/Disclaimer";
+import { Instagram } from "lucide-react";
 
 export default function Index() {
   return (
@@ -23,6 +24,11 @@ export default function Index() {
               <Button asChild variant="outline" size="lg">
                 <Link to="/my-story">Read My Story</Link>
               </Button>
+            </div>
+            <div className="mt-2 text-sm">
+              <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-primary hover:underline">
+                <Instagram className="h-4 w-4" /> Follow me on Instagram
+              </a>
             </div>
             <ul className="mt-8 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2">
               {[
