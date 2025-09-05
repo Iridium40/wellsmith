@@ -8,6 +8,7 @@ export default function BookAssessment() {
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<"success" | "error" | null>(null);
   const today = useMemo(() => new Date().toISOString().slice(0, 10), []);
+  const unlocked = result === "success";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -72,7 +73,7 @@ export default function BookAssessment() {
         if (data.ok) {
           setResult("success");
           e.currentTarget.reset();
-          window.scrollTo({ top: 0, behavior: "smooth" });
+          document.getElementById('schedule')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
           setResult("error");
         }
@@ -113,24 +114,28 @@ export default function BookAssessment() {
                 <Button asChild size="lg">
                   <a href="#health-assessment">Fill Health Assessment</a>
                 </Button>
-                {calendlyUrl && (
+                {calendlyUrl && unlocked && (
                   <Button asChild size="lg" variant="outline">
-                    <a href="#schedule">Skip to Calendar</a>
+                    <a href="#schedule">Proceed to Calendar</a>
                   </Button>
                 )}
               </div>
             </div>
             <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
-              {calendlyUrl ? (
+              {!calendlyUrl ? (
+                <div className="p-6 text-sm text-muted-foreground">
+                  Calendar will appear here once connected.
+                </div>
+              ) : !unlocked ? (
+                <div className="p-6 text-sm text-muted-foreground">
+                  Please complete the Health Assessment to unlock booking.
+                </div>
+              ) : (
                 <iframe
                   title="Book with Kayce — Calendly"
                   src={`${calendlyUrl}`}
                   className="h-[640px] w-full rounded-lg"
                 />
-              ) : (
-                <div className="p-6 text-sm text-muted-foreground">
-                  Calendar will appear here once connected.
-                </div>
               )}
             </div>
           </div>
