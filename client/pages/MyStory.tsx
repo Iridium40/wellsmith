@@ -37,27 +37,27 @@ export default function MyStory() {
         </div>
       </section>
 
-      <section className="mt-10 rounded-2xl border bg-card p-6 shadow-sm">
-        <h2 className="text-xl font-bold">Children's Books by Kayce</h2>
+      <section className="mt-10 rounded-2xl border bg-card p-4 shadow-sm max-w-3xl mx-auto">
+        <h2 className="text-lg font-semibold">Children's Books by Kayce</h2>
         <p className="mt-2 text-sm text-foreground/80">What Can Hayes Be? and “Hayes & the Big Game!”</p>
-        <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 place-items-center">
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F21ffa0e7b9d44094bc713665a04b67aa?format=webp&width=800"
             alt="What Can Hayes Be? book cover"
-            className="w-full rounded-lg border object-cover"
+            className="mx-auto h-56 w-auto rounded-md border object-contain"
             loading="lazy"
             decoding="async"
           />
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fa757bbca89da455d9171a2e999a75fb5?format=webp&width=800"
             alt="Hayes and the Big Game book cover"
-            className="w-full rounded-lg border object-cover"
+            className="mx-auto h-56 w-auto rounded-md border object-contain"
             loading="lazy"
             decoding="async"
           />
         </div>
         <div className="mt-4">
-          <a href="https://www.whatcanhayesbe.com/" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center rounded-md bg-gradient-to-r from-primary to-accent px-6 text-white shadow hover:opacity-95">Shop the books</a>
+          <a href="https://www.whatcanhayesbe.com/" target="_blank" rel="noreferrer" className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-r from-primary to-accent px-4 text-sm text-white shadow hover:opacity-95">Shop the books</a>
         </div>
       </section>
 
