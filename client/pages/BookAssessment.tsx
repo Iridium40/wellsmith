@@ -126,25 +126,36 @@ export default function BookAssessment() {
                 )}
               </div>
             </div>
-            {!calendlyUrl ? (
-              <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
-                <div className="p-6 text-sm text-muted-foreground">
-                  Calendar will appear here once connected.
-                </div>
-              </div>
-            ) : !unlocked ? (
-              <div className="flex justify-center">
-                <ShareButton size="lg" title="Book Your Free Health Assessment" description="Complete this quick assessment and book time with Kayce." />
-              </div>
-            ) : (
-              <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
-                <iframe
-                  title="Book with Kayce — Calendly"
-                  src={`${calendlyUrl}`}
-                  className="h-[640px] w-full rounded-lg"
+            <div>
+              <div className="mb-4 flex justify-center">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fcea412340625499eb0e8d30f0a2923f9?format=webp&width=800"
+                  alt="Kayce Smith"
+                  className="h-32 w-32 rounded-full object-cover border shadow-sm"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
-            )}
+              {!calendlyUrl ? (
+                <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
+                  <div className="p-6 text-sm text-muted-foreground">
+                    Calendar will appear here once connected.
+                  </div>
+                </div>
+              ) : !unlocked ? (
+                <div className="flex justify-center">
+                  <ShareButton size="lg" title="Book Your Free Health Assessment" description="Complete this quick assessment and book time with Kayce." />
+                </div>
+              ) : (
+                <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
+                  <iframe
+                    title="Book with Kayce — Calendly"
+                    src={`${calendlyUrl}`}
+                    className="h-[640px] w-full rounded-lg"
+                  />
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
