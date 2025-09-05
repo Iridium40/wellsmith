@@ -59,9 +59,13 @@ export default function Recipes() {
             {pins.slice(0, visible).map((p, i) => (
               <a key={p.link + i} href={p.link} target="_blank" rel="noreferrer" className="group rounded-2xl border bg-card p-2 shadow-sm">
                 <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
-                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105" loading="lazy" />
+                  {p.image ? (
+                    <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105" loading="lazy" />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-xs text-muted-foreground">Image not available</div>
+                  )}
                 </div>
-                <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title}</h3>
+                <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title || "Recipe"}</h3>
                 <p className="text-xs text-muted-foreground">View on Pinterest</p>
               </a>
             ))}
