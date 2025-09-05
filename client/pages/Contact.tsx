@@ -17,9 +17,9 @@ export default function Contact() {
         </div>
         <div className="mt-4 text-sm text-foreground/80">
           <span>Social: </span>
-          <a className="text-primary hover:underline" href="https://www.facebook.com/kayces" target="_blank" rel="noreferrer">Facebook</a>
+          <a className="text-primary hover:underline inline-flex items-center gap-1" href="https://www.facebook.com/kayces" target="_blank" rel="noreferrer"><Facebook className="h-4 w-4" /> Facebook</a>
           <span className="mx-2">•</span>
-          <a className="text-primary hover:underline" href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer">Instagram</a>
+          <a className="text-primary hover:underline inline-flex items-center gap-1" href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer"><Instagram className="h-4 w-4" /> Instagram</a>
         </div>
         <p className="mt-4 text-xs text-muted-foreground">Questions? You can also email <a className="text-primary hover:underline" href="mailto:kaycecsmith@yahoo.com">kaycecsmith@yahoo.com</a>.</p>
       </div>
