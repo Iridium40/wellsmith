@@ -34,7 +34,7 @@ async function fetchWidgetPins(boardUrl: string): Promise<PinterestPin[]> {
     },
   });
   if (!r.ok) return [];
-  const j = await r.json().catch(() => null) as any;
+  const j = (await r.json().catch(() => null)) as any;
   const pinsRaw: any[] = j?.data?.pins || [];
   const pickImage = (images: any): string | undefined => {
     if (!images) return undefined;
@@ -53,7 +53,9 @@ async function fetchWidgetPins(boardUrl: string): Promise<PinterestPin[]> {
       const link = id ? `https://www.pinterest.com/pin/${id}/` : p?.link;
       const image = pickImage(p?.images) || "";
       const title = (p?.grid_title || p?.title || "").toString().trim();
-      const description = (p?.grid_description || p?.description || "").toString().trim();
+      const description = (p?.grid_description || p?.description || "")
+        .toString()
+        .trim();
       return { title, description, link, image } as PinterestPin;
     })
     .filter((p) => !!p.link);
@@ -61,13 +63,17 @@ async function fetchWidgetPins(boardUrl: string): Promise<PinterestPin[]> {
 
 function textFromHtml(html?: string): string {
   if (typeof html !== "string") return "";
-  const withoutTags = html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  const withoutTags = html
+    .replace(/<[^>]*>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
   return withoutTags;
 }
 
 function extractImageFromItem(item: any): string | undefined {
   // 1) media:content variants
-  const media = item["media:content"] || item.mediaContent || item.media || undefined;
+  const media =
+    item["media:content"] || item.mediaContent || item.media || undefined;
   if (media) {
     if (Array.isArray(media)) {
       for (const m of media) {
@@ -109,7 +115,8 @@ function extractImageFromItem(item: any): string | undefined {
   }
 
   // 4) content:encoded OR description HTML, pick first <img src="...">
-  const html = item["content:encoded"] || item.content || item.description || "";
+  const html =
+    item["content:encoded"] || item.content || item.description || "";
   if (typeof html === "string") {
     // srcset first URL
     const srcset = html.match(/<img[^>]+srcset=["']([^"']+)["']/i);
@@ -128,7 +135,12 @@ function extractImageFromItem(item: any): string | undefined {
 
 function extractLinkFromItem(item: any): string | undefined {
   const val = item?.link;
-  const toStr = (v: any) => (typeof v === "string" ? v : typeof v?.["#text"] === "string" ? v["#text"] : undefined);
+  const toStr = (v: any) =>
+    typeof v === "string"
+      ? v
+      : typeof v?.["#text"] === "string"
+        ? v["#text"]
+        : undefined;
   let link = toStr(val);
   if (!link) link = toStr(item?.guid);
 
@@ -140,9 +152,12 @@ function extractLinkFromItem(item: any): string | undefined {
 
   // Try to pull href from HTML content if still missing
   if (!link) {
-    const html = item?.["content:encoded"] || item?.content || item?.description || "";
+    const html =
+      item?.["content:encoded"] || item?.content || item?.description || "";
     if (typeof html === "string") {
-      const m = html.match(/href=["'](https?:\/\/[^"']+pinterest\.com\/pin\/[^"']+)["']/i);
+      const m = html.match(
+        /href=["'](https?:\/\/[^"']+pinterest\.com\/pin\/[^"']+)["']/i,
+      );
       if (m) link = m[1];
     }
   }
@@ -150,22 +165,38 @@ function extractLinkFromItem(item: any): string | undefined {
 }
 
 function extractDescriptionFromItem(item: any): string | undefined {
-  const html = item?.description || item?.["content:encoded"] || item?.content || "";
-  const text = textFromHtml(typeof html === "string" ? html : String(html?.["#text"] ?? ""));
+  const html =
+    item?.description || item?.["content:encoded"] || item?.content || "";
+  const text = textFromHtml(
+    typeof html === "string" ? html : String(html?.["#text"] ?? ""),
+  );
   return text || undefined;
 }
 
 export const handlePinterest: RequestHandler = async (req, res) => {
   try {
-    const board = (req.query.board as string) || process.env.PINTEREST_BOARD_URL;
+    const board =
+      (req.query.board as string) || process.env.PINTEREST_BOARD_URL;
     if (!board) {
-      return res.status(400).json({ error: "Missing Pinterest board URL. Provide ?board= or set PINTEREST_BOARD_URL." });
+      return res
+        .status(400)
+        .json({
+          error:
+            "Missing Pinterest board URL. Provide ?board= or set PINTEREST_BOARD_URL.",
+        });
     }
     const rssUrl = toRssUrl(board);
 
-    const r = await fetch(rssUrl, { headers: { "user-agent": "WellSmithBot/1.0", accept: "application/rss+xml, text/xml; q=0.9, */*;q=0.8" } });
+    const r = await fetch(rssUrl, {
+      headers: {
+        "user-agent": "WellSmithBot/1.0",
+        accept: "application/rss+xml, text/xml; q=0.9, */*;q=0.8",
+      },
+    });
     if (!r.ok) {
-      return res.status(502).json({ error: `Failed to fetch RSS (${r.status})` });
+      return res
+        .status(502)
+        .json({ error: `Failed to fetch RSS (${r.status})` });
     }
     const xml = await r.text();
     const parser = new XMLParser({ ignoreAttributes: false });
@@ -195,7 +226,11 @@ export const handlePinterest: RequestHandler = async (req, res) => {
 
     const pins: PinterestPin[] = items
       .map((it) => {
-        const title = (typeof it?.title === "string" ? it.title : String(it?.title?.["#text"] ?? "")).trim();
+        const title = (
+          typeof it?.title === "string"
+            ? it.title
+            : String(it?.title?.["#text"] ?? "")
+        ).trim();
         const link = extractLinkFromItem(it) || "";
         const image = extractImageFromItem(it) || "";
         const description = (extractDescriptionFromItem(it) || "").trim();
@@ -209,7 +244,8 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     // Fallback to Pinterest widget API if RSS yields too few items
     let finalPins = pins;
     if (finalPins.length < 6) {
-      const boardUrl = (req.query.board as string) || process.env.PINTEREST_BOARD_URL || "";
+      const boardUrl =
+        (req.query.board as string) || process.env.PINTEREST_BOARD_URL || "";
       const widgetPins = await fetchWidgetPins(boardUrl).catch(() => []);
       if (widgetPins.length) {
         // Deduplicate by link
@@ -223,7 +259,9 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     }
 
     // Filter out items missing critical info
-    finalPins = finalPins.filter((p) => !!p.image && !!p.title?.trim() && !!p.description?.trim());
+    finalPins = finalPins.filter(
+      (p) => !!p.image && !!p.title?.trim() && !!p.description?.trim(),
+    );
 
     const resp: PinterestResponse = { pins: finalPins };
     res.json(resp);

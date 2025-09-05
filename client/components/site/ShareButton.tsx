@@ -1,6 +1,10 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Share2, QrCode, Facebook, Instagram, Copy, Check } from "lucide-react";
@@ -64,7 +68,9 @@ export default function ShareButton({
         <div className="space-y-4">
           <div className="text-center">
             <h4 className="font-semibold">{pageTitle}</h4>
-            <p className="text-sm text-muted-foreground">Help others discover this page</p>
+            <p className="text-sm text-muted-foreground">
+              Help others discover this page
+            </p>
           </div>
 
           <Separator />
@@ -88,12 +94,16 @@ export default function ShareButton({
                 <div className="flex h-32 w-32 items-center justify-center rounded-lg border-2 border-dashed border-muted-foreground/25">
                   <div className="text-center">
                     <QrCode className="mx-auto mb-2 h-8 w-8 text-muted-foreground/50" />
-                    <p className="text-xs text-muted-foreground">QR Code unavailable</p>
+                    <p className="text-xs text-muted-foreground">
+                      QR Code unavailable
+                    </p>
                   </div>
                 </div>
               )}
             </div>
-            <p className="text-xs text-muted-foreground">Scan to visit on mobile</p>
+            <p className="text-xs text-muted-foreground">
+              Scan to visit on mobile
+            </p>
           </div>
 
           <Separator />
@@ -101,10 +111,20 @@ export default function ShareButton({
           <div className="space-y-3">
             <h5 className="text-sm font-medium">Share on social media</h5>
             <div className="grid grid-cols-2 gap-2">
-              <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("facebook")}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="justify-start"
+                onClick={() => handleShare("facebook")}
+              >
                 <Facebook className="mr-2 h-4 w-4 text-blue-600" /> Facebook
               </Button>
-              <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("instagram")}>
+              <Button
+                variant="outline"
+                size="sm"
+                className="justify-start"
+                onClick={() => handleShare("instagram")}
+              >
                 <Instagram className="mr-2 h-4 w-4 text-pink-500" /> Instagram
               </Button>
             </div>
@@ -115,9 +135,20 @@ export default function ShareButton({
           <div className="space-y-2">
             <h5 className="text-sm font-medium">Copy link</h5>
             <div className="flex space-x-2">
-              <div className="flex-1 truncate rounded bg-muted p-2 text-xs font-mono">{new URL(currentUrl, "http://x").host || currentUrl}</div>
-              <Button variant="outline" size="sm" onClick={() => handleShare("copy")} className={copied ? "text-green-600" : ""}>
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+              <div className="flex-1 truncate rounded bg-muted p-2 text-xs font-mono">
+                {new URL(currentUrl, "http://x").host || currentUrl}
+              </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => handleShare("copy")}
+                className={copied ? "text-green-600" : ""}
+              >
+                {copied ? (
+                  <Check className="h-4 w-4" />
+                ) : (
+                  <Copy className="h-4 w-4" />
+                )}
               </Button>
             </div>
             {copied && (

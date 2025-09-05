@@ -10,13 +10,21 @@ export default function Recipes() {
   useEffect(() => {
     let mounted = true;
 
-    async function fetchWithRetry(input: RequestInfo | URL, init?: RequestInit, attempts = 3): Promise<Response> {
+    async function fetchWithRetry(
+      input: RequestInfo | URL,
+      init?: RequestInit,
+      attempts = 3,
+    ): Promise<Response> {
       let lastErr: any;
       for (let i = 0; i < attempts; i++) {
         try {
           const controller = new AbortController();
           const t = setTimeout(() => controller.abort(), 10000);
-          const res = await fetch(input, { ...init, cache: "no-store", signal: controller.signal });
+          const res = await fetch(input, {
+            ...init,
+            cache: "no-store",
+            signal: controller.signal,
+          });
           clearTimeout(t);
           if (res.ok) return res;
           lastErr = new Error(`HTTP ${res.status}`);
@@ -43,7 +51,9 @@ export default function Recipes() {
           for (const url of endpoints) {
             try {
               const res = await fetchWithRetry(url);
-              data = (await res.json()) as PinterestResponse | { error: string };
+              data = (await res.json()) as
+                | PinterestResponse
+                | { error: string };
               if ("pins" in data) break;
             } catch (err) {
               lastErr = err;
@@ -54,7 +64,11 @@ export default function Recipes() {
         }
 
         // Always attempt widget fallback if we don't have usable data
-        if (!data || !("pins" in data) || !(data as PinterestResponse).pins?.length) {
+        if (
+          !data ||
+          !("pins" in data) ||
+          !(data as PinterestResponse).pins?.length
+        ) {
           const toPath = (u: string) => {
             try {
               const { pathname } = new URL(u);
@@ -66,13 +80,26 @@ export default function Recipes() {
           const path = toPath(boardUrl);
           if (path) {
             try {
-              const widgetRes = await fetchWithRetry(`https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`, { mode: "cors" });
+              const widgetRes = await fetchWithRetry(
+                `https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`,
+                { mode: "cors" },
+              );
               const widgetJson = (await widgetRes.json()) as any;
               const pins = (widgetJson?.data?.pins || []).map((p: any) => ({
                 title: String(p?.grid_title || p?.title || "").trim(),
-                description: String(p?.grid_description || p?.description || "").trim(),
-                link: p?.id ? `https://www.pinterest.com/pin/${p.id}/` : String(p?.link || ""),
-                image: p?.images?.["736x"]?.url || p?.images?.["564x"]?.url || p?.images?.["474x"]?.url || p?.images?.orig?.url || p?.images?.["236x"]?.url || "",
+                description: String(
+                  p?.grid_description || p?.description || "",
+                ).trim(),
+                link: p?.id
+                  ? `https://www.pinterest.com/pin/${p.id}/`
+                  : String(p?.link || ""),
+                image:
+                  p?.images?.["736x"]?.url ||
+                  p?.images?.["564x"]?.url ||
+                  p?.images?.["474x"]?.url ||
+                  p?.images?.orig?.url ||
+                  p?.images?.["236x"]?.url ||
+                  "",
               }));
               data = { pins } as PinterestResponse;
             } catch (err) {
@@ -81,11 +108,18 @@ export default function Recipes() {
           }
         }
 
-        if (!data || !("pins" in data)) throw lastErr || new Error("Unable to load");
+        if (!data || !("pins" in data))
+          throw lastErr || new Error("Unable to load");
 
-        if (mounted) setPins((data as PinterestResponse).pins.filter((p) => !!p.image && !!p.title && !!p.description));
+        if (mounted)
+          setPins(
+            (data as PinterestResponse).pins.filter(
+              (p) => !!p.image && !!p.title && !!p.description,
+            ),
+          );
       } catch (e: any) {
-        if (mounted) setError(e?.message || "Unable to load recipes. Please try again.");
+        if (mounted)
+          setError(e?.message || "Unable to load recipes. Please try again.");
       } finally {
         if (mounted) setLoading(false);
       }
@@ -97,8 +131,13 @@ export default function Recipes() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Lean & Green Recipe Ideas</h1>
-      <p className="mt-3 text-lg text-muted-foreground">Ideas pulled from a public Pinterest board. Always follow your specific OPTAVIA plan guidelines.</p>
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+        Lean & Green Recipe Ideas
+      </h1>
+      <p className="mt-3 text-lg text-muted-foreground">
+        Ideas pulled from a public Pinterest board. Always follow your specific
+        OPTAVIA plan guidelines.
+      </p>
       <div className="mt-6 grid gap-2 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-4">
         {[
           "Quick Family Dinners",
@@ -106,14 +145,19 @@ export default function Recipes() {
           "Budget-Friendly Meals",
           "Seasonal Favorites",
         ].map((c) => (
-          <div key={c} className="rounded-md border bg-white/60 px-3 py-2">{c}</div>
+          <div key={c} className="rounded-md border bg-white/60 px-3 py-2">
+            {c}
+          </div>
         ))}
       </div>
 
-      {loading && <p className="mt-6 text-sm text-muted-foreground">Loading recipes…</p>}
+      {loading && (
+        <p className="mt-6 text-sm text-muted-foreground">Loading recipes…</p>
+      )}
       {error && (
         <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-          {error}. Please provide a public Pinterest board URL via the PINTEREST_BOARD_URL environment variable.
+          {error}. Please provide a public Pinterest board URL via the
+          PINTEREST_BOARD_URL environment variable.
         </div>
       )}
 
@@ -121,13 +165,30 @@ export default function Recipes() {
         <>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {pins.slice(0, visible).map((p, i) => (
-              <a key={p.link + i} href={p.link} target="_blank" rel="noreferrer" className="group rounded-2xl border bg-card p-2 shadow-sm">
+              <a
+                key={p.link + i}
+                href={p.link}
+                target="_blank"
+                rel="noreferrer"
+                className="group rounded-2xl border bg-card p-2 shadow-sm"
+              >
                 <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
-                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105" loading="lazy" />
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                    loading="lazy"
+                  />
                 </div>
-                <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title}</h3>
-                <p className="text-xs text-muted-foreground line-clamp-2">{p.description}</p>
-                <p className="text-xs text-muted-foreground">View on Pinterest</p>
+                <h3 className="mt-3 line-clamp-2 text-sm font-medium">
+                  {p.title}
+                </h3>
+                <p className="text-xs text-muted-foreground line-clamp-2">
+                  {p.description}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  View on Pinterest
+                </p>
               </a>
             ))}
           </div>
@@ -144,7 +205,8 @@ export default function Recipes() {
         </>
       )}
       <div className="mt-10 rounded-2xl border bg-white p-4 text-xs text-muted-foreground">
-        Follow your specific OPTAVIA plan guidelines. Consult with your coach for personalized meal planning.
+        Follow your specific OPTAVIA plan guidelines. Consult with your coach
+        for personalized meal planning.
       </div>
     </div>
   );

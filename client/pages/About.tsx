@@ -19,21 +19,48 @@ export default function About() {
             </figure>
 
             <div className="order-1 lg:order-2">
-              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">About Kayce</h1>
+              <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+                About Kayce
+              </h1>
               <p className="mt-4 text-lg text-muted-foreground">
-                I help clients build healthy habits through compassionate, practical coaching. Every journey is personal—together we create a simple plan that fits your life.
+                I help clients build healthy habits through compassionate,
+                practical coaching. Every journey is personal—together we create
+                a simple plan that fits your life.
               </p>
               <div className="mt-4 flex flex-wrap gap-2 text-sm">
-                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">Independent Certified Optavia coach</span>
-                <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">Shriners mama</span>
-                <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Reader</span>
-                <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Writer</span>
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">
+                  Independent Certified Optavia coach
+                </span>
+                <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">
+                  Shriners mama
+                </span>
+                <span className="rounded-full bg-secondary px-3 py-1 text-foreground">
+                  Reader
+                </span>
+                <span className="rounded-full bg-secondary px-3 py-1 text-foreground">
+                  Writer
+                </span>
               </div>
-              <p className="mt-3 text-sm text-foreground/80">Author of two children's books — What Can Hayes Be? and “Hayes & the Big Game!” — <a className="text-primary hover:underline" href="https://www.whatcanhayesbe.com/" target="_blank" rel="noreferrer">whatcanhayesbe.com</a></p>
-              <p className="mt-1 text-sm font-medium">Committed to changing lives! ���️</p>
+              <p className="mt-3 text-sm text-foreground/80">
+                Author of two children's books — What Can Hayes Be? and “Hayes &
+                the Big Game!” —{" "}
+                <a
+                  className="text-primary hover:underline"
+                  href="https://www.whatcanhayesbe.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  whatcanhayesbe.com
+                </a>
+              </p>
+              <p className="mt-1 text-sm font-medium">
+                Committed to changing lives! ���️
+              </p>
               <div className="mt-6 flex gap-3">
                 <Button asChild size="lg">
-                  <Link to="/book-assessment#health-assessment">Start Health Assessment</Link>
+                  <Link to="/book-assessment#health-assessment">
+                    Start Health Assessment
+                  </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline">
                   <Link to="/contact">Contact</Link>

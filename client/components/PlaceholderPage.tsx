@@ -11,7 +11,9 @@ export default function PlaceholderPage({
   return (
     <section className="mx-auto max-w-5xl px-4 py-16">
       <div className="rounded-2xl border bg-card p-8 shadow-sm">
-        <h1 className="text-3xl font-bold tracking-tight text-foreground">{title}</h1>
+        <h1 className="text-3xl font-bold tracking-tight text-foreground">
+          {title}
+        </h1>
         <p className="mt-3 text-muted-foreground">{description}</p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button asChild>

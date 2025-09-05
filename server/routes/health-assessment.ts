@@ -1,7 +1,10 @@
 import type { RequestHandler } from "express";
 import nodemailer from "nodemailer";
 import { z } from "zod";
-import type { HealthAssessmentRequest, HealthAssessmentResponse } from "@shared/api";
+import type {
+  HealthAssessmentRequest,
+  HealthAssessmentResponse,
+} from "@shared/api";
 
 const schema = z.object({
   firstName: z.string().min(1),
@@ -57,14 +60,22 @@ export const handleHealthAssessment: RequestHandler = async (req, res) => {
   const data = parsed.data as HealthAssessmentRequest;
 
   const smtpHost = process.env.SMTP_HOST;
-  const smtpPort = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined;
+  const smtpPort = process.env.SMTP_PORT
+    ? Number(process.env.SMTP_PORT)
+    : undefined;
   const smtpUser = process.env.SMTP_USER;
   const smtpPass = process.env.SMTP_PASS;
   const from = process.env.SMTP_FROM || smtpUser || "no-reply@example.com";
   const to = "kaycecsmith@yahoo.com";
 
   if (!smtpHost || !smtpPort || !smtpUser || !smtpPass) {
-    return res.status(500).json({ ok: false, error: "SMTP not configured (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)" });
+    return res
+      .status(500)
+      .json({
+        ok: false,
+        error:
+          "SMTP not configured (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)",
+      });
   }
 
   const transporter = nodemailer.createTransport({
@@ -129,7 +140,13 @@ export const handleHealthAssessment: RequestHandler = async (req, res) => {
   </div>`;
 
   try {
-    await transporter.sendMail({ from, to, subject, html, replyTo: data.email });
+    await transporter.sendMail({
+      from,
+      to,
+      subject,
+      html,
+      replyTo: data.email,
+    });
     const resp: HealthAssessmentResponse = { ok: true };
     return res.json(resp);
   } catch (err) {

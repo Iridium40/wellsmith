@@ -16,29 +16,80 @@ export default function SiteFooter() {
                 decoding="async"
               />
             </Link>
-            <p className="mt-2 max-w-xs">Personalized Optavia coaching for sustainable, healthy living.</p>
-            <p className="mt-2 max-w-xs text-xs text-muted-foreground">This site does not provide medical advice. Consult your physician before beginning any program.</p>
+            <p className="mt-2 max-w-xs">
+              Personalized Optavia coaching for sustainable, healthy living.
+            </p>
+            <p className="mt-2 max-w-xs text-xs text-muted-foreground">
+              This site does not provide medical advice. Consult your physician
+              before beginning any program.
+            </p>
           </div>
           <nav className="grid grid-cols-2 gap-2">
-            <Link to="/my-story" className="hover:text-foreground">My Story</Link>
-            <Link to="/why-coaching" className="hover:text-foreground">Client Support</Link>
-            <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipe Ideas</Link>
-            <Link to="/get-started" className="hover:text-foreground">Get Started with OPTAVIA</Link>
-            <Link to="/connect" className="hover:text-foreground">Start Your Journey</Link>
-            <a href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer" className="hover:text-foreground">OPTAVIA Coach Profile</a>
-            <a href="https://www.facebook.com/kayces" target="_blank" rel="noreferrer" className="hover:text-foreground inline-flex items-center gap-1"><Facebook className="h-4 w-4" /> Facebook</a>
-            <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="hover:text-foreground inline-flex items-center gap-1"><Instagram className="h-4 w-4" /> Instagram</a>
-            <a href="https://www.whatcanhayesbe.com/" target="_blank" rel="noreferrer" className="hover:text-foreground">Children’s Books</a>
+            <Link to="/my-story" className="hover:text-foreground">
+              My Story
+            </Link>
+            <Link to="/why-coaching" className="hover:text-foreground">
+              Client Support
+            </Link>
+            <Link to="/recipes" className="hover:text-foreground">
+              Lean & Green Recipe Ideas
+            </Link>
+            <Link to="/get-started" className="hover:text-foreground">
+              Get Started with OPTAVIA
+            </Link>
+            <Link to="/connect" className="hover:text-foreground">
+              Start Your Journey
+            </Link>
+            <a
+              href="https://www.optavia.com/us/en/coach/kaycesmith"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground"
+            >
+              OPTAVIA Coach Profile
+            </a>
+            <a
+              href="https://www.facebook.com/kayces"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground inline-flex items-center gap-1"
+            >
+              <Facebook className="h-4 w-4" /> Facebook
+            </a>
+            <a
+              href="https://www.instagram.com/smithkayce/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground inline-flex items-center gap-1"
+            >
+              <Instagram className="h-4 w-4" /> Instagram
+            </a>
+            <a
+              href="https://www.whatcanhayesbe.com/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground"
+            >
+              Children’s Books
+            </a>
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
-            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer" className="text-primary hover:underline">Start Your Journey</a>
+            <a
+              href={
+                import.meta.env.VITE_OPTAVIA_COACH_URL ||
+                "https://www.optavia.com/us/en/coach/kaycesmith"
+              }
+              target="_blank"
+              rel="noreferrer"
+              className="text-primary hover:underline"
+            >
+              Start Your Journey
+            </a>
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
-          <p>
-            © {new Date().getFullYear()} WellSmith. All rights reserved.
-          </p>
+          <p>© {new Date().getFullYear()} WellSmith. All rights reserved.</p>
           <p>Built with love for healthy habits.</p>
         </div>
       </div>

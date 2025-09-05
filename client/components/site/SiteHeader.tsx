@@ -18,7 +18,11 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:py-4">
-        <Link to="/" className="flex items-center gap-2" aria-label="WellSmith home">
+        <Link
+          to="/"
+          className="flex items-center gap-2"
+          aria-label="WellSmith home"
+        >
           <img
             src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fac77e7c0850e4d88a385f135957ff613?format=webp&width=800"
             alt="WellSmith logo"
@@ -47,7 +51,16 @@ export default function SiteHeader() {
 
         <div className="hidden lg:block">
           <Button asChild size="lg" variant="gradient" className="shadow-sm">
-            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey</a>
+            <a
+              href={
+                import.meta.env.VITE_OPTAVIA_COACH_URL ||
+                "https://www.optavia.com/us/en/coach/kaycesmith"
+              }
+              target="_blank"
+              rel="noreferrer"
+            >
+              Start Your Journey
+            </a>
           </Button>
         </div>
 
@@ -56,8 +69,18 @@ export default function SiteHeader() {
           className="grid place-items-center rounded-md p-2 text-foreground hover:bg-secondary lg:hidden"
           onClick={() => setOpen((v) => !v)}
         >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="stroke-current">
-            <path d="M4 7h16M4 12h16M4 17h16" strokeWidth="2" strokeLinecap="round" />
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="stroke-current"
+          >
+            <path
+              d="M4 7h16M4 12h16M4 17h16"
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
           </svg>
         </button>
       </div>
@@ -74,7 +97,9 @@ export default function SiteHeader() {
                   className={({ isActive }) =>
                     cn(
                       "block rounded-md px-3 py-2 text-sm font-medium hover:bg-secondary",
-                      isActive ? "bg-secondary text-foreground" : "text-foreground/80",
+                      isActive
+                        ? "bg-secondary text-foreground"
+                        : "text-foreground/80",
                     )
                   }
                 >
@@ -82,7 +107,9 @@ export default function SiteHeader() {
                 </NavLink>
               ))}
               <Button asChild className="mt-2 w-full">
-                <Link to="/book-assessment">Book Your Free Health Assessment</Link>
+                <Link to="/book-assessment">
+                  Book Your Free Health Assessment
+                </Link>
               </Button>
             </div>
           </div>

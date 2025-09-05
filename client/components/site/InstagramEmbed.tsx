@@ -55,7 +55,11 @@ export default function InstagramEmbed({ permalink }: InstagramEmbedProps) {
           width: "100%",
         }}
       >
-        <a href={`${permalink}?utm_source=ig_embed&utm_campaign=loading`} target="_blank" rel="noreferrer">
+        <a
+          href={`${permalink}?utm_source=ig_embed&utm_campaign=loading`}
+          target="_blank"
+          rel="noreferrer"
+        >
           View on Instagram
         </a>
       </blockquote>
