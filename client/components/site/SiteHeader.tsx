@@ -8,7 +8,7 @@ const navItems = [
   { to: "/my-story", label: "My Story" },
   { to: "/why-coaching", label: "Client Support" },
   { to: "/recipes", label: "Lean & Green Recipe Ideas" },
-  { to: "/get-started", label: "Get Started with OPTAVIA" },
+  { to: "/book-assessment", label: "Book Assessment" },
   { to: "/connect", label: "Connect with Kayce" },
 ];
 
