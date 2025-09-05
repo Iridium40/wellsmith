@@ -21,7 +21,7 @@ export default function SiteFooter() {
           </div>
           <nav className="grid grid-cols-2 gap-2">
             <Link to="/my-story" className="hover:text-foreground">My Story</Link>
-            <Link to="/why-coaching" className="hover:text-foreground">Why Choose Coaching</Link>
+            <Link to="/why-coaching" className="hover:text-foreground">Client Support</Link>
             <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipe Ideas</Link>
             <Link to="/get-started" className="hover:text-foreground">Get Started with OPTAVIA</Link>
             <Link to="/connect" className="hover:text-foreground">Start Your Journey</Link>
