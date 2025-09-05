@@ -8,9 +8,12 @@ export default function SiteFooter() {
           <div>
             <div className="text-base font-semibold text-foreground">WellSmith</div>
             <p className="mt-2 max-w-xs">Personalized Optavia coaching for sustainable, healthy living.</p>
+            <p className="mt-2 max-w-xs text-xs text-muted-foreground">This site does not provide medical advice. Consult your physician before beginning any program.</p>
           </div>
           <nav className="grid grid-cols-2 gap-2">
+            <Link to="/program" className="hover:text-foreground">Program Overview</Link>
             <Link to="/success-stories" className="hover:text-foreground">Success Stories</Link>
+            <Link to="/faqs" className="hover:text-foreground">FAQs</Link>
             <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
             <Link to="/resources" className="hover:text-foreground">Resources</Link>
             <Link to="/start-guide" className="hover:text-foreground">Start Optavia Guide</Link>
