@@ -25,11 +25,6 @@ export default function Index() {
                 <Link to="/my-story">Read My Story</Link>
               </Button>
             </div>
-            <div className="mt-2 text-sm">
-              <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-primary hover:underline">
-                <Instagram className="h-4 w-4" /> Follow me on Instagram
-              </a>
-            </div>
             <ul className="mt-8 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2">
               {[
                 "Personalized one-on-one coaching",
@@ -60,6 +55,11 @@ export default function Index() {
                   <p className="mt-4 text-sm font-medium text-muted-foreground">Coaching by</p>
                   <p className="text-2xl font-bold">Kayce Smith</p>
                   <p className="mt-1 text-sm text-muted-foreground">Independent OPTAVIA Certified Health Coach</p>
+                  <div className="mt-3 text-sm">
+                    <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-primary hover:underline">
+                      <Instagram className="h-4 w-4" /> Follow me on Instagram
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
