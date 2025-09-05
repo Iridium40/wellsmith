@@ -52,10 +52,17 @@ async function fetchWidgetPins(boardUrl: string): Promise<PinterestPin[]> {
       const id = p?.id || p?.pin_id;
       const link = id ? `https://www.pinterest.com/pin/${id}/` : p?.link;
       const image = pickImage(p?.images) || "";
-      const title = p?.grid_title || p?.description || "";
-      return { title, link, image } as PinterestPin;
+      const title = (p?.grid_title || p?.title || "").toString().trim();
+      const description = (p?.grid_description || p?.description || "").toString().trim();
+      return { title, description, link, image } as PinterestPin;
     })
     .filter((p) => !!p.link);
+}
+
+function textFromHtml(html?: string): string {
+  if (typeof html !== "string") return "";
+  const withoutTags = html.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  return withoutTags;
 }
 
 function extractImageFromItem(item: any): string | undefined {
@@ -142,6 +149,12 @@ function extractLinkFromItem(item: any): string | undefined {
   return link;
 }
 
+function extractDescriptionFromItem(item: any): string | undefined {
+  const html = item?.description || item?.["content:encoded"] || item?.content || "";
+  const text = textFromHtml(typeof html === "string" ? html : String(html?.["#text"] ?? ""));
+  return text || undefined;
+}
+
 export const handlePinterest: RequestHandler = async (req, res) => {
   try {
     const board = (req.query.board as string) || process.env.PINTEREST_BOARD_URL;
@@ -182,10 +195,11 @@ export const handlePinterest: RequestHandler = async (req, res) => {
 
     const pins: PinterestPin[] = items
       .map((it) => {
-        const title = typeof it?.title === "string" ? it.title : String(it?.title?.["#text"] ?? "");
+        const title = (typeof it?.title === "string" ? it.title : String(it?.title?.["#text"] ?? "")).trim();
         const link = extractLinkFromItem(it) || "";
         const image = extractImageFromItem(it) || "";
-        return { title, link, image } as PinterestPin;
+        const description = (extractDescriptionFromItem(it) || "").trim();
+        return { title, description, link, image } as PinterestPin;
       })
       .filter((p) => !!p.link);
 
@@ -204,6 +218,9 @@ export const handlePinterest: RequestHandler = async (req, res) => {
         });
       }
     }
+
+    // Filter out items missing critical info
+    finalPins = finalPins.filter((p) => !!p.image && !!p.title?.trim() && !!p.description?.trim());
 
     const resp: PinterestResponse = { pins: finalPins };
     res.json(resp);
