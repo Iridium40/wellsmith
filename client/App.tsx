@@ -18,6 +18,7 @@ import FAQs from "@/pages/FAQs";
 import MyStory from "@/pages/MyStory";
 import WhyCoaching from "@/pages/WhyCoaching";
 import GetStarted from "@/pages/GetStarted";
+import Privacy from "@/pages/Privacy";
 import BookWithKayce from "@/pages/BookWithKayce";
 
 const queryClient = new QueryClient();
@@ -41,6 +42,7 @@ const App = () => (
             <Route path="/why-coaching" element={<WhyCoaching />} />
             <Route path="/book-with-kayce" element={<BookWithKayce />} />
             <Route path="/get-started" element={<GetStarted />} />
+            <Route path="/privacy" element={<Privacy />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
