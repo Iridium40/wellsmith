@@ -100,11 +100,6 @@ export default function BookAssessment() {
               <p className="mt-4 text-lg text-muted-foreground">
                 A 30-minute conversation to learn about your goals and share how the Optavia program and personalized coaching can help. No pressure—just helpful, practical guidance.
               </p>
-              <ul className="mt-6 grid gap-3 text-sm text-foreground/80">
-                <li className="flex items-start gap-2"><span className="mt-1 inline-block h-2 w-2 rounded-full bg-primary" /> Time zone auto-detected: <span className="font-medium">{tz}</span></li>
-                <li className="flex items-start gap-2"><span className="mt-1 inline-block h-2 w-2 rounded-full bg-primary" /> Choose from multiple time slots with reminders</li>
-                <li className="flex items-start gap-2"><span className="mt-1 inline-block h-2 w-2 rounded-full bg-primary" /> Easy rescheduling when life happens</li>
-              </ul>
               {!calendlyUrl && (
                 <div className="mt-6 rounded-lg border bg-white p-4 text-sm text-amber-700">
                   Calendly is not configured yet. Add VITE_CALENDLY_URL to enable inline booking. You can still contact via the form below.
