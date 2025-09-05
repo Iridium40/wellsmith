@@ -43,7 +43,6 @@ export default function Recipes() {
         const board = encodeURIComponent(boardUrl);
         const endpoints = [
           `/api/pinterest?board=${board}`,
-          `/.netlify/functions/api/pinterest?board=${board}`,
         ];
         let data: PinterestResponse | { error: string } | null = null;
         let lastErr: any;
