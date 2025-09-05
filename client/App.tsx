@@ -17,6 +17,8 @@ import StartGuide from "@/pages/StartGuide";
 import BestPractices from "@/pages/BestPractices";
 import Contact from "@/pages/Contact";
 import BookAssessment from "@/pages/BookAssessment";
+import ProgramOverview from "@/pages/ProgramOverview";
+import FAQs from "@/pages/FAQs";
 
 const queryClient = new QueryClient();
 
@@ -30,7 +32,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
+            <Route path="/program" element={<ProgramOverview />} />
             <Route path="/success-stories" element={<SuccessStories />} />
+            <Route path="/faqs" element={<FAQs />} />
             <Route path="/recipes" element={<Recipes />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="/start-guide" element={<StartGuide />} />
