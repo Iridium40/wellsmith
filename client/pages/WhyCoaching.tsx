@@ -33,8 +33,7 @@ export default function WhyCoaching() {
 
       <div className="mt-8">
         <a
-          href={import.meta.env.VITE_CALENDLY_URL || "https://calendly.com/kayce-smithhealthwellness/clientsupport"}
-          target="_blank" rel="noreferrer"
+          href="/book-with-kayce"
           className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
         >Book with Kayce</a>
       </div>
