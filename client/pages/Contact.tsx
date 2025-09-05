@@ -21,7 +21,6 @@ export default function Contact() {
           <span className="mx-2">•</span>
           <a className="text-primary hover:underline inline-flex items-center gap-1" href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer"><Instagram className="h-4 w-4" /> Instagram</a>
         </div>
-        <p className="mt-4 text-xs text-muted-foreground">Questions? You can also email <a className="text-primary hover:underline" href="mailto:kaycecsmith@yahoo.com">kaycecsmith@yahoo.com</a>.</p>
       </div>
 
       <div className="mt-8 rounded-2xl border bg-white p-6 text-xs leading-6 text-muted-foreground">
