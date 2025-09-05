@@ -115,7 +115,6 @@ export default function BookAssessment() {
                     <a href="#schedule">Proceed to Calendar</a>
                   </Button>
                 )}
-                <ShareButton size="lg" title="Book Your Free Health Assessment" description="Complete this quick assessment and book time with Kayce." />
               </div>
             </div>
             <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
