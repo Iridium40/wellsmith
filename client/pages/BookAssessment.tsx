@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 import type { HealthAssessmentRequest, HealthAssessmentResponse } from "@shared/api";
 
 export default function BookAssessment() {
