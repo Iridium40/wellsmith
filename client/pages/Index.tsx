@@ -43,7 +43,13 @@ export default function Index() {
               <div className="absolute inset-0 -z-10 bg-[conic-gradient(from_180deg_at_50%_50%,theme(colors.primary/10),transparent_50%,theme(colors.accent/10))]" />
               <div className="grid h-full place-items-center rounded-xl bg-white/70 backdrop-blur">
                 <div className="text-center">
-                  <div className="mx-auto h-16 w-16 rounded-full bg-gradient-to-br from-primary to-accent" />
+                  <img
+                    src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fac77e7c0850e4d88a385f135957ff613?format=webp&width=800"
+                    alt="WellSmith logo"
+                    className="mx-auto h-20 w-auto"
+                    loading="eager"
+                    decoding="async"
+                  />
                   <p className="mt-4 text-sm font-medium text-muted-foreground">Coaching by</p>
                   <p className="text-2xl font-bold">Kayce Smith</p>
                   <p className="mt-1 text-sm text-muted-foreground">Certified Optavia Health Coach</p>
