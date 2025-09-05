@@ -80,49 +80,51 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Social Proof */}
+      {/* Success Stories inline */}
       <section className="relative">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
         <div className="mx-auto max-w-7xl px-4 py-14">
-          <div className="grid items-center gap-8 lg:grid-cols-2">
-            <div className="order-2 lg:order-1">
-              <blockquote className="rounded-2xl border bg-card p-6 shadow-sm">
-                <p className="text-lg font-medium">“Kayce helped me lose 28 lbs in 12 weeks and, more importantly, gain my energy and confidence back.”</p>
-                <footer className="mt-3 text-sm text-muted-foreground">Sarah H., busy mom of 3</footer>
-              </blockquote>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <div className="rounded-xl border bg-white p-4 text-center">
-                  <div className="text-3xl font-extrabold text-primary">12w</div>
-                  <div className="text-sm text-muted-foreground">Typical first-phase timeline</div>
-                </div>
-                <div className="rounded-xl border bg-white p-4 text-center">
-                  <div className="text-3xl font-extrabold text-primary">28 lbs</div>
-                  <div className="text-sm text-muted-foreground">Average client loss highlighted</div>
-                </div>
+          <h2 className="text-2xl font-bold tracking-tight">Client Transformations</h2>
+          <p className="mt-2 text-muted-foreground">A few recent wins from the community.</p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article className="rounded-2xl border bg-card p-4 shadow-sm">
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 p-3">
+                <div className="mx-auto my-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
+                <div className="absolute left-3 top-3 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">Before</div>
+                <div className="absolute bottom-3 right-3 rounded-full bg-accent/90 px-2 py-1 text-xs font-medium text-white">After</div>
               </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <div className="relative mx-auto aspect-[16/12] max-w-xl overflow-hidden rounded-2xl border bg-gradient-to-br from-white to-secondary p-1 shadow-sm">
-                <div className="grid h-full place-items-center rounded-xl bg-white/70 backdrop-blur">
-                  <div className="text-center">
-                    <div className="mx-auto mb-3 flex w-56 items-center justify-between text-xs">
-                      <span className="rounded-full bg-primary/10 px-2 py-1 text-primary">Before</span>
-                      <span className="rounded-full bg-accent/10 px-2 py-1 text-accent">After</span>
-                    </div>
-                    <div className="mx-auto h-40 w-40 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
-                    <p className="mt-3 text-sm text-muted-foreground">Real transformations featured on the Success Stories page.</p>
-                  </div>
-                </div>
+              <h3 className="mt-3 text-lg font-semibold">Sarah H.</h3>
+              <p className="text-sm text-muted-foreground">Busy mom of 3</p>
+              <p className="mt-1 text-sm">-28 lbs in 12 weeks</p>
+              <blockquote className="mt-2 border-l-2 pl-3 text-sm italic text-foreground/80">“I have my energy and confidence back.”</blockquote>
+            </article>
+            <article className="rounded-2xl border bg-card p-4 shadow-sm">
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 p-3">
+                <div className="mx-auto my-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
+                <div className="absolute left-3 top-3 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">Before</div>
+                <div className="absolute bottom-3 right-3 rounded-full bg-accent/90 px-2 py-1 text-xs font-medium text-white">After</div>
               </div>
-              <div className="mt-6 flex gap-3">
-                <Button asChild>
-                  <Link to="/success-stories">Read Success Stories</Link>
-                </Button>
-                <Button asChild variant="outline">
-                  <Link to="/program">How It Works</Link>
-                </Button>
+              <h3 className="mt-3 text-lg font-semibold">James P.</h3>
+              <p className="text-sm text-muted-foreground">Sales manager</p>
+              <p className="mt-1 text-sm">-42 lbs in 5 months</p>
+              <blockquote className="mt-2 border-l-2 pl-3 text-sm italic text-foreground/80">“The daily support kept me consistent.”</blockquote>
+            </article>
+            <article className="rounded-2xl border bg-card p-4 shadow-sm">
+              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 p-3">
+                <div className="mx-auto my-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
+                <div className="absolute left-3 top-3 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">Before</div>
+                <div className="absolute bottom-3 right-3 rounded-full bg-accent/90 px-2 py-1 text-xs font-medium text-white">After</div>
               </div>
-            </div>
+              <h3 className="mt-3 text-lg font-semibold">Alyssa T.</h3>
+              <p className="text-sm text-muted-foreground">Teacher</p>
+              <p className="mt-1 text-sm">-18 lbs in 8 weeks</p>
+              <blockquote className="mt-2 border-l-2 pl-3 text-sm italic text-foreground/80">“Simple steps that fit my life.”</blockquote>
+            </article>
+          </div>
+          <div className="mt-8 text-center">
+            <Button asChild>
+              <Link to="/book-assessment">Start Your Transformation</Link>
+            </Button>
           </div>
         </div>
       </section>
