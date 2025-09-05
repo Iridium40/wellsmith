@@ -45,13 +45,20 @@ export default function Index() {
               <div className="absolute inset-0 -z-10 bg-[conic-gradient(from_180deg_at_50%_50%,theme(colors.primary/10),transparent_50%,theme(colors.accent/10))]" />
               <div className="grid h-full place-items-center rounded-xl bg-white/70 backdrop-blur">
                 <div className="text-center">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5b0dafbaeac84bf8b97ef2a6e9700186?format=webp&width=1200"
-                    alt="Kayce Smith"
-                    className="mx-auto h-64 w-auto rounded-xl"
-                    loading="eager"
-                    decoding="async"
-                  />
+                  <div className="relative inline-block">
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5b0dafbaeac84bf8b97ef2a6e9700186?format=webp&width=1200"
+                      alt="Kayce Smith"
+                      className="mx-auto h-64 w-auto rounded-xl"
+                      loading="eager"
+                      decoding="async"
+                    />
+                    <img
+                      src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F997d1d8fa2294606b65101ef3eba2dee?format=webp&width=800"
+                      alt="WellSmith badge"
+                      className="absolute -top-8 -right-8 h-16 w-16 rounded-full border-2 border-white shadow-md"
+                    />
+                  </div>
                   <p className="mt-4 text-sm font-medium text-muted-foreground">Coaching by</p>
                   <p className="text-2xl font-bold">Kayce Smith</p>
                   <p className="mt-1 text-sm text-muted-foreground">Independent OPTAVIA Certified Health Coach</p>
