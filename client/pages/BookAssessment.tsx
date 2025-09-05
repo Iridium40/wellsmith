@@ -250,10 +250,13 @@ export default function BookAssessment() {
               <textarea name="additionalNotes" className="min-h-28 rounded-md border bg-white px-3 py-2 outline-none ring-primary focus:ring-2" />
             </label>
 
-            <div className="md:col-span-2 mt-2">
+            <div className="md:col-span-2 mt-2 flex flex-col items-start gap-2">
               <Button type="submit" size="lg" disabled={submitting}>
                 {submitting ? "Submitting…" : "Submit Health Assessment"}
               </Button>
+              <p className="text-xs text-muted-foreground">
+                Read our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+              </p>
             </div>
           </form>
         </div>
