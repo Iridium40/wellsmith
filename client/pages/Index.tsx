@@ -1,5 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import Disclaimer from "@/components/site/Disclaimer";
 
 export default function Index() {
   return (
@@ -10,17 +12,17 @@ export default function Index() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-7">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Transform Your Health with Personalized Optavia Coaching
+              Hi, I'm Kayce Smith — Your Independent OPTAVIA Certified Health Coach
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Get accessible and personalized health and wellness coaching from the comfort of your home.
+              Ready to transform your relationship with food and find the energy to be your best self?
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="shadow">
-                <Link to="/book-assessment">Book Your Free Health Assessment</Link>
+                <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey with Me</a>
               </Button>
               <Button asChild variant="outline" size="lg">
-                <Link to="/success-stories">Read Success Stories</Link>
+                <Link to="/my-story">Read My Story</Link>
               </Button>
             </div>
             <ul className="mt-8 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2">
@@ -155,7 +157,7 @@ export default function Index() {
           </div>
           <div className="mt-8 text-center">
             <Button asChild>
-              <Link to="/book-assessment">Start Your Transformation</Link>
+              <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Transformation</a>
             </Button>
           </div>
         </div>
@@ -165,15 +167,16 @@ export default function Index() {
       <section className="mx-auto max-w-7xl px-4 py-16">
         <div className="grid items-center gap-6 rounded-2xl border bg-gradient-to-br from-primary/10 to-accent/10 p-8 text-center shadow-sm md:grid-cols-2 md:text-left">
           <div>
-            <h3 className="text-2xl font-bold">Ready to start your own transformation?</h3>
-            <p className="mt-2 text-muted-foreground">Book a free assessment and get a roadmap tailored to your goals.</p>
+            <h3 className="text-2xl font-bold">Ready to start your own journey?</h3>
+            <p className="mt-2 text-muted-foreground">Connect through OPTAVIA's official system and I'll guide you every step.</p>
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow">
-              <Link to="/book-assessment">Book Your Free Health Assessment</Link>
+              <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Connect with Kayce</a>
             </Button>
           </div>
         </div>
+        <Disclaimer className="mt-6" />
       </section>
     </div>
   );
