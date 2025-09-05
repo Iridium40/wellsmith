@@ -17,7 +17,7 @@ export default function Index() {
               Ready to transform your relationship with food and find the energy to be your best self?
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="shadow">
+              <Button asChild size="lg" className="shadow" variant="gradient">
                 <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey with Me</a>
               </Button>
               <Button asChild variant="outline" size="lg">
@@ -122,7 +122,7 @@ export default function Index() {
             <p className="mt-2 text-muted-foreground">Connect through OPTAVIA's official system and I'll guide you every step.</p>
           </div>
           <div className="md:text-right">
-            <Button asChild size="lg" className="shadow">
+            <Button asChild size="lg" className="shadow" variant="gradient">
               <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Connect with Kayce</a>
             </Button>
           </div>
