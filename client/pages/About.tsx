@@ -29,8 +29,8 @@ export default function About() {
                 <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Reader</span>
                 <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Writer</span>
               </div>
-              <p className="mt-3 text-sm text-foreground/80">Author of @whatcanhayesbe and “Hayes & the Big Game!”</p>
-              <p className="mt-1 text-sm font-medium">Committed to changing lives! ❤️</p>
+              <p className="mt-3 text-sm text-foreground/80">Author of two children's books — What Can Hayes Be? and “Hayes & the Big Game!” — <a className="text-primary hover:underline" href="https://www.whatcanhayesbe.com/" target="_blank" rel="noreferrer">whatcanhayesbe.com</a></p>
+              <p className="mt-1 text-sm font-medium">Committed to changing lives! ���️</p>
               <div className="mt-6 flex gap-3">
                 <Button asChild size="lg">
                   <Link to="/book-assessment#health-assessment">Start Health Assessment</Link>
