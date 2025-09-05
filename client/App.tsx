@@ -12,7 +12,6 @@ import Layout from "@/components/site/Layout";
 import About from "@/pages/About";
 import SuccessStories from "@/pages/SuccessStories";
 import Recipes from "@/pages/Recipes";
-import Resources from "@/pages/Resources";
 import Contact from "@/pages/Contact";
 import BookAssessment from "@/pages/BookAssessment";
 import ProgramOverview from "@/pages/ProgramOverview";
@@ -34,7 +33,6 @@ const App = () => (
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/recipes" element={<Recipes />} />
-            <Route path="/resources" element={<Resources />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/book-assessment" element={<BookAssessment />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
