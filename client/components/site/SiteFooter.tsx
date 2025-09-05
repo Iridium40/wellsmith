@@ -26,8 +26,8 @@ export default function SiteFooter() {
             <Link to="/get-started" className="hover:text-foreground">Get Started with OPTAVIA</Link>
             <Link to="/connect" className="hover:text-foreground">Connect with Kayce</Link>
             <a href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer" className="hover:text-foreground">OPTAVIA Coach Profile</a>
-            <a href="https://www.facebook.com/kayces" target="_blank" rel="noreferrer" className="hover:text-foreground">Facebook</a>
-            <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="hover:text-foreground">Instagram</a>
+            <a href="https://www.facebook.com/kayces" target="_blank" rel="noreferrer" className="hover:text-foreground inline-flex items-center gap-1"><Facebook className="h-4 w-4" /> Facebook</a>
+            <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="hover:text-foreground inline-flex items-center gap-1"><Instagram className="h-4 w-4" /> Instagram</a>
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
