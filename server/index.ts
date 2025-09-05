@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { handleHealthAssessment } from "./routes/health-assessment";
 
 export function createServer() {
   const app = express();
@@ -18,6 +19,9 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  // Health Assessment form submission
+  app.post("/api/health-assessment", handleHealthAssessment);
 
   return app;
 }
