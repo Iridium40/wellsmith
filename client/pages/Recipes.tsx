@@ -39,18 +39,22 @@ export default function Recipes() {
         ];
         let data: PinterestResponse | { error: string } | null = null;
         let lastErr: any;
-        for (const url of endpoints) {
-          try {
-            const res = await fetchWithRetry(url);
-            data = (await res.json()) as PinterestResponse | { error: string };
-            if ("pins" in data) break;
-          } catch (err) {
-            lastErr = err;
+        try {
+          for (const url of endpoints) {
+            try {
+              const res = await fetchWithRetry(url);
+              data = (await res.json()) as PinterestResponse | { error: string };
+              if ("pins" in data) break;
+            } catch (err) {
+              lastErr = err;
+            }
           }
+        } catch (e) {
+          lastErr = e;
         }
 
-        if (!data || !("pins" in data)) {
-          // Final fallback: hit Pinterest widget API directly (client-side)
+        // Always attempt widget fallback if we don't have usable data
+        if (!data || !("pins" in data) || !(data as PinterestResponse).pins?.length) {
           const toPath = (u: string) => {
             try {
               const { pathname } = new URL(u);
@@ -60,17 +64,24 @@ export default function Recipes() {
             }
           };
           const path = toPath(boardUrl);
-          if (!path) throw lastErr || new Error("Invalid board URL");
-          const widgetRes = await fetchWithRetry(`https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`, { mode: "cors" });
-          const widgetJson = (await widgetRes.json()) as any;
-          const pins = (widgetJson?.data?.pins || []).map((p: any) => ({
-            title: String(p?.grid_title || p?.title || "").trim(),
-            description: String(p?.grid_description || p?.description || "").trim(),
-            link: p?.id ? `https://www.pinterest.com/pin/${p.id}/` : String(p?.link || ""),
-            image: p?.images?.["736x"]?.url || p?.images?.["564x"]?.url || p?.images?.["474x"]?.url || p?.images?.orig?.url || p?.images?.["236x"]?.url || "",
-          }));
-          data = { pins } as PinterestResponse;
+          if (path) {
+            try {
+              const widgetRes = await fetchWithRetry(`https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`, { mode: "cors" });
+              const widgetJson = (await widgetRes.json()) as any;
+              const pins = (widgetJson?.data?.pins || []).map((p: any) => ({
+                title: String(p?.grid_title || p?.title || "").trim(),
+                description: String(p?.grid_description || p?.description || "").trim(),
+                link: p?.id ? `https://www.pinterest.com/pin/${p.id}/` : String(p?.link || ""),
+                image: p?.images?.["736x"]?.url || p?.images?.["564x"]?.url || p?.images?.["474x"]?.url || p?.images?.orig?.url || p?.images?.["236x"]?.url || "",
+              }));
+              data = { pins } as PinterestResponse;
+            } catch (err) {
+              lastErr = err;
+            }
+          }
         }
+
+        if (!data || !("pins" in data)) throw lastErr || new Error("Unable to load");
 
         if (mounted) setPins((data as PinterestResponse).pins.filter((p) => !!p.image && !!p.title && !!p.description));
       } catch (e: any) {
