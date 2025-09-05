@@ -5,8 +5,8 @@ import type { PinterestResponse, PinterestPin } from "@shared/api";
 function toRssUrl(url: string) {
   const u = url.trim();
   if (u.endsWith(".rss")) return u;
-  // Pinterest board URLs look like https://www.pinterest.com/<user>/<board>/
-  return u.replace(/\/?$/, "/") + ".rss";
+  // Pinterest board RSS format: https://www.pinterest.com/<user>/<board>.rss (no trailing slash)
+  return u.replace(/\/$/, "") + ".rss";
 }
 
 function extractImageFromItem(item: any): string | undefined {
@@ -40,7 +40,7 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     }
     const rssUrl = toRssUrl(board);
 
-    const r = await fetch(rssUrl, { headers: { "user-agent": "WellSmithBot/1.0" } });
+    const r = await fetch(rssUrl, { headers: { "user-agent": "WellSmithBot/1.0", accept: "application/rss+xml, text/xml; q=0.9, */*;q=0.8" } });
     if (!r.ok) {
       return res.status(502).json({ error: `Failed to fetch RSS (${r.status})` });
     }
