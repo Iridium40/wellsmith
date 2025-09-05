@@ -203,6 +203,9 @@ export const handlePinterest: RequestHandler = async (req, res) => {
       })
       .filter((p) => !!p.link);
 
+    // Set cache headers to avoid rate limiting and speed up
+    res.setHeader?.("Cache-Control", "public, s-maxage=300, max-age=120");
+
     // Fallback to Pinterest widget API if RSS yields too few items
     let finalPins = pins;
     if (finalPins.length < 6) {
