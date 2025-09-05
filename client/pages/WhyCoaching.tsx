@@ -60,10 +60,6 @@ export default function WhyCoaching() {
         </div>
       </div>
 
-      <div className="mt-8 rounded-2xl border bg-white p-6 text-sm">
-        <h2 className="text-lg font-semibold">Kayce's Coaching</h2>
-        <p className="mt-2">Former client turned coach—six years of experience helping busy moms and families build sustainable habits with compassion and accountability.</p>
-      </div>
 
 
       <Disclaimer className="mt-10" />
