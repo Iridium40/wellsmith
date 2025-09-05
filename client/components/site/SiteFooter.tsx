@@ -6,7 +6,15 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-10 text-sm text-muted-foreground">
         <div className="grid gap-6 md:grid-cols-3">
           <div>
-            <div className="text-base font-semibold text-foreground">WellSmith</div>
+            <Link to="/" aria-label="WellSmith home">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F7dd70f497a9043dc839cb18bfe5c702c?format=webp&width=800"
+                alt="WellSmith logo"
+                className="h-10 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
+            </Link>
             <p className="mt-2 max-w-xs">Personalized Optavia coaching for sustainable, healthy living.</p>
             <p className="mt-2 max-w-xs text-xs text-muted-foreground">This site does not provide medical advice. Consult your physician before beginning any program.</p>
           </div>
