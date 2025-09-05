@@ -10,7 +10,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Layout from "@/components/site/Layout";
 import About from "@/pages/About";
-import SuccessStories from "@/pages/SuccessStories";
 import Recipes from "@/pages/Recipes";
 import Contact from "@/pages/Contact";
 import BookAssessment from "@/pages/BookAssessment";
@@ -30,7 +29,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/program" element={<ProgramOverview />} />
-            <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/faqs" element={<FAQs />} />
             <Route path="/recipes" element={<Recipes />} />
             <Route path="/contact" element={<Contact />} />

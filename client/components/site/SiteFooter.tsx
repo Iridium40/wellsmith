@@ -20,7 +20,6 @@ export default function SiteFooter() {
           </div>
           <nav className="grid grid-cols-2 gap-2">
             <Link to="/program" className="hover:text-foreground">Program Overview</Link>
-            <Link to="/success-stories" className="hover:text-foreground">Success Stories</Link>
             <Link to="/faqs" className="hover:text-foreground">FAQs</Link>
             <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
             <Link to="/contact" className="hover:text-foreground">Contact</Link>
