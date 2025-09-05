@@ -44,9 +44,9 @@ export default function Index() {
               <div className="grid h-full place-items-center rounded-xl bg-white/70 backdrop-blur">
                 <div className="text-center">
                   <img
-                    src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fac77e7c0850e4d88a385f135957ff613?format=webp&width=800"
-                    alt="WellSmith logo"
-                    className="mx-auto h-20 w-auto"
+                    src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5b0dafbaeac84bf8b97ef2a6e9700186?format=webp&width=1200"
+                    alt="Kayce Smith"
+                    className="mx-auto h-64 w-auto rounded-xl"
                     loading="eager"
                     decoding="async"
                   />
