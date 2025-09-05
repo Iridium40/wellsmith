@@ -20,12 +20,14 @@ export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:py-4">
-        <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-accent text-white font-bold">WS</div>
-          <div className="leading-none">
-            <div className="text-base font-extrabold tracking-tight text-foreground">WellSmith</div>
-            <div className="text-xs text-muted-foreground">Optavia Health Coaching</div>
-          </div>
+        <Link to="/" className="flex items-center gap-2" aria-label="WellSmith home">
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fdaf2bac22d4d42a9b5059eecc1362ca4?format=webp&width=800"
+            alt="WellSmith logo"
+            className="h-10 w-auto"
+            loading="eager"
+            decoding="async"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">
