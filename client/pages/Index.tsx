@@ -128,7 +128,7 @@ export default function Index() {
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
-              <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start with Kayce</a>
+              <Link to="/book-with-kayce">Book with Kayce</Link>
             </Button>
           </div>
         </div>
