@@ -10,6 +10,33 @@ export default function BookAssessment() {
   const [result, setResult] = useState<"success" | "error" | null>(null);
   const today = useMemo(() => new Date().toISOString().slice(0, 10), []);
   const unlocked = result === "success";
+  const { toast } = useToast();
+
+  async function onShare() {
+    try {
+      const url = typeof window !== "undefined" ? window.location.origin + "/book-assessment" : "/book-assessment";
+      const shareData = {
+        title: "Book Your Free Health Assessment",
+        text: "Complete this quick assessment and book time with Kayce.",
+        url,
+      } as ShareData;
+      // @ts-expect-error older types
+      if (navigator.share) {
+        // @ts-ignore
+        await navigator.share(shareData);
+        toast({ title: "Thanks!", description: "Share dialog opened." });
+      } else {
+        await navigator.clipboard.writeText(url);
+        toast({ title: "Link copied", description: "URL copied to your clipboard." });
+      }
+    } catch (e) {
+      try {
+        const url = typeof window !== "undefined" ? window.location.origin + "/book-assessment" : "/book-assessment";
+        await navigator.clipboard.writeText(url);
+        toast({ title: "Link copied", description: "URL copied to your clipboard." });
+      } catch {}
+    }
+  }
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -106,7 +133,7 @@ export default function BookAssessment() {
                   Calendly is not configured yet. Add VITE_CALENDLY_URL to enable inline booking. You can still contact via the form below.
                 </div>
               )}
-              <div className="mt-6 flex gap-3">
+              <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="lg">
                   <a href="#health-assessment">Fill Health Assessment</a>
                 </Button>
@@ -115,6 +142,7 @@ export default function BookAssessment() {
                     <a href="#schedule">Proceed to Calendar</a>
                   </Button>
                 )}
+                <Button size="lg" variant="outline" onClick={onShare}>Share</Button>
               </div>
             </div>
             <div id="schedule" className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm">
