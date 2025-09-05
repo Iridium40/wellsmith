@@ -27,7 +27,7 @@ export default function GetStarted() {
           href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"}
           target="_blank" rel="noreferrer"
           className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
-        >Start Your Journey with Kayce<br /></a>
+        >Start Your Journey</a>
         <a
           href="https://www.optavia.com/us/en/optavia-program" target="_blank" rel="noreferrer"
           className="inline-flex h-11 items-center justify-center rounded-md border px-6 hover:bg-secondary"
