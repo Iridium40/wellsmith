@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Share2, QrCode, Facebook, Instagram, Mail, Copy, Check } from "lucide-react";
+import { Share2, QrCode, Facebook, Instagram, Copy, Check } from "lucide-react";
 
 type ShareButtonProps = {
   url?: string;
@@ -37,7 +37,6 @@ export default function ShareButton({
   const shareUrls = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`,
     instagram: `https://www.instagram.com/?url=${encodeURIComponent(currentUrl)}`,
-    email: `mailto:?subject=${encodeURIComponent(pageTitle)}&body=${encodeURIComponent(pageDescription + " " + currentUrl)}`,
   } as const;
 
   const copyToClipboard = async () => {
@@ -109,9 +108,6 @@ export default function ShareButton({
                 <Instagram className="mr-2 h-4 w-4 text-pink-500" /> Instagram
               </Button>
             </div>
-            <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => handleShare("email")}>
-              <Mail className="mr-2 h-4 w-4 text-gray-600" /> Email
-            </Button>
           </div>
 
           <Separator />
