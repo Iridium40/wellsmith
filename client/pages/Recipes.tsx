@@ -31,13 +31,23 @@ export default function Recipes() {
     (async () => {
       try {
         setLoading(true);
-        const res = await fetchWithRetry("/api/pinterest");
-        const data = (await res.json()) as PinterestResponse | { error: string };
-        if ("pins" in data) {
-          if (mounted) setPins(data.pins.filter((p) => !!p.image && !!p.title && !!p.description));
-        } else {
-          throw new Error((data as any).error || "Unable to parse feed");
+        const endpoints = [
+          "/api/pinterest",
+          "/.netlify/functions/api/pinterest",
+        ];
+        let data: PinterestResponse | { error: string } | null = null;
+        let lastErr: any;
+        for (const url of endpoints) {
+          try {
+            const res = await fetchWithRetry(url);
+            data = (await res.json()) as PinterestResponse | { error: string };
+            if ("pins" in data) break;
+          } catch (err) {
+            lastErr = err;
+          }
         }
+        if (!data || !("pins" in data)) throw lastErr || new Error("No data");
+        if (mounted) setPins(data.pins.filter((p) => !!p.image && !!p.title && !!p.description));
       } catch (e: any) {
         if (mounted) setError(e?.message || "Unable to load recipes. Please try again.");
       } finally {
