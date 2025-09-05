@@ -35,6 +35,14 @@ export default function MyStory() {
         </div>
       </section>
 
+      <section className="mt-10 rounded-2xl border bg-card p-6 shadow-sm">
+        <h2 className="text-xl font-bold">Children's Books by Kayce</h2>
+        <p className="mt-2 text-sm text-foreground/80">What Can Hayes Be? and “Hayes & the Big Game!”</p>
+        <div className="mt-4">
+          <a href="https://www.whatcanhayesbe.com/" target="_blank" rel="noreferrer" className="inline-flex h-11 items-center justify-center rounded-md bg-gradient-to-r from-primary to-accent px-6 text-white shadow hover:opacity-95">Shop the books</a>
+        </div>
+      </section>
+
       <Disclaimer className="mt-10" />
     </div>
   );
