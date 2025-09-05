@@ -3,12 +3,10 @@ import Disclaimer from "@/components/site/Disclaimer";
 export default function WhyCoaching() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Client Support</h1>
-          <p className="mt-3 text-lg text-muted-foreground">Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®, hydration guidance, and coaching resources—everything in one place.</p>
-        </div>
-        <div className="sm:pt-1">
+      <div className="flex flex-col gap-3 sm:gap-4">
+        <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Client Support</h1>
+        <p className="text-lg text-muted-foreground">Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®, hydration guidance, and coaching resources—everything in one place.</p>
+        <div className="mt-2 sm:self-end">
           <a
             href="/book-with-kayce"
             className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
