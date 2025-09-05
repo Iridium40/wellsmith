@@ -9,11 +9,29 @@ export default function Recipes() {
 
   useEffect(() => {
     let mounted = true;
+
+    async function fetchWithRetry(input: RequestInfo | URL, init?: RequestInit, attempts = 3): Promise<Response> {
+      let lastErr: any;
+      for (let i = 0; i < attempts; i++) {
+        try {
+          const controller = new AbortController();
+          const t = setTimeout(() => controller.abort(), 10000);
+          const res = await fetch(input, { ...init, cache: "no-store", signal: controller.signal });
+          clearTimeout(t);
+          if (res.ok) return res;
+          lastErr = new Error(`HTTP ${res.status}`);
+        } catch (err) {
+          lastErr = err;
+        }
+        await new Promise((r) => setTimeout(r, 500 * (i + 1)));
+      }
+      throw lastErr || new Error("Failed to fetch");
+    }
+
     (async () => {
       try {
         setLoading(true);
-        const res = await fetch("/api/pinterest");
-        if (!res.ok) throw new Error("Failed to load Pinterest feed");
+        const res = await fetchWithRetry("/api/pinterest");
         const data = (await res.json()) as PinterestResponse | { error: string };
         if ("pins" in data) {
           if (mounted) setPins(data.pins.filter((p) => !!p.image && !!p.title && !!p.description));
@@ -21,7 +39,7 @@ export default function Recipes() {
           throw new Error((data as any).error || "Unable to parse feed");
         }
       } catch (e: any) {
-        if (mounted) setError(e?.message || "Error");
+        if (mounted) setError(e?.message || "Unable to load recipes. Please try again.");
       } finally {
         if (mounted) setLoading(false);
       }
