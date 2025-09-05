@@ -52,7 +52,7 @@ export default function Index() {
                   />
                   <p className="mt-4 text-sm font-medium text-muted-foreground">Coaching by</p>
                   <p className="text-2xl font-bold">Kayce Smith</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Certified Optavia Health Coach</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Independent Optavia Health Coach</p>
                 </div>
               </div>
             </div>
