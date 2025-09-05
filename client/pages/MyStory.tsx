@@ -31,7 +31,9 @@ export default function MyStory() {
         <h2 className="text-2xl font-bold tracking-tight">Follow on Instagram</h2>
         <p className="mt-2 text-muted-foreground">@smithkayce</p>
         <div className="mt-4 max-w-xl">
-          <InstagramEmbed permalink="https://www.instagram.com/smithkayce/" />
+          <a href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-primary hover:underline">
+            Visit @smithkayce on Instagram
+          </a>
         </div>
       </section>
 
