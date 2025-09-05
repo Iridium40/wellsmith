@@ -1,0 +1,34 @@
+import { Link } from "react-router-dom";
+
+export default function SiteFooter() {
+  return (
+    <footer className="border-t bg-white">
+      <div className="mx-auto max-w-7xl px-4 py-10 text-sm text-muted-foreground">
+        <div className="grid gap-6 md:grid-cols-3">
+          <div>
+            <div className="text-base font-semibold text-foreground">WellSmith</div>
+            <p className="mt-2 max-w-xs">Personalized Optavia coaching for sustainable, healthy living.</p>
+          </div>
+          <nav className="grid grid-cols-2 gap-2">
+            <Link to="/success-stories" className="hover:text-foreground">Success Stories</Link>
+            <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
+            <Link to="/resources" className="hover:text-foreground">Resources</Link>
+            <Link to="/start-guide" className="hover:text-foreground">Start Optavia Guide</Link>
+            <Link to="/best-practices" className="hover:text-foreground">Best Practices</Link>
+            <Link to="/contact" className="hover:text-foreground">Contact</Link>
+          </nav>
+          <div className="md:text-right">
+            <div className="font-medium text-foreground">Ready to begin?</div>
+            <Link to="/book-assessment" className="text-primary hover:underline">Book your free assessment</Link>
+          </div>
+        </div>
+        <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
+          <p>
+            © {new Date().getFullYear()} WellSmith. All rights reserved.
+          </p>
+          <p>Built with love for healthy habits.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
