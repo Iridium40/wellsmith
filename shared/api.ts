@@ -51,3 +51,13 @@ export interface HealthAssessmentRequest {
 export interface HealthAssessmentResponse {
   ok: true;
 }
+
+export interface PinterestPin {
+  title: string;
+  link: string;
+  image: string;
+}
+
+export interface PinterestResponse {
+  pins: PinterestPin[];
+}
