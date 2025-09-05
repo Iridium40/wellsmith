@@ -32,8 +32,18 @@ export default function Recipes() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Lean & Green Recipes</h1>
-      <p className="mt-3 text-lg text-muted-foreground">Pulled from Kayce's Pinterest board and updated automatically.</p>
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Lean & Green Recipe Ideas</h1>
+      <p className="mt-3 text-lg text-muted-foreground">Ideas pulled from a public Pinterest board. Always follow your specific OPTAVIA plan guidelines.</p>
+      <div className="mt-6 grid gap-2 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          "Quick Family Dinners",
+          "Meal Prep Options",
+          "Budget-Friendly Meals",
+          "Seasonal Favorites",
+        ].map((c) => (
+          <div key={c} className="rounded-md border bg-white/60 px-3 py-2">{c}</div>
+        ))}
+      </div>
 
       {loading && <p className="mt-6 text-sm text-muted-foreground">Loading recipes…</p>}
       {error && (
@@ -55,6 +65,9 @@ export default function Recipes() {
           ))}
         </div>
       )}
+      <div className="mt-10 rounded-2xl border bg-white p-4 text-xs text-muted-foreground">
+        Follow your specific OPTAVIA plan guidelines. Consult with your coach for personalized meal planning.
+      </div>
     </div>
   );
 }
