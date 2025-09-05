@@ -11,7 +11,6 @@ const navItems = [
   { to: "/faqs", label: "FAQs" },
   { to: "/recipes", label: "Lean & Green Recipes" },
   { to: "/resources", label: "Resources" },
-  { to: "/start-guide", label: "Start Optavia Guide" },
   { to: "/contact", label: "Contact" },
 ];
 
