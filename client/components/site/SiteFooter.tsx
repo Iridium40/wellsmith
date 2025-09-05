@@ -19,11 +19,12 @@ export default function SiteFooter() {
             <p className="mt-2 max-w-xs text-xs text-muted-foreground">This site does not provide medical advice. Consult your physician before beginning any program.</p>
           </div>
           <nav className="grid grid-cols-2 gap-2">
-            <Link to="/program" className="hover:text-foreground">Program Overview</Link>
-            <Link to="/faqs" className="hover:text-foreground">FAQs</Link>
-            <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
-            <Link to="/contact" className="hover:text-foreground">Contact</Link>
-            <a href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer" className="hover:text-foreground">Optavia Coach Profile</a>
+            <Link to="/my-story" className="hover:text-foreground">My Story</Link>
+            <Link to="/why-coaching" className="hover:text-foreground">Why Choose Coaching</Link>
+            <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipe Ideas</Link>
+            <Link to="/get-started" className="hover:text-foreground">Get Started with OPTAVIA</Link>
+            <Link to="/connect" className="hover:text-foreground">Connect with Kayce</Link>
+            <a href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer" className="hover:text-foreground">OPTAVIA Coach Profile</a>
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
