@@ -10,7 +10,7 @@ function toRssUrl(url: string) {
 }
 
 function extractImageFromItem(item: any): string | undefined {
-  // Try media:content first
+  // 1) media:content variants
   const media = item["media:content"] || item.mediaContent || item.media || undefined;
   if (media) {
     if (Array.isArray(media)) {
@@ -23,12 +23,45 @@ function extractImageFromItem(item: any): string | undefined {
       if (typeof url === "string") return url;
     }
   }
-  // Fallback to content:encoded and pick first img src
-  const html = item["content:encoded"] || item.content || "";
-  if (typeof html === "string") {
-    const m = html.match(/<img[^>]+src=["']([^"']+)["']/i);
-    if (m) return m[1];
+
+  // 2) enclosure element
+  const enclosure = item.enclosure;
+  if (enclosure) {
+    if (Array.isArray(enclosure)) {
+      for (const e of enclosure) {
+        const url = e?.["@_url"] || e?.url;
+        if (typeof url === "string") return url;
+      }
+    } else {
+      const url = enclosure?.["@_url"] || enclosure?.url;
+      if (typeof url === "string") return url;
+    }
   }
+
+  // 3) media:thumbnail
+  const thumb = item["media:thumbnail"] || item.mediaThumbnail;
+  if (thumb) {
+    if (Array.isArray(thumb)) {
+      for (const t of thumb) {
+        const url = t?.["@_url"] || t?.url;
+        if (typeof url === "string") return url;
+      }
+    } else {
+      const url = thumb?.["@_url"] || thumb?.url;
+      if (typeof url === "string") return url;
+    }
+  }
+
+  // 4) content:encoded OR description HTML, pick first <img src="...">
+  const html = item["content:encoded"] || item.content || item.description || "";
+  if (typeof html === "string") {
+    const imgTag = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+    if (imgTag) return imgTag[1];
+    // sometimes data-pin-media has the image
+    const dataMedia = html.match(/data-pin-media=["']([^"']+)["']/i);
+    if (dataMedia) return dataMedia[1];
+  }
+
   return undefined;
 }
 
