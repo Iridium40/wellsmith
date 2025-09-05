@@ -23,6 +23,14 @@ export default function About() {
               <p className="mt-4 text-lg text-muted-foreground">
                 I help clients build healthy habits through compassionate, practical coaching. Every journey is personal—together we create a simple plan that fits your life.
               </p>
+              <div className="mt-4 flex flex-wrap gap-2 text-sm">
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">Independent Optavia coach</span>
+                <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">Shriners mama</span>
+                <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Reader</span>
+                <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Writer</span>
+              </div>
+              <p className="mt-3 text-sm text-foreground/80">Author of @whatcanhayesbe and “Hayes & the Big Game!”</p>
+              <p className="mt-1 text-sm font-medium">Committed to changing lives! ❤️</p>
               <div className="mt-6 flex gap-3">
                 <Button asChild size="lg">
                   <Link to="/book-assessment#health-assessment">Start Health Assessment</Link>
