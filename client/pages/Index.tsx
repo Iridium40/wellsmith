@@ -113,54 +113,6 @@ export default function Index() {
         </ul>
       </section>
 
-      {/* Success Stories inline */}
-      <section className="relative">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
-        <div className="mx-auto max-w-7xl px-4 py-14">
-          <h2 className="text-2xl font-bold tracking-tight">Client Transformations</h2>
-          <p className="mt-2 text-muted-foreground">A few recent wins from the community.</p>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            <article className="rounded-2xl border bg-card p-4 shadow-sm">
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 p-3">
-                <div className="mx-auto my-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
-                <div className="absolute left-3 top-3 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">Before</div>
-                <div className="absolute bottom-3 right-3 rounded-full bg-accent/90 px-2 py-1 text-xs font-medium text-white">After</div>
-              </div>
-              <h3 className="mt-3 text-lg font-semibold">Sarah H.</h3>
-              <p className="text-sm text-muted-foreground">Busy mom of 3</p>
-              <p className="mt-1 text-sm">-28 lbs in 12 weeks</p>
-              <blockquote className="mt-2 border-l-2 pl-3 text-sm italic text-foreground/80">“I have my energy and confidence back.”</blockquote>
-            </article>
-            <article className="rounded-2xl border bg-card p-4 shadow-sm">
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 p-3">
-                <div className="mx-auto my-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
-                <div className="absolute left-3 top-3 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">Before</div>
-                <div className="absolute bottom-3 right-3 rounded-full bg-accent/90 px-2 py-1 text-xs font-medium text-white">After</div>
-              </div>
-              <h3 className="mt-3 text-lg font-semibold">James P.</h3>
-              <p className="text-sm text-muted-foreground">Sales manager</p>
-              <p className="mt-1 text-sm">-42 lbs in 5 months</p>
-              <blockquote className="mt-2 border-l-2 pl-3 text-sm italic text-foreground/80">“The daily support kept me consistent.”</blockquote>
-            </article>
-            <article className="rounded-2xl border bg-card p-4 shadow-sm">
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/15 to-accent/15 p-3">
-                <div className="mx-auto my-10 h-32 w-32 rounded-full bg-gradient-to-br from-primary/40 to-accent/40" />
-                <div className="absolute left-3 top-3 rounded-full bg-primary/90 px-2 py-1 text-xs font-medium text-white">Before</div>
-                <div className="absolute bottom-3 right-3 rounded-full bg-accent/90 px-2 py-1 text-xs font-medium text-white">After</div>
-              </div>
-              <h3 className="mt-3 text-lg font-semibold">Alyssa T.</h3>
-              <p className="text-sm text-muted-foreground">Teacher</p>
-              <p className="mt-1 text-sm">-18 lbs in 8 weeks</p>
-              <blockquote className="mt-2 border-l-2 pl-3 text-sm italic text-foreground/80">“Simple steps that fit my life.”</blockquote>
-            </article>
-          </div>
-          <div className="mt-8 text-center">
-            <Button asChild>
-              <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Transformation</a>
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Final CTA */}
       <section className="mx-auto max-w-7xl px-4 py-16">
