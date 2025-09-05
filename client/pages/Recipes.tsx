@@ -5,6 +5,7 @@ export default function Recipes() {
   const [pins, setPins] = useState<PinterestPin[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [visible, setVisible] = useState(12);
 
   useEffect(() => {
     let mounted = true;
@@ -53,17 +54,29 @@ export default function Recipes() {
       )}
 
       {pins && (
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {pins.map((p, i) => (
-            <a key={p.link + i} href={p.link} target="_blank" rel="noreferrer" className="group rounded-2xl border bg-card p-2 shadow-sm">
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
-                <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105" loading="lazy" />
-              </div>
-              <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title}</h3>
-              <p className="text-xs text-muted-foreground">View on Pinterest</p>
-            </a>
-          ))}
-        </div>
+        <>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {pins.slice(0, visible).map((p, i) => (
+              <a key={p.link + i} href={p.link} target="_blank" rel="noreferrer" className="group rounded-2xl border bg-card p-2 shadow-sm">
+                <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
+                  <img src={p.image} alt={p.title} className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105" loading="lazy" />
+                </div>
+                <h3 className="mt-3 line-clamp-2 text-sm font-medium">{p.title}</h3>
+                <p className="text-xs text-muted-foreground">View on Pinterest</p>
+              </a>
+            ))}
+          </div>
+          {visible < pins.length && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setVisible((v) => Math.min(v + 12, pins.length))}
+                className="inline-flex h-10 items-center justify-center rounded-md border px-4 text-sm font-medium hover:bg-secondary"
+              >
+                Load more
+              </button>
+            </div>
+          )}
+        </>
       )}
       <div className="mt-10 rounded-2xl border bg-white p-4 text-xs text-muted-foreground">
         Follow your specific OPTAVIA plan guidelines. Consult with your coach for personalized meal planning.
