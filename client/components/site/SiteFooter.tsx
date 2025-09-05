@@ -24,7 +24,6 @@ export default function SiteFooter() {
             <Link to="/faqs" className="hover:text-foreground">FAQs</Link>
             <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
             <Link to="/resources" className="hover:text-foreground">Resources</Link>
-            <Link to="/start-guide" className="hover:text-foreground">Start Optavia Guide</Link>
             <Link to="/contact" className="hover:text-foreground">Contact</Link>
           </nav>
           <div className="md:text-right">
