@@ -10,9 +10,12 @@ export default function Contact() {
 
       <div className="mt-8 rounded-2xl border bg-card p-6 shadow-sm">
         <p className="text-sm text-foreground/80">Optavia Coach Profile: <a className="text-primary hover:underline" href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer">optavia.com/kaycesmith</a></p>
-        <div className="mt-4">
+        <div className="mt-4 flex flex-wrap gap-3">
           <Button asChild variant="gradient">
             <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Connect via OPTAVIA</a>
+          </Button>
+          <Button asChild>
+            <a href="/book-assessment">Book with Kayce</a>
           </Button>
         </div>
         <div className="mt-4 text-sm text-foreground/80">
