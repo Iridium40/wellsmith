@@ -47,7 +47,7 @@ export default function SiteHeader() {
 
         <div className="hidden lg:block">
           <Button asChild size="lg" variant="gradient" className="shadow-sm">
-            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey with Kayce</a>
+            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey with Me</a>
           </Button>
         </div>
 
