@@ -36,10 +36,8 @@ export default function ShareButton({
 
   const shareUrls = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`,
-    twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(pageTitle)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`,
+    instagram: `https://www.instagram.com/?url=${encodeURIComponent(currentUrl)}`,
     email: `mailto:?subject=${encodeURIComponent(pageTitle)}&body=${encodeURIComponent(pageDescription + " " + currentUrl)}`,
-    sms: `sms:?body=${encodeURIComponent(pageTitle + " " + currentUrl)}`,
   } as const;
 
   const copyToClipboard = async () => {
@@ -52,7 +50,7 @@ export default function ShareButton({
 
   const handleShare = (platform: keyof typeof shareUrls | "copy") => {
     if (platform === "copy") return copyToClipboard();
-    const shareUrl = shareUrls[platform];
+    const shareUrl = shareUrls[platform as keyof typeof shareUrls];
     if (shareUrl) window.open(shareUrl, "_blank", "width=600,height=520");
   };
 
@@ -107,14 +105,8 @@ export default function ShareButton({
               <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("facebook")}>
                 <Facebook className="mr-2 h-4 w-4 text-blue-600" /> Facebook
               </Button>
-              <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("twitter")}>
-                <Twitter className="mr-2 h-4 w-4 text-blue-400" /> Twitter
-              </Button>
-              <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("linkedin")}>
-                <Linkedin className="mr-2 h-4 w-4 text-blue-700" /> LinkedIn
-              </Button>
-              <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("sms")}>
-                <MessageCircle className="mr-2 h-4 w-4 text-green-600" /> SMS
+              <Button variant="outline" size="sm" className="justify-start" onClick={() => handleShare("instagram")}>
+                <Instagram className="mr-2 h-4 w-4 text-pink-500" /> Instagram
               </Button>
             </div>
             <Button variant="outline" size="sm" className="w-full justify-start" onClick={() => handleShare("email")}>
