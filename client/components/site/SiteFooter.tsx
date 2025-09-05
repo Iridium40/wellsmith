@@ -23,6 +23,7 @@ export default function SiteFooter() {
             <Link to="/faqs" className="hover:text-foreground">FAQs</Link>
             <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
             <Link to="/contact" className="hover:text-foreground">Contact</Link>
+            <a href="https://www.optavia.com/us/en/coach/kaycesmith" target="_blank" rel="noreferrer" className="hover:text-foreground">Optavia Coach Profile</a>
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
