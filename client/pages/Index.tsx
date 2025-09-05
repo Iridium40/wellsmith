@@ -52,7 +52,7 @@ export default function Index() {
                   />
                   <p className="mt-4 text-sm font-medium text-muted-foreground">Coaching by</p>
                   <p className="text-2xl font-bold">Kayce Smith</p>
-                  <p className="mt-1 text-sm text-muted-foreground">Independent Certified Optavia Health Coach</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Independent OPTAVIA Certified Health Coach</p>
                 </div>
               </div>
             </div>
@@ -78,6 +78,38 @@ export default function Index() {
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Story Preview */}
+      <section className="mx-auto max-w-7xl px-4 py-14">
+        <h2 className="text-2xl font-bold tracking-tight">Kayce's Story</h2>
+        <p className="mt-2 text-muted-foreground max-w-3xl">Losing 36 lbs in 2017 with OPTAVIA was life‑changing for me. As a stay‑at‑home mom feeling over‑exhausted and underwhelmed, OPTAVIA helped me change my relationship with food and find my energy again.</p>
+        <div className="mt-4">
+          <Link to="/my-story" className="text-primary hover:underline">Read the full story</Link>
+        </div>
+      </section>
+
+      {/* Why OPTAVIA Works */}
+      <section className="mx-auto max-w-7xl px-4 py-14">
+        <h2 className="text-2xl font-bold tracking-tight">Why OPTAVIA Works</h2>
+        <ul className="mt-4 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-3">
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Average weight loss on the Optimal Weight 5 & 1 Plan® is 12 pounds*</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">More than 3 million lives impacted and counting</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Clinically proven nutrition plans</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Support from your personal coach and community</li>
+        </ul>
+      </section>
+
+      {/* What You Get */}
+      <section className="mx-auto max-w-7xl px-4 py-14">
+        <h2 className="text-2xl font-bold tracking-tight">What You Get</h2>
+        <ul className="mt-4 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-3">
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Personal coach support (Kayce)</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Supportive community</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Science‑backed nutrition plans</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Lean & Green meal guidance</li>
+          <li className="rounded-lg border bg-white/60 px-4 py-3">Access to GLP‑1 options (if clinically appropriate)*</li>
+        </ul>
       </section>
 
       {/* Success Stories inline */}

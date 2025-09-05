@@ -5,11 +5,11 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
   { to: "/", label: "Home" },
-  { to: "/about", label: "About Kayce" },
-  { to: "/program", label: "Program Overview" },
-  { to: "/faqs", label: "FAQs" },
-  { to: "/recipes", label: "Lean & Green Recipes" },
-  { to: "/contact", label: "Contact" },
+  { to: "/my-story", label: "My Story" },
+  { to: "/why-coaching", label: "Why Choose Coaching" },
+  { to: "/recipes", label: "Lean & Green Recipe Ideas" },
+  { to: "/get-started", label: "Get Started with OPTAVIA" },
+  { to: "/connect", label: "Connect with Kayce" },
 ];
 
 export default function SiteHeader() {
@@ -47,7 +47,7 @@ export default function SiteHeader() {
 
         <div className="hidden lg:block">
           <Button asChild size="lg" className="shadow-sm">
-            <Link to="/book-assessment">Book Assessment</Link>
+            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Connect with Kayce</a>
           </Button>
         </div>
 

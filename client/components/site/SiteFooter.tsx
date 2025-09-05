@@ -27,7 +27,7 @@ export default function SiteFooter() {
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
-            <Link to="/book-assessment" className="text-primary hover:underline">Book your free assessment</Link>
+            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer" className="text-primary hover:underline">Connect with Kayce</a>
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
