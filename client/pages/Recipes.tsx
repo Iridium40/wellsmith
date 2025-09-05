@@ -41,9 +41,7 @@ export default function Recipes() {
         setLoading(true);
         const boardUrl = "https://www.pinterest.com/optavia/lean-green/";
         const board = encodeURIComponent(boardUrl);
-        const endpoints = [
-          `/api/pinterest?board=${board}`,
-        ];
+        const endpoints = [`/api/pinterest?board=${board}`];
         let data: PinterestResponse | { error: string } | null = null;
         let lastErr: any;
         try {
