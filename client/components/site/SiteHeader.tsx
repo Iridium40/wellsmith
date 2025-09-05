@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils";
 const navItems = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About Kayce" },
+  { to: "/program", label: "Program Overview" },
   { to: "/success-stories", label: "Success Stories" },
+  { to: "/faqs", label: "FAQs" },
   { to: "/recipes", label: "Lean & Green Recipes" },
   { to: "/resources", label: "Resources" },
   { to: "/start-guide", label: "Start Optavia Guide" },
