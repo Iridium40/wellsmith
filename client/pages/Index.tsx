@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Disclaimer from "@/components/site/Disclaimer";
-import InstagramEmbed from "@/components/site/InstagramEmbed";
 
 export default function Index() {
   return (
@@ -112,15 +111,6 @@ export default function Index() {
           <li className="rounded-lg border bg-white/60 px-4 py-3">Lean & Green meal guidance</li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">Access to GLP‑1 options (if clinically appropriate)*</li>
         </ul>
-      </section>
-
-      {/* Instagram */}
-      <section className="mx-auto max-w-7xl px-4 pb-4">
-        <h2 className="text-2xl font-bold tracking-tight">Follow on Instagram</h2>
-        <p className="mt-2 text-muted-foreground">@smithkayce</p>
-        <div className="mt-4 max-w-xl">
-          <InstagramEmbed permalink="https://www.instagram.com/smithkayce/" />
-        </div>
       </section>
 
       {/* Final CTA */}
