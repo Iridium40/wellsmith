@@ -31,7 +31,8 @@ export default function Recipes() {
     (async () => {
       try {
         setLoading(true);
-        const board = encodeURIComponent("https://www.pinterest.com/optavia/lean-green/");
+        const boardUrl = "https://www.pinterest.com/optavia/lean-green/";
+        const board = encodeURIComponent(boardUrl);
         const endpoints = [
           `/api/pinterest?board=${board}`,
           `/.netlify/functions/api/pinterest?board=${board}`,
@@ -47,8 +48,31 @@ export default function Recipes() {
             lastErr = err;
           }
         }
-        if (!data || !("pins" in data)) throw lastErr || new Error("No data");
-        if (mounted) setPins(data.pins.filter((p) => !!p.image && !!p.title && !!p.description));
+
+        if (!data || !("pins" in data)) {
+          // Final fallback: hit Pinterest widget API directly (client-side)
+          const toPath = (u: string) => {
+            try {
+              const { pathname } = new URL(u);
+              return pathname.replace(/^\/+|\/+$/g, "");
+            } catch {
+              return "";
+            }
+          };
+          const path = toPath(boardUrl);
+          if (!path) throw lastErr || new Error("Invalid board URL");
+          const widgetRes = await fetchWithRetry(`https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`, { mode: "cors" });
+          const widgetJson = (await widgetRes.json()) as any;
+          const pins = (widgetJson?.data?.pins || []).map((p: any) => ({
+            title: String(p?.grid_title || p?.title || "").trim(),
+            description: String(p?.grid_description || p?.description || "").trim(),
+            link: p?.id ? `https://www.pinterest.com/pin/${p.id}/` : String(p?.link || ""),
+            image: p?.images?.["736x"]?.url || p?.images?.["564x"]?.url || p?.images?.["474x"]?.url || p?.images?.orig?.url || p?.images?.["236x"]?.url || "",
+          }));
+          data = { pins } as PinterestResponse;
+        }
+
+        if (mounted) setPins((data as PinterestResponse).pins.filter((p) => !!p.image && !!p.title && !!p.description));
       } catch (e: any) {
         if (mounted) setError(e?.message || "Unable to load recipes. Please try again.");
       } finally {
