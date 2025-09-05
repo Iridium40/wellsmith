@@ -32,7 +32,7 @@ export default function SiteFooter() {
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
-            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer" className="text-primary hover:underline">Connect with Kayce</a>
+            <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer" className="text-primary hover:underline">Start Your Journey</a>
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
