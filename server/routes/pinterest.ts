@@ -70,6 +70,29 @@ function extractImageFromItem(item: any): string | undefined {
   return undefined;
 }
 
+function extractLinkFromItem(item: any): string | undefined {
+  const val = item?.link;
+  const toStr = (v: any) => (typeof v === "string" ? v : typeof v?.["#text"] === "string" ? v["#text"] : undefined);
+  let link = toStr(val);
+  if (!link) link = toStr(item?.guid);
+
+  // If link is a relative/short pin id (e.g., "nLA7qexm/" or "1234567890/") normalize to full URL
+  if (link && !/^https?:\/\//i.test(link)) {
+    const id = (link.match(/[A-Za-z0-9_-]+/) || [""])[0];
+    if (id) link = `https://www.pinterest.com/pin/${id}/`;
+  }
+
+  // Try to pull href from HTML content if still missing
+  if (!link) {
+    const html = item?.["content:encoded"] || item?.content || item?.description || "";
+    if (typeof html === "string") {
+      const m = html.match(/href=["'](https?:\/\/[^"']+pinterest\.com\/pin\/[^"']+)["']/i);
+      if (m) link = m[1];
+    }
+  }
+  return link;
+}
+
 export const handlePinterest: RequestHandler = async (req, res) => {
   try {
     const board = (req.query.board as string) || process.env.PINTEREST_BOARD_URL;
@@ -111,7 +134,7 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     const pins: PinterestPin[] = items
       .map((it) => {
         const title = typeof it?.title === "string" ? it.title : String(it?.title?.["#text"] ?? "");
-        const link = typeof it?.link === "string" ? it.link : String(it?.link?.["#text"] ?? "");
+        const link = extractLinkFromItem(it) || "";
         const image = extractImageFromItem(it) || "";
         return { title, link, image } as PinterestPin;
       })
