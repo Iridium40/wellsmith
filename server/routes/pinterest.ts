@@ -9,6 +9,55 @@ function toRssUrl(url: string) {
   return u.replace(/\/$/, "") + ".rss";
 }
 
+function getBoardPath(url: string): string | null {
+  try {
+    const u = new URL(url);
+    const path = u.pathname.replace(/^\/+|\/+$/g, "");
+    // Expect user/board
+    if (!path || path.split("/").length < 2) return null;
+    return path;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchWidgetPins(boardUrl: string): Promise<PinterestPin[]> {
+  const path = getBoardPath(boardUrl);
+  if (!path) return [];
+  const api = `https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`;
+  const r = await fetch(api, {
+    headers: {
+      "user-agent": "WellSmithBot/1.0",
+      accept: "application/json,text/javascript,*/*;q=0.1",
+      referer: "https://www.pinterest.com/",
+      "accept-language": "en-US,en;q=0.9",
+    },
+  });
+  if (!r.ok) return [];
+  const j = await r.json().catch(() => null) as any;
+  const pinsRaw: any[] = j?.data?.pins || [];
+  const pickImage = (images: any): string | undefined => {
+    if (!images) return undefined;
+    // Prefer larger keys if available
+    const keys = Object.keys(images).sort((a, b) => parseInt(b) - parseInt(a));
+    for (const k of ["736x", "564x", "474x", ...keys]) {
+      const u = images?.[k]?.url;
+      if (typeof u === "string") return u;
+    }
+    // Fallbacks
+    return images?.orig?.url || images?.["236x"]?.url;
+  };
+  return pinsRaw
+    .map((p) => {
+      const id = p?.id || p?.pin_id;
+      const link = id ? `https://www.pinterest.com/pin/${id}/` : p?.link;
+      const image = pickImage(p?.images) || "";
+      const title = p?.grid_title || p?.description || "";
+      return { title, link, image } as PinterestPin;
+    })
+    .filter((p) => !!p.link);
+}
+
 function extractImageFromItem(item: any): string | undefined {
   // 1) media:content variants
   const media = item["media:content"] || item.mediaContent || item.media || undefined;
@@ -140,7 +189,23 @@ export const handlePinterest: RequestHandler = async (req, res) => {
       })
       .filter((p) => !!p.link);
 
-    const resp: PinterestResponse = { pins };
+    // Fallback to Pinterest widget API if RSS yields too few items
+    let finalPins = pins;
+    if (finalPins.length < 6) {
+      const boardUrl = (req.query.board as string) || process.env.PINTEREST_BOARD_URL || "";
+      const widgetPins = await fetchWidgetPins(boardUrl).catch(() => []);
+      if (widgetPins.length) {
+        // Deduplicate by link
+        const seen = new Set<string>();
+        finalPins = [...finalPins, ...widgetPins].filter((p) => {
+          if (!p.link || seen.has(p.link)) return false;
+          seen.add(p.link);
+          return true;
+        });
+      }
+    }
+
+    const resp: PinterestResponse = { pins: finalPins };
     res.json(resp);
   } catch (e) {
     console.error("Pinterest route error", e);
