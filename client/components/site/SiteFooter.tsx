@@ -23,7 +23,6 @@ export default function SiteFooter() {
             <Link to="/success-stories" className="hover:text-foreground">Success Stories</Link>
             <Link to="/faqs" className="hover:text-foreground">FAQs</Link>
             <Link to="/recipes" className="hover:text-foreground">Lean & Green Recipes</Link>
-            <Link to="/resources" className="hover:text-foreground">Resources</Link>
             <Link to="/contact" className="hover:text-foreground">Contact</Link>
           </nav>
           <div className="md:text-right">
