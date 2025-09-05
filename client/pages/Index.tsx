@@ -19,7 +19,7 @@ export default function Index() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="shadow" variant="gradient">
-                <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey with Kayce</a>
+                <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Start Your Journey</a>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link to="/my-story">Read My Story</Link>
