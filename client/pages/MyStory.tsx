@@ -1,4 +1,5 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import InstagramEmbed from "@/components/site/InstagramEmbed";
 
 export default function MyStory() {
   return (
@@ -25,6 +26,14 @@ export default function MyStory() {
           <img src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5b0dafbaeac84bf8b97ef2a6e9700186?format=webp&width=1200" alt="Kayce Smith" className="h-auto w-full rounded-xl object-cover" />
         </div>
       </div>
+
+      <section className="mt-10">
+        <h2 className="text-2xl font-bold tracking-tight">Follow on Instagram</h2>
+        <p className="mt-2 text-muted-foreground">@smithkayce</p>
+        <div className="mt-4 max-w-xl">
+          <InstagramEmbed permalink="https://www.instagram.com/smithkayce/" />
+        </div>
+      </section>
 
       <Disclaimer className="mt-10" />
     </div>
