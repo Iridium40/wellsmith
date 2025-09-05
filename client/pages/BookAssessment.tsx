@@ -98,15 +98,6 @@ export default function BookAssessment() {
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
                 Book Your Free Health Assessment
               </h1>
-              <div className="mt-4">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fcea412340625499eb0e8d30f0a2923f9?format=webp&width=800"
-                  alt="Kayce Smith"
-                  className="h-32 w-32 rounded-full object-cover border shadow-sm"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
               <p className="mt-4 text-lg text-muted-foreground">
                 A 30-minute conversation to learn about your goals and share how the Optavia program and personalized coaching can help. No pressure—just helpful, practical guidance.
               </p>
@@ -131,7 +122,7 @@ export default function BookAssessment() {
                 <img
                   src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fcea412340625499eb0e8d30f0a2923f9?format=webp&width=800"
                   alt="Kayce Smith"
-                  className="h-32 w-32 rounded-full object-cover border shadow-sm"
+                  className="h-32 w-32 rounded-xl object-contain border bg-white p-1 shadow-sm"
                   loading="lazy"
                   decoding="async"
                 />
