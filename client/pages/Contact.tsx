@@ -14,6 +14,12 @@ export default function Contact() {
             <a href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach/kaycesmith"} target="_blank" rel="noreferrer">Connect via OPTAVIA</a>
           </Button>
         </div>
+        <div className="mt-4 text-sm text-foreground/80">
+          <span>Social: </span>
+          <a className="text-primary hover:underline" href="https://www.facebook.com/kayces" target="_blank" rel="noreferrer">Facebook</a>
+          <span className="mx-2">•</span>
+          <a className="text-primary hover:underline" href="https://www.instagram.com/smithkayce/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
         <p className="mt-4 text-xs text-muted-foreground">Questions? You can also email <a className="text-primary hover:underline" href="mailto:kaycecsmith@yahoo.com">kaycecsmith@yahoo.com</a>.</p>
       </div>
 
