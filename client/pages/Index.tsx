@@ -119,7 +119,7 @@ export default function Index() {
                   <Link to="/success-stories">Read Success Stories</Link>
                 </Button>
                 <Button asChild variant="outline">
-                  <Link to="/resources">Get Free Resources</Link>
+                  <Link to="/program">How It Works</Link>
                 </Button>
               </div>
             </div>
