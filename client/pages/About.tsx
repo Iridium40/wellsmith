@@ -24,7 +24,7 @@ export default function About() {
                 I help clients build healthy habits through compassionate, practical coaching. Every journey is personal—together we create a simple plan that fits your life.
               </p>
               <div className="mt-4 flex flex-wrap gap-2 text-sm">
-                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">Independent Optavia coach</span>
+                <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">Independent Certified Optavia coach</span>
                 <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">Shriners mama</span>
                 <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Reader</span>
                 <span className="rounded-full bg-secondary px-3 py-1 text-foreground">Writer</span>
