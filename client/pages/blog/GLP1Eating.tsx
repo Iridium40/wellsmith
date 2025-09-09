@@ -26,7 +26,7 @@ export default function BlogGLP1Eating() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
         <p>
           GLP‑1 medications often reduce hunger and slow gastric emptying. That can be helpful for
           weight loss, but it also means nutrition quality matters more than ever. Your goal is to
@@ -60,6 +60,11 @@ export default function BlogGLP1Eating() {
           after exercise. If nausea or reflux shows up, smaller meals, ginger tea, and mindful pacing can
           help. Work with your coach to personalize portions as your appetite changes over time.
         </p>
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://diabetesjournals.org/care/issue" target="_blank" rel="noreferrer">American Diabetes Association — Standards of Care in Diabetes</a></li>
+          <li><a href="https://www.fda.gov/drugs" target="_blank" rel="noreferrer">U.S. FDA — Drug Safety and Information (GLP‑1 class)</a></li>
+        </ul>
       </div>
 
       <Disclaimer className="mt-10" />
