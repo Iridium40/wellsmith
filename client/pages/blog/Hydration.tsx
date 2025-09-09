@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function BlogHydration() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <SEO
+        title="Drinking Enough Water | WellSmith Blog"
+        description="Hydration supports appetite regulation, energy, digestion, and overall wellbeing. Tips to hit your daily water goal."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fd0195bb19ac44a7a9e95332565ec3727?format=webp&width=1200"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Drinking Enough Water
       </h1>
