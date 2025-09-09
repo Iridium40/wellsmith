@@ -107,12 +107,13 @@ export default function Recipes() {
         if (!data || !("pins" in data))
           throw lastErr || new Error("Unable to load");
 
-        if (mounted)
-          setPins(
-            (data as PinterestResponse).pins.filter(
-              (p) => !!p.image && !!p.title && !!p.description,
-            ),
+        if (mounted) {
+          const list = (data as PinterestResponse).pins.filter(
+            (p) => !!p.image && !!p.title && !!p.description,
           );
+          setPins(list);
+          setError(list.length ? null : "No recipes found from Pinterest board.");
+        }
       } catch (e: any) {
         if (mounted)
           setError(e?.message || "Unable to load recipes. Please try again.");
