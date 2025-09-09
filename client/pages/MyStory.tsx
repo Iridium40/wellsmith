@@ -82,7 +82,7 @@ export default function MyStory() {
           <img
             src="https://cdn.builder.io/o/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Faa7f706254ab4479b4afbc85668b04ca?alt=media&token=dd02c058-0ce0-40d3-af36-c74e26b28c99&apiKey=a42b6f9ec53e4654a92af75aad56d14f"
             alt="Lenee Rogers"
-            className="h-auto w-full rounded-xl object-cover"
+            className="h-auto w-1/2 mx-auto rounded-xl object-cover"
             loading="eager"
             decoding="async"
           />
