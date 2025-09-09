@@ -34,6 +34,7 @@ export default function SiteFooter() {
             <Link to="/recipes" className="hover:text-foreground">
               Lean & Green Recipe Ideas
             </Link>
+            <Link to="/blog" className="hover:text-foreground">Blog</Link>
             <Link to="/book-assessment" className="hover:text-foreground">
               Book Assessment
             </Link>
