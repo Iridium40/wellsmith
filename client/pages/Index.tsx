@@ -17,8 +17,7 @@ export default function Index() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-7">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Hi, I'm Lenee Rogers — Your Independent OPTAVIA Certified Health
-              Coach
+              Hi, I'm Kayce Smith — Your Independent OPTAVIA Certified Health Coach
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
               Ready to transform your relationship with food and find the energy
@@ -29,7 +28,7 @@ export default function Index() {
                 <a
                   href={
                     import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                    "https://www.optavia.com/us/en/coach//leneerogers"
+                    "https://www.optavia.com/us/en/coach/kaycesmith"
                   }
                   target="_blank"
                   rel="noreferrer"
@@ -67,27 +66,27 @@ export default function Index() {
                   <div className="relative inline-block">
                     <img
                       src="https://cdn.builder.io/o/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F79af2e9d675c4612881ad4e31a21d56e?alt=media&token=5992b69c-4b7c-4626-b11a-3ff3fd9133bd&apiKey=a42b6f9ec53e4654a92af75aad56d14f"
-                      alt="Lenee Rogers"
+                      alt="Kayce Smith"
                       className="mx-auto h-64 w-auto rounded-xl"
                       loading="eager"
                       decoding="async"
                     />
                     <img
                       src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=800"
-                      alt="Rogers Optimal Health badge"
+                      alt="WellSmith badge"
                       className="absolute -top-8 -right-8 h-16 w-16 rounded-full border-2 border-white shadow-md"
                     />
                   </div>
                   <p className="mt-4 text-sm font-medium text-muted-foreground">
                     Coaching by
                   </p>
-                  <p className="text-2xl font-bold">Lenee Rogers</p>
+                  <p className="text-2xl font-bold">Kayce Smith</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Independent OPTAVIA Certified Health Coach
                   </p>
                   <div className="mt-3 text-sm">
                     <a
-                      href="https://www.instagram.com/leneerogers/"
+                      href="https://www.instagram.com/smithkayce/"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 text-primary hover:underline"
@@ -142,7 +141,7 @@ export default function Index() {
 
       {/* Story Preview */}
       <section className="mx-auto max-w-7xl px-4 py-14">
-        <h2 className="text-2xl font-bold tracking-tight">Lenee's Story</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Kayce's Story</h2>
         <ul className="mt-3 grid gap-2 text-sm text-foreground/80 sm:grid-cols-2">
           <li>
             <span className="font-semibold">Passionate Health Advocate:</span>{" "}
@@ -167,7 +166,7 @@ export default function Index() {
         </ul>
         <div className="mt-4">
           <Link to="/my-story" className="text-primary hover:underline">
-            Read more about Lenee
+            Read more about Kayce
           </Link>
         </div>
       </section>
@@ -196,7 +195,7 @@ export default function Index() {
         <h2 className="text-2xl font-bold tracking-tight">What You Get</h2>
         <ul className="mt-4 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-3">
           <li className="rounded-lg border bg-white/60 px-4 py-3">
-            Personal coach support (Lenee)
+            Personal coach support (Kayce)
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
             Supportive community
@@ -225,11 +224,11 @@ export default function Index() {
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
               <a
-                href="https://calendly.com/leneerogers/15min"
+                href="/book-with-kayce"
                 target="_blank"
                 rel="noreferrer"
               >
-                Book with Lenee
+                Book with Kayce
               </a>
             </Button>
           </div>
