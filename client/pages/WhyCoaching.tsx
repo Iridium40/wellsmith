@@ -22,7 +22,12 @@ export default function WhyCoaching() {
           >
             Book with Kayce
           </a>
-          <ShareButton buttonLabel="Share Client Support" size="sm" title="Client Support | WellSmith" description="Tips for success on the 5 & 1 Plan, hydration guidance, and resources." />
+          <ShareButton
+            buttonLabel="Share Client Support"
+            size="sm"
+            title="Client Support | WellSmith"
+            description="Tips for success on the 5 & 1 Plan, hydration guidance, and resources."
+          />
         </div>
       </div>
 
@@ -75,9 +80,12 @@ export default function WhyCoaching() {
         </div>
       </div>
 
-      <h2 className="mt-10 text-2xl font-bold tracking-tight">Health and Wellness Information</h2>
+      <h2 className="mt-10 text-2xl font-bold tracking-tight">
+        Health and Wellness Information
+      </h2>
       <p className="mt-2 text-sm text-muted-foreground">
-        Articles on GLP‑1 support, hydration, sleep, portions, protein, and more.
+        Articles on GLP‑1 support, hydration, sleep, portions, protein, and
+        more.
       </p>
       <div className="mt-4 grid gap-6 md:grid-cols-3">
         {posts.slice(0, 6).map((p) => (
@@ -95,7 +103,9 @@ export default function WhyCoaching() {
               />
             </div>
             <h3 className="mt-3 text-base font-semibold">{p.title}</h3>
-            <p className="text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
+            <p className="text-sm text-muted-foreground line-clamp-2">
+              {p.excerpt}
+            </p>
             <p className="text-xs text-muted-foreground">Read more →</p>
           </Link>
         ))}

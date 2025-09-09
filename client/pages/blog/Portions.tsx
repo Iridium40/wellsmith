@@ -6,7 +6,12 @@ export default function BlogPortions() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       <div className="mb-4">
-        <Link to="/why-coaching" className="text-sm text-primary hover:underline">← Back to Client Support</Link>
+        <Link
+          to="/why-coaching"
+          className="text-sm text-primary hover:underline"
+        >
+          ← Back to Client Support
+        </Link>
       </div>
       <SEO
         title="Eating the Right Portions | WellSmith Blog"
@@ -32,34 +37,54 @@ export default function BlogPortions() {
 
       <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
-          Portion awareness helps you stay satisfied without overeating—especially when your hunger signals are
-          changing on GLP‑1s. Think of your plate as a simple framework rather than a strict rulebook.
+          Portion awareness helps you stay satisfied without
+          overeating—especially when your hunger signals are changing on GLP‑1s.
+          Think of your plate as a simple framework rather than a strict
+          rulebook.
         </p>
         <p>
-          A reliable starting point for a Lean & Green is palm‑size <strong>lean protein (5–7 oz cooked)</strong>,
-          a generous serving of non‑starchy vegetables (about half the plate), and plan‑appropriate healthy fats.
-          Adjust up or down based on energy, goals, and guidance from your coach.
+          A reliable starting point for a Lean & Green is palm‑size{" "}
+          <strong>lean protein (5–7 oz cooked)</strong>, a generous serving of
+          non‑starchy vegetables (about half the plate), and plan‑appropriate
+          healthy fats. Adjust up or down based on energy, goals, and guidance
+          from your coach.
         </p>
         <p>
-          Hand‑based cues are helpful anywhere: palm = protein, fist = veggies, thumb = fats. These visual anchors
-          work at home, at restaurants, and while traveling.
+          Hand‑based cues are helpful anywhere: palm = protein, fist = veggies,
+          thumb = fats. These visual anchors work at home, at restaurants, and
+          while traveling.
         </p>
         <p>
-          If measuring once or twice a week helps calibration, use a food scale or measuring cups during meal prep.
-          Over time you’ll estimate by sight with confidence.
+          If measuring once or twice a week helps calibration, use a food scale
+          or measuring cups during meal prep. Over time you’ll estimate by sight
+          with confidence.
         </p>
         <p>
-          Eat slowly and pause at <em>comfortable</em> fullness rather than clearing the plate by default. Leftovers
-          make excellent next‑day lunches and protect your progress.
+          Eat slowly and pause at <em>comfortable</em> fullness rather than
+          clearing the plate by default. Leftovers make excellent next‑day
+          lunches and protect your progress.
         </p>
         <p>
-          Dining out? Scan the menu for a protein + veggie combo, ask for sauces on the side, and box half if portions
-          are large. Consistency—not perfection—wins.
+          Dining out? Scan the menu for a protein + veggie combo, ask for sauces
+          on the side, and box half if portions are large. Consistency—not
+          perfection—wins.
         </p>
         <h2>Sources</h2>
         <ul>
-          <li><a href="https://www.myplate.gov/" target="_blank" rel="noreferrer">USDA — MyPlate</a></li>
-          <li><a href="https://www.dietaryguidelines.gov/" target="_blank" rel="noreferrer">Dietary Guidelines for Americans</a></li>
+          <li>
+            <a href="https://www.myplate.gov/" target="_blank" rel="noreferrer">
+              USDA — MyPlate
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.dietaryguidelines.gov/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Dietary Guidelines for Americans
+            </a>
+          </li>
         </ul>
       </div>
 

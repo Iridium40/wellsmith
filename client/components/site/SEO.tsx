@@ -9,7 +9,9 @@ export interface SEOProps {
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   if (!content) return;
-  let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}='${key}']`);
+  let el = document.head.querySelector<HTMLMetaElement>(
+    `meta[${attr}='${key}']`,
+  );
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute(attr, key);
@@ -20,7 +22,9 @@ function upsertMeta(attr: "name" | "property", key: string, content: string) {
 
 function setCanonical(href: string) {
   if (!href) return;
-  let link = document.head.querySelector<HTMLLinkElement>("link[rel='canonical']");
+  let link = document.head.querySelector<HTMLLinkElement>(
+    "link[rel='canonical']",
+  );
   if (!link) {
     link = document.createElement("link");
     link.setAttribute("rel", "canonical");
@@ -29,7 +33,12 @@ function setCanonical(href: string) {
   link.setAttribute("href", href);
 }
 
-export default function SEO({ title, description, image, canonical }: SEOProps) {
+export default function SEO({
+  title,
+  description,
+  image,
+  canonical,
+}: SEOProps) {
   useEffect(() => {
     if (title) document.title = title;
     if (description) upsertMeta("name", "description", description);
@@ -47,7 +56,8 @@ export default function SEO({ title, description, image, canonical }: SEOProps) 
     if (image) upsertMeta("name", "twitter:image", image);
 
     // Canonical
-    const url = canonical || (typeof window !== "undefined" ? window.location.href : "");
+    const url =
+      canonical || (typeof window !== "undefined" ? window.location.href : "");
     if (url) setCanonical(url);
   }, [title, description, image, canonical]);
 

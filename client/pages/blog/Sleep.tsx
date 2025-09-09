@@ -6,7 +6,12 @@ export default function BlogSleep() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
       <div className="mb-4">
-        <Link to="/why-coaching" className="text-sm text-primary hover:underline">← Back to Client Support</Link>
+        <Link
+          to="/why-coaching"
+          className="text-sm text-primary hover:underline"
+        >
+          ← Back to Client Support
+        </Link>
       </div>
       <SEO
         title="Getting Enough Sleep | WellSmith Blog"
@@ -32,33 +37,50 @@ export default function BlogSleep() {
 
       <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
-          Better sleep improves appetite hormones, mood, and recovery—making healthy choices much easier the
-          next day. On GLP‑1s, consistent sleep can also reduce nausea and support steady energy.
+          Better sleep improves appetite hormones, mood, and recovery—making
+          healthy choices much easier the next day. On GLP‑1s, consistent sleep
+          can also reduce nausea and support steady energy.
         </p>
         <p>
-          Build a wind‑down routine 30–60 minutes before bed: dim lights, close laptops, and park your phone.
-          Light stretching, reading, or a warm shower signals your body that sleep is coming.
+          Build a wind‑down routine 30–60 minutes before bed: dim lights, close
+          laptops, and park your phone. Light stretching, reading, or a warm
+          shower signals your body that sleep is coming.
         </p>
         <p>
-          Aim for <strong>7–9 hours</strong> for most adults. Wake and sleep around the same time daily, even on
-          weekends, to anchor your circadian rhythm. A short morning walk in daylight can reinforce that rhythm.
+          Aim for <strong>7–9 hours</strong> for most adults. Wake and sleep
+          around the same time daily, even on weekends, to anchor your circadian
+          rhythm. A short morning walk in daylight can reinforce that rhythm.
         </p>
         <p>
-          Set the environment: keep the bedroom cool, dark, and quiet. Use blackout shades or an eye mask and
-          consider a fan or white‑noise app if sounds wake you.
+          Set the environment: keep the bedroom cool, dark, and quiet. Use
+          blackout shades or an eye mask and consider a fan or white‑noise app
+          if sounds wake you.
         </p>
         <p>
-          Caffeine after midday and alcohol close to bedtime can fragment sleep. If you enjoy either, experiment
-          with timing so you can fall—and stay—asleep more easily.
+          Caffeine after midday and alcohol close to bedtime can fragment sleep.
+          If you enjoy either, experiment with timing so you can fall—and
+          stay—asleep more easily.
         </p>
         <p>
-          Naps are fine when you need them; cap them at ~20–30 minutes and avoid late‑evening naps that make it
-          harder to fall asleep at night.
+          Naps are fine when you need them; cap them at ~20–30 minutes and avoid
+          late‑evening naps that make it harder to fall asleep at night.
         </p>
         <h2>Sources</h2>
         <ul>
-          <li><a href="https://www.cdc.gov/sleep/about_sleep/how_much_sleep.html" target="_blank" rel="noreferrer">CDC — How Much Sleep Do I Need?</a></li>
-          <li><a href="https://aasm.org/" target="_blank" rel="noreferrer">American Academy of Sleep Medicine — Sleep Guidelines & Resources</a></li>
+          <li>
+            <a
+              href="https://www.cdc.gov/sleep/about_sleep/how_much_sleep.html"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CDC — How Much Sleep Do I Need?
+            </a>
+          </li>
+          <li>
+            <a href="https://aasm.org/" target="_blank" rel="noreferrer">
+              American Academy of Sleep Medicine — Sleep Guidelines & Resources
+            </a>
+          </li>
         </ul>
       </div>
 
