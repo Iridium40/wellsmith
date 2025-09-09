@@ -11,7 +11,7 @@ export default function MyStory() {
         About Lenee Rogers — Certified Health & Wellness Coach
       </p>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+      <div className="mt-8 grid grid-cols-2 gap-8">
         <div className="prose prose-slate max-w-none">
           <h2>Passionate Health Advocate</h2>
           <p>
