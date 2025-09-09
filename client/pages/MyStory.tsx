@@ -28,6 +28,20 @@ export default function MyStory() {
         </div>
       </div>
 
+      <div className="mt-6">
+        <a
+          href={
+            import.meta.env.VITE_OPTAVIA_COACH_URL ||
+            "https://www.optavia.com/us/en/coach/kaycesmith"
+          }
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
+        >
+          Ready to Start Your Own Journey? Let Me Be Your Coach!
+        </a>
+      </div>
+
       <section className="mt-10">
         <h2 className="text-2xl font-bold tracking-tight">
           Follow on Instagram
