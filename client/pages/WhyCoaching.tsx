@@ -2,6 +2,7 @@ import Disclaimer from "@/components/site/Disclaimer";
 
 import { Link } from "react-router-dom";
 import { posts } from "@/pages/blog/posts";
+import ShareButton from "@/components/site/ShareButton";
 
 export default function WhyCoaching() {
   return (
