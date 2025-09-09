@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/site/SEO";
 
 export default function About() {
   return (
     <div>
+      <SEO
+        title="About Lenee Rogers | Rogers Optimal Health"
+        description="Learn about Lenee Rogers, a certified health and wellness coach helping clients build sustainable habits through a holistic, compassionate approach."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
+      />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/40),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">
