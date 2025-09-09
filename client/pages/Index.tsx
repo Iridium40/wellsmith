@@ -72,7 +72,7 @@ export default function Index() {
                       decoding="async"
                     />
                     <img
-                      src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=800"
+                      src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F9bdbae070d4c4e7a85a46c712c57a9b6"
                       alt="WellSmith badge"
                       className="absolute -top-8 -right-8 h-16 w-16 rounded-full border-2 border-white shadow-md"
                     />

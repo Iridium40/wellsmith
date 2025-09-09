@@ -24,7 +24,7 @@ export default function SiteHeader() {
           aria-label="WellSmith home"
         >
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fef0136ecdde74b46be05d2666c884154?format=webp&width=800"
+            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F1cef4e9c4f3d40febcb6712ca2082231"
             alt="WellSmith logo"
             className="h-20 w-auto"
             loading="eager"
