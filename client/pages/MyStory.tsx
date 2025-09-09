@@ -1,9 +1,15 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import InstagramEmbed from "@/components/site/InstagramEmbed";
+import SEO from "@/components/site/SEO";
 
 export default function MyStory() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <SEO
+        title="My Story | Rogers Optimal Health"
+        description="Lenee Rogers’ journey and coaching philosophy: a holistic, personalized approach empowering sustainable health and well‑being."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         My Story
       </h1>
