@@ -20,6 +20,12 @@ import WhyCoaching from "@/pages/WhyCoaching";
 import GetStarted from "@/pages/GetStarted";
 import Privacy from "@/pages/Privacy";
 import BookWithKayce from "@/pages/BookWithKayce";
+import Blog from "@/pages/Blog";
+import BlogGLP1Eating from "@/pages/blog/GLP1Eating";
+import BlogHydration from "@/pages/blog/Hydration";
+import BlogSleep from "@/pages/blog/Sleep";
+import BlogPortions from "@/pages/blog/Portions";
+import BlogProtein from "@/pages/blog/Protein";
 
 const queryClient = new QueryClient();
 
@@ -43,6 +49,12 @@ const App = () => (
             <Route path="/book-with-kayce" element={<BookWithKayce />} />
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/privacy" element={<Privacy />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/eating-right-on-glp1" element={<BlogGLP1Eating />} />
+            <Route path="/blog/drinking-enough-water" element={<BlogHydration />} />
+            <Route path="/blog/getting-enough-sleep" element={<BlogSleep />} />
+            <Route path="/blog/right-portions" element={<BlogPortions />} />
+            <Route path="/blog/enough-protein" element={<BlogProtein />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
