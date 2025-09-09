@@ -187,44 +187,46 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     }
     const rssUrl = toRssUrl(board);
 
-    const r = await fetch(rssUrl, {
-      headers: {
-        "user-agent": "WellSmithBot/1.0",
-        accept: "application/rss+xml, text/xml; q=0.9, */*;q=0.8",
-      },
-    });
-    if (!r.ok) {
-      return res
-        .status(502)
-        .json({ error: `Failed to fetch RSS (${r.status})` });
-    }
-    const xml = await r.text();
-    const parser = new XMLParser({ ignoreAttributes: false });
-    const data = parser.parse(xml);
-
-    // Normalize items across different RSS formats
-    const toArray = (v: any): any[] => (Array.isArray(v) ? v : v ? [v] : []);
-
+    // Try RSS first, but if it fails, fall back to widget API
     let items: any[] = [];
-    if (data?.rss) {
-      const ch = data.rss.channel;
-      if (Array.isArray(ch)) {
-        for (const c of ch) items.push(...toArray(c?.item));
-      } else {
-        items = toArray(ch?.item);
+    try {
+      const r = await fetch(rssUrl, {
+        headers: {
+          "user-agent": "WellSmithBot/1.0",
+          accept: "application/rss+xml, text/xml; q=0.9, */*;q=0.8",
+        },
+      });
+      if (r.ok) {
+        const xml = await r.text();
+        const parser = new XMLParser({ ignoreAttributes: false });
+        const data = parser.parse(xml);
+
+        // Normalize items across different RSS formats
+        const toArray = (v: any): any[] => (Array.isArray(v) ? v : v ? [v] : []);
+
+        if (data?.rss) {
+          const ch = data.rss.channel;
+          if (Array.isArray(ch)) {
+            for (const c of ch) items.push(...toArray(c?.item));
+          } else {
+            items = toArray(ch?.item);
+          }
+        } else if (data?.["rdf:RDF"]) {
+          items = toArray(data["rdf:RDF"].item);
+        } else if (data?.feed) {
+          // Atom feeds use "entry"; map to similar shape
+          items = toArray(data.feed.entry).map((e: any) => ({
+            title: e?.title?.["#text"] || e?.title || "",
+            link: e?.link?.["@_href"] || e?.link || "",
+            content: e?.content?.["#text"] || e?.content || "",
+          }));
+        }
       }
-    } else if (data?.["rdf:RDF"]) {
-      items = toArray(data["rdf:RDF"].item);
-    } else if (data?.feed) {
-      // Atom feeds use "entry"; map to similar shape
-      items = toArray(data.feed.entry).map((e: any) => ({
-        title: e?.title?.["#text"] || e?.title || "",
-        link: e?.link?.["@_href"] || e?.link || "",
-        content: e?.content?.["#text"] || e?.content || "",
-      }));
+    } catch {
+      // ignore RSS errors and try widget fallback below
     }
 
-    const pins: PinterestPin[] = items
+    let pins: PinterestPin[] = items
       .map((it) => {
         const title = (
           typeof it?.title === "string"
@@ -241,7 +243,7 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     // Set cache headers to avoid rate limiting and speed up
     res.setHeader?.("Cache-Control", "public, s-maxage=300, max-age=120");
 
-    // Fallback to Pinterest widget API if RSS yields too few items
+    // Fallback to Pinterest widget API if RSS yields too few items OR RSS failed
     let finalPins = pins;
     if (finalPins.length < 6) {
       const boardUrl =
