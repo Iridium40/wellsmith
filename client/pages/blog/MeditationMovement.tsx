@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function BlogMeditationMovement() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <SEO
+        title="Meditation and Healthy Movement | WellSmith Blog"
+        description="Reduce stress and build consistent movement with short, sustainable practices and breathwork."
+        image="https://images.unsplash.com/photo-1540206276207-3af25c08abc4?auto=format&fit=crop&w=1400&q=80"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Meditation and Healthy Movement
       </h1>
