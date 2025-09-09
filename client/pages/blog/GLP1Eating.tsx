@@ -14,7 +14,7 @@ export default function BlogGLP1Eating() {
         </Link>
       </div>
       <SEO
-        title="Eating Right on GLP‑1s | Rogers Optimal Health"
+        title="Eating Right on GLP‑1s | WellSmith Blog"
         description="Strategies to feel your best, support muscle, and avoid common pitfalls while using GLP‑1 medications."
         image="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80"
       />
