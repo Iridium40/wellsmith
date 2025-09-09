@@ -8,7 +8,10 @@ import SEO from "@/components/site/SEO";
 export default function WhyCoaching() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <SEO title="Client Support | WellSmith" description="Tips for success on the 5 & 1 Plan, hydration guidance, and coaching resources in one place." />
+      <SEO
+        title="Client Support | WellSmith"
+        description="Tips for success on the 5 & 1 Plan, hydration guidance, and coaching resources in one place."
+      />
       <div className="flex flex-col gap-3 sm:gap-4">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
           Client Support

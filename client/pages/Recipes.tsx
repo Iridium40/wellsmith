@@ -135,7 +135,10 @@ export default function Recipes() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <SEO title="Lean & Green Recipe Ideas | WellSmith" description="Lean & Green recipe ideas curated from a public Pinterest board to support your OPTAVIA journey." />
+      <SEO
+        title="Lean & Green Recipe Ideas | WellSmith"
+        description="Lean & Green recipe ideas curated from a public Pinterest board to support your OPTAVIA journey."
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Lean & Green Recipe Ideas
       </h1>

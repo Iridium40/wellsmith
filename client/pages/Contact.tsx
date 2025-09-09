@@ -7,7 +7,10 @@ import InstagramEmbed from "@/components/site/InstagramEmbed";
 export default function Contact() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
-      <SEO title="Connect with Kayce | WellSmith" description="Connect with Kayce Smith. Book a call, message on social, or start through OPTAVIA." />
+      <SEO
+        title="Connect with Kayce | WellSmith"
+        description="Connect with Kayce Smith. Book a call, message on social, or start through OPTAVIA."
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Connect with Kayce
       </h1>

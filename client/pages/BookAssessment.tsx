@@ -100,7 +100,10 @@ export default function BookAssessment() {
 
   return (
     <div>
-      <SEO title="Book Your Free Health Assessment | WellSmith" description="Book a free 30‑minute health assessment with Kayce to discuss goals and the OPTAVIA program." />
+      <SEO
+        title="Book Your Free Health Assessment | WellSmith"
+        description="Book a free 30‑minute health assessment with Kayce to discuss goals and the OPTAVIA program."
+      />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">

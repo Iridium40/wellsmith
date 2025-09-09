@@ -5,7 +5,10 @@ import SEO from "@/components/site/SEO";
 export default function MyStory() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <SEO title="My Story | WellSmith" description="Kayce’s 36‑lb transformation with OPTAVIA and how it led to coaching others to lasting change." />
+      <SEO
+        title="My Story | WellSmith"
+        description="Kayce’s 36‑lb transformation with OPTAVIA and how it led to coaching others to lasting change."
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         My Story
       </h1>

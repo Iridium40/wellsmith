@@ -32,7 +32,10 @@ export default function FAQs() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
-      <SEO title="FAQs | Coaching & OPTAVIA | WellSmith" description="Answers about working with Kayce, OPTAVIA, expectations, movement, and sustainability." />
+      <SEO
+        title="FAQs | Coaching & OPTAVIA | WellSmith"
+        description="Answers about working with Kayce, OPTAVIA, expectations, movement, and sustainability."
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         FAQs
       </h1>

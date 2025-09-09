@@ -10,7 +10,10 @@ export default function BookWithKayce() {
 
   return (
     <div>
-      <SEO title="Book with Kayce | WellSmith" description="Schedule time with Kayce Smith for coaching and program guidance." />
+      <SEO
+        title="Book with Kayce | WellSmith"
+        description="Schedule time with Kayce Smith for coaching and program guidance."
+      />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">
