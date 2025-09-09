@@ -14,7 +14,7 @@ export default function BlogProtein() {
         </Link>
       </div>
       <SEO
-        title="Eating Enough Protein | Rogers Optimal Health"
+        title="Eating Enough Protein | WellSmith Blog"
         description="How much protein you need, best sources, and easy ways to hit your target daily."
         image="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1400&q=80"
       />
