@@ -46,7 +46,7 @@ export default function Contact() {
           <span>Social: </span>
           <a
             className="text-primary hover:underline inline-flex items-center gap-1"
-            href="https://www.facebook.com/kayces"
+            href="https://www.facebook.com/leneebiglane.rogers"
             target="_blank"
             rel="noreferrer"
           >
