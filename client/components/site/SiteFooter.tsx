@@ -49,7 +49,7 @@ export default function SiteFooter() {
               OPTAVIA Coach Profile
             </a>
             <a
-              href="https://www.facebook.com/kayces"
+              href="https://www.facebook.com/leneebiglane.rogers"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground inline-flex items-center gap-1"
