@@ -20,7 +20,6 @@ import WhyCoaching from "@/pages/WhyCoaching";
 import GetStarted from "@/pages/GetStarted";
 import Privacy from "@/pages/Privacy";
 import BookWithKayce from "@/pages/BookWithKayce";
-import Blog from "@/pages/Blog";
 import BlogGLP1Eating from "@/pages/blog/GLP1Eating";
 import BlogHydration from "@/pages/blog/Hydration";
 import BlogSleep from "@/pages/blog/Sleep";
