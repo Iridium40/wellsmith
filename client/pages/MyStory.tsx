@@ -1,6 +1,7 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import InstagramEmbed from "@/components/site/InstagramEmbed";
 import SEO from "@/components/site/SEO";
+import { MY_STORY_IMAGE, StoryProse } from "@/components/site/MyStoryShared";
 
 export default function MyStory() {
   return (
