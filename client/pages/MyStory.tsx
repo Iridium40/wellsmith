@@ -78,6 +78,7 @@ export default function MyStory() {
               Start Your Journey with Lenee
             </a>
           </div>
+        </div>
         <div className="overflow-hidden rounded-2xl border bg-card p-2 shadow-sm">
           <img
             src="https://cdn.builder.io/o/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Faa7f706254ab4479b4afbc85668b04ca?alt=media&token=dd02c058-0ce0-40d3-af36-c74e26b28c99&apiKey=a42b6f9ec53e4654a92af75aad56d14f"
@@ -87,7 +88,6 @@ export default function MyStory() {
             decoding="async"
           />
         </div>
-      </div>
       </div>
 
 
