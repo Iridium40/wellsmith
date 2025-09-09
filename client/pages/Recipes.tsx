@@ -139,18 +139,6 @@ export default function Recipes() {
         Ideas pulled from a public Pinterest board. Always follow your specific
         OPTAVIA plan guidelines.
       </p>
-      <div className="mt-6 grid gap-2 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-4">
-        {[
-          "Quick Family Dinners",
-          "Meal Prep Options",
-          "Budget-Friendly Meals",
-          "Seasonal Favorites",
-        ].map((c) => (
-          <div key={c} className="rounded-md border bg-white/60 px-3 py-2">
-            {c}
-          </div>
-        ))}
-      </div>
 
       {loading && (
         <p className="mt-6 text-sm text-muted-foreground">Loading recipes…</p>
