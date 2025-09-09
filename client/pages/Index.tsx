@@ -138,14 +138,16 @@ export default function Index() {
       {/* Story Preview */}
       <section className="mx-auto max-w-7xl px-4 py-14">
         <h2 className="text-2xl font-bold tracking-tight">Lenee's Story</h2>
-        <p className="mt-2 text-muted-foreground max-w-3xl">
-          Losing 36 lbs in 2017 with OPTAVIA was life‑changing for me. As a
-          stay‑at‑home mom feeling over‑exhausted and underwhelmed, OPTAVIA
-          helped me change my relationship with food and find my energy again.
-        </p>
+        <ul className="mt-3 grid gap-2 text-sm text-foreground/80 sm:grid-cols-2">
+          <li><span className="font-semibold">Passionate Health Advocate:</span> Empowers individuals with sustainable habits for overall well‑being.</li>
+          <li><span className="font-semibold">Holistic Health Believer:</span> Guides clients toward optimal physical and mental wellness.</li>
+          <li><span className="font-semibold">Personalized Approach:</span> Tailors realistic, achievable plans to each unique journey.</li>
+          <li><span className="font-semibold">Optavia Expertise:</span> Uses a clinically proven plan and fuelings to support transformation.</li>
+          <li className="sm:col-span-2"><span className="font-semibold">Coaching Philosophy:</span> Compassion, accountability, and motivation for lasting change.</li>
+        </ul>
         <div className="mt-4">
           <Link to="/my-story" className="text-primary hover:underline">
-            Read the full story
+            Read more about Lenee
           </Link>
         </div>
       </section>
