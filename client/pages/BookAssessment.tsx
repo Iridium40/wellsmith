@@ -138,7 +138,7 @@ export default function BookAssessment() {
             <div>
               <div className="mb-4 flex justify-center">
                 <img
-                  src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fe07ddbca8c7e423c96390cdff4411bdd"
+                  src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fb696cd51d34f42b981c5ca22f91044b6"
                   alt="Kayce Smith"
                   className="h-[300px] w-[300px] rounded-xl object-contain border bg-white p-1 shadow-sm"
                   loading="lazy"
