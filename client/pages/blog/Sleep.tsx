@@ -14,7 +14,7 @@ export default function BlogSleep() {
         </Link>
       </div>
       <SEO
-        title="Getting Enough Sleep | Rogers Optimal Health"
+        title="Getting Enough Sleep | WellSmith Blog"
         description="Sleep quality influences hunger hormones, recovery, and weight management. Practical tips for better rest."
         image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F155c7ececc0848188255f02e0c732cc6?format=webp&width=1200"
       />
