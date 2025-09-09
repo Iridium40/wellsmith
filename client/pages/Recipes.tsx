@@ -116,7 +116,9 @@ export default function Recipes() {
             }))
             .filter((p) => !!p.image && !!p.link);
           setPins(list);
-          setError(list.length ? null : "No recipes found from Pinterest board.");
+          setError(
+            list.length ? null : "No recipes found from Pinterest board.",
+          );
         }
       } catch (e: any) {
         if (mounted)
@@ -148,7 +150,9 @@ export default function Recipes() {
           {error}
           {!pins?.length && (
             <>
-              {" "}If this persists, ensure the public board URL is set via the PINTEREST_BOARD_URL environment variable.
+              {" "}
+              If this persists, ensure the public board URL is set via the
+              PINTEREST_BOARD_URL environment variable.
             </>
           )}
         </div>

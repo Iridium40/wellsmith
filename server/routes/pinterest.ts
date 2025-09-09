@@ -178,12 +178,10 @@ export const handlePinterest: RequestHandler = async (req, res) => {
     const board =
       (req.query.board as string) || process.env.PINTEREST_BOARD_URL;
     if (!board) {
-      return res
-        .status(400)
-        .json({
-          error:
-            "Missing Pinterest board URL. Provide ?board= or set PINTEREST_BOARD_URL.",
-        });
+      return res.status(400).json({
+        error:
+          "Missing Pinterest board URL. Provide ?board= or set PINTEREST_BOARD_URL.",
+      });
     }
     const rssUrl = toRssUrl(board);
 
@@ -202,7 +200,8 @@ export const handlePinterest: RequestHandler = async (req, res) => {
         const data = parser.parse(xml);
 
         // Normalize items across different RSS formats
-        const toArray = (v: any): any[] => (Array.isArray(v) ? v : v ? [v] : []);
+        const toArray = (v: any): any[] =>
+          Array.isArray(v) ? v : v ? [v] : [];
 
         if (data?.rss) {
           const ch = data.rss.channel;

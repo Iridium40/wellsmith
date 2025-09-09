@@ -70,7 +70,6 @@ export default function WhyCoaching() {
         </div>
       </div>
 
-
       <Disclaimer className="mt-10" />
     </div>
   );
