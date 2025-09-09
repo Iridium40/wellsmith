@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram } from "lucide-react";
+import InstagramEmbed from "@/components/site/InstagramEmbed";
 
 export default function Contact() {
   return (
@@ -61,6 +62,10 @@ export default function Contact() {
             <Instagram className="h-4 w-4" /> Instagram
           </a>
         </div>
+      </div>
+
+      <div className="mt-8">
+        <InstagramEmbed permalink="https://www.instagram.com/smithkayce/" />
       </div>
 
       <div className="mt-8 rounded-2xl border bg-white p-6 text-xs leading-6 text-muted-foreground">
