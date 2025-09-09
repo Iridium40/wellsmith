@@ -20,7 +20,7 @@ export default function WhyCoaching() {
             href="/book-with-kayce"
             className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
           >
-            Book with Kayce
+            Book with Lenee
           </a>
           <ShareButton
             buttonLabel="Share Client Support"

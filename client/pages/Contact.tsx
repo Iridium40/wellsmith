@@ -7,7 +7,7 @@ export default function Contact() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-        Connect with Kayce
+        Connect with Lenee
       </h1>
       <p className="mt-3 text-lg text-muted-foreground">
         Start your journey through OPTAVIA's official system.
@@ -39,7 +39,7 @@ export default function Contact() {
             </a>
           </Button>
           <Button asChild>
-            <a href="/book-assessment">Book with Kayce</a>
+            <a href="/book-assessment">Book with Lenee</a>
           </Button>
         </div>
         <div className="mt-4 text-sm text-foreground/80">

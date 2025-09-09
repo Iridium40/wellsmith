@@ -9,7 +9,7 @@ const navItems = [
   { to: "/why-coaching", label: "Client Support" },
   { to: "/recipes", label: "Lean & Green Recipe Ideas" },
   { to: "/book-assessment", label: "Book Assessment" },
-  { to: "/connect", label: "Connect with Kayce" },
+  { to: "/connect", label: "Connect with Lenee" },
 ];
 
 export default function SiteHeader() {

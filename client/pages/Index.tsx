@@ -12,7 +12,7 @@ export default function Index() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-7">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Hi, I'm Kayce Smith — Your Independent OPTAVIA Certified Health
+              Hi, I'm Lenee Rogers — Your Independent OPTAVIA Certified Health
               Coach
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -62,7 +62,7 @@ export default function Index() {
                   <div className="relative inline-block">
                     <img
                       src="https://cdn.builder.io/o/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F79af2e9d675c4612881ad4e31a21d56e?alt=media&token=5992b69c-4b7c-4626-b11a-3ff3fd9133bd&apiKey=a42b6f9ec53e4654a92af75aad56d14f"
-                      alt="Kayce Smith"
+                      alt="Lenee Rogers"
                       className="mx-auto h-64 w-auto rounded-xl"
                       loading="eager"
                       decoding="async"
@@ -76,7 +76,7 @@ export default function Index() {
                   <p className="mt-4 text-sm font-medium text-muted-foreground">
                     Coaching by
                   </p>
-                  <p className="text-2xl font-bold">Kayce Smith</p>
+                  <p className="text-2xl font-bold">Lenee Rogers</p>
                   <p className="mt-1 text-sm text-muted-foreground">
                     Independent OPTAVIA Certified Health Coach
                   </p>
@@ -137,7 +137,7 @@ export default function Index() {
 
       {/* Story Preview */}
       <section className="mx-auto max-w-7xl px-4 py-14">
-        <h2 className="text-2xl font-bold tracking-tight">Kayce's Story</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Lenee's Story</h2>
         <p className="mt-2 text-muted-foreground max-w-3xl">
           Losing 36 lbs in 2017 with OPTAVIA was life‑changing for me. As a
           stay‑at‑home mom feeling over‑exhausted and underwhelmed, OPTAVIA
@@ -174,7 +174,7 @@ export default function Index() {
         <h2 className="text-2xl font-bold tracking-tight">What You Get</h2>
         <ul className="mt-4 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-3">
           <li className="rounded-lg border bg-white/60 px-4 py-3">
-            Personal coach support (Kayce)
+            Personal coach support (Lenee)
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
             Supportive community
@@ -202,7 +202,7 @@ export default function Index() {
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
-              <Link to="/book-with-kayce">Book with Kayce</Link>
+              <Link to="/book-with-kayce">Book with Lenee</Link>
             </Button>
           </div>
         </div>

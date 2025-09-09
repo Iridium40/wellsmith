@@ -23,7 +23,7 @@ export default function GetStarted() {
           <h2 className="text-xl font-bold">What to Expect</h2>
           <ul className="mt-2 grid gap-2 text-sm text-foreground/80">
             <li>Clinically proven nutrition plans</li>
-            <li>Personal coach support (Kayce)</li>
+            <li>Personal coach support (Lenee)</li>
             <li>Supportive community</li>
             <li>Simple, structured daily routine</li>
           </ul>

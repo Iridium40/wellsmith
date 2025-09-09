@@ -11,7 +11,7 @@ export default function About() {
             <figure className="order-2 overflow-hidden rounded-2xl border bg-card p-2 shadow-sm lg:order-1">
               <img
                 src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fd27ddcf236bd4f169f43e10d872a760e?format=webp&width=1200"
-                alt="Kayce Smith"
+                alt="Lenee Rogers"
                 className="h-auto w-full rounded-xl object-cover"
                 loading="eager"
                 decoding="async"
@@ -20,7 +20,7 @@ export default function About() {
 
             <div className="order-1 lg:order-2">
               <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-                About Kayce
+                About Lenee
               </h1>
               <p className="mt-4 text-lg text-muted-foreground">
                 I help clients build healthy habits through compassionate,
