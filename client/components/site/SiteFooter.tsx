@@ -64,14 +64,6 @@ export default function SiteFooter() {
             >
               <Instagram className="h-4 w-4" /> Instagram
             </a>
-            <a
-              href="https://www.whatcanhayesbe.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-foreground"
-            >
-              Children’s Books
-            </a>
           </nav>
           <div className="md:text-right">
             <div className="font-medium text-foreground">Ready to begin?</div>
