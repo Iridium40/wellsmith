@@ -27,21 +27,38 @@ export default function BlogGLP1Eating() {
       </div>
 
       <div className="prose prose-slate mt-6 max-w-none">
-        <h2>Prioritize Protein</h2>
         <p>
-          Aim for 20–35g of protein per meal to help maintain lean mass and
-          support satiety. Include lean meats, fish, eggs, Greek yogurt, or
-          tofu/tempeh.
+          GLP‑1 medications often reduce hunger and slow gastric emptying. That can be helpful for
+          weight loss, but it also means nutrition quality matters more than ever. Your goal is to
+          nourish well on smaller portions so you protect lean muscle, maintain energy, and feel your best.
         </p>
-        <h2>Fiber & Hydration</h2>
         <p>
-          Vegetables add volume and micronutrients. Increase fiber gradually and
-          drink water throughout the day to reduce GI discomfort.
+          Start by prioritizing protein at each meal. Most adults do well aiming for
+          <strong>20–35 grams</strong> per meal from options like chicken, fish, turkey, eggs, Greek yogurt,
+          cottage cheese, tofu, or tempeh. Protein supports satiety and helps preserve lean mass when body
+          weight is trending down.
         </p>
-        <h2>Slow, Structured Meals</h2>
         <p>
-          Eat slowly, stop at comfortable fullness, and keep meals simple (lean
-          protein + non‑starchy vegetables + healthy fats as needed).
+          Fill the rest of your plate with non‑starchy vegetables—think leafy greens, peppers, zucchini,
+          broccoli, and cauliflower. These add fiber, water, and micronutrients without many calories. If
+          your stomach feels sensitive, increase fiber gradually and take smaller bites, chewing thoroughly.
+        </p>
+        <p>
+          Carbohydrates and fats are still important; the right amount depends on your plan and activity.
+          Choose slow‑digesting carbs (beans, berries, lentils, limited whole grains if included) and
+          pair them with protein. Use healthy fats—olive oil, avocado, nuts—in modest portions to help with
+          flavor and fullness without overshooting calories.
+        </p>
+        <p>
+          Eating slowly is a powerful strategy on GLP‑1s. Build meals with a simple template (lean protein +
+          non‑starchy vegetables + optional healthy fat), put your fork down between bites, and pause at
+          comfortable fullness. Many people feel best with three structured meals and minimal grazing.
+        </p>
+        <p>
+          Finally, keep hydration and minerals in mind. Sip water throughout the day and consider an
+          electrolyte supplement if you notice lightheadedness or cramping—especially in hot weather or
+          after exercise. If nausea or reflux shows up, smaller meals, ginger tea, and mindful pacing can
+          help. Work with your coach to personalize portions as your appetite changes over time.
         </p>
       </div>
 
