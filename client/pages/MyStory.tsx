@@ -17,7 +17,7 @@ export default function MyStory() {
         About Lenee Rogers — Certified Health & Wellness Coach
       </p>
 
-      <div className="mt-8 grid grid-cols-2 gap-8">
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div className="prose prose-slate max-w-none leading-relaxed space-y-6 prose-p:mt-0 prose-h2:mt-0 prose-h2:font-bold">
           <h2>Passionate Health Advocate</h2>
           <p>
@@ -88,7 +88,7 @@ export default function MyStory() {
         <img
           src="https://cdn.builder.io/o/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Faa7f706254ab4479b4afbc85668b04ca?alt=media&token=dd02c058-0ce0-40d3-af36-c74e26b28c99&apiKey=a42b6f9ec53e4654a92af75aad56d14f"
           alt="Lenee Rogers"
-          className="h-auto w-1/2 mx-auto rounded-xl object-cover"
+          className="h-auto w-full lg:w-1/2 mx-auto rounded-xl object-cover"
           loading="eager"
           decoding="async"
         />
