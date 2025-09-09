@@ -7,10 +7,10 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-10 text-sm text-muted-foreground">
         <div className="grid gap-6 md:grid-cols-3">
           <div>
-            <Link to="/" aria-label="WellSmith home">
+            <Link to="/" aria-label="Rogers Optimal Health home">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5c5b419b80d94e2fa4a2fc6699e87482?format=webp&width=800"
-                alt="WellSmith logo"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fef0136ecdde74b46be05d2666c884154?format=webp&width=800"
+                alt="Rogers Optimal Health logo"
                 className="h-16 w-auto md:h-20"
                 loading="lazy"
                 decoding="async"
@@ -89,7 +89,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
-          <p>© {new Date().getFullYear()} WellSmith. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Rogers Optimal Health. All rights reserved.</p>
           <p>Built with love for healthy habits.</p>
         </div>
       </div>
