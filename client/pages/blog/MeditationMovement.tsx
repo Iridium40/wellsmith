@@ -14,7 +14,7 @@ export default function BlogMeditationMovement() {
         </Link>
       </div>
       <SEO
-        title="Meditation and Healthy Movement | WellSmith Blog"
+        title="Meditation and Healthy Movement | Rogers Optimal Health"
         description="Reduce stress and build consistent movement with short, sustainable practices and breathwork."
         image="https://images.unsplash.com/photo-1540206276207-3af25c08abc4?auto=format&fit=crop&w=1400&q=80"
       />
