@@ -57,7 +57,7 @@ export default function SiteFooter() {
               <Facebook className="h-4 w-4" /> Facebook
             </a>
             <a
-              href="https://www.instagram.com/smithkayce/"
+              href="https://www.instagram.com/leneerogers/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground inline-flex items-center gap-1"
