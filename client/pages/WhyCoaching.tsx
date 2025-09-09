@@ -70,31 +70,6 @@ export default function WhyCoaching() {
         </div>
       </div>
 
-      <h2 className="mt-10 text-2xl font-bold tracking-tight">
-        Why Choose Coaching
-      </h2>
-      <div className="mt-4 grid gap-6 md:grid-cols-2">
-        <div className="rounded-2xl border bg-card p-6 shadow-sm">
-          <h2 className="text-xl font-bold">Why OPTAVIA Works</h2>
-          <ul className="mt-3 grid gap-2 text-sm text-foreground/80">
-            <li>
-              Average weight loss on the Optimal Weight 5 & 1 Plan® is 12
-              pounds*
-            </li>
-            <li>More than 3 million lives impacted and counting</li>
-            <li>Clinically proven nutrition plans</li>
-            <li>Support from your personal coach and community</li>
-          </ul>
-        </div>
-        <div className="rounded-2xl border bg-card p-6 shadow-sm">
-          <h2 className="text-xl font-bold">The 3‑Step Approach</h2>
-          <ol className="mt-3 list-decimal pl-5 text-sm text-foreground/80">
-            <li>Set your 'why' and map your journey</li>
-            <li>Connect with your coach and community</li>
-            <li>Simplify your eating habits</li>
-          </ol>
-        </div>
-      </div>
 
       <Disclaimer className="mt-10" />
     </div>
