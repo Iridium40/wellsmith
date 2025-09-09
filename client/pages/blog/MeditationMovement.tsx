@@ -27,29 +27,31 @@ export default function BlogMeditationMovement() {
       </div>
 
       <div className="prose prose-slate mt-6 max-w-none">
-        <h2>Start With Your Breath</h2>
         <p>
-          Try 2–5 minutes of diaphragmatic breathing or a simple box breath
-          (inhale 4, hold 4, exhale 4, hold 4). This activates the
-          parasympathetic system, reducing stress‑eating cues and improving
-          focus.
+          A calmer nervous system makes behavior change easier. Begin with 2–5 minutes of diaphragmatic breathing
+          or a simple box breath (inhale 4, hold 4, exhale 4, hold 4). Even one short session can reduce stress‑eating
+          cues and help you transition between parts of your day.
         </p>
-        <h2>Daily Movement, Not Max Effort</h2>
         <p>
-          Aim for low‑to‑moderate activity most days: brisk walking, light
-          strength, yoga, or mobility flows. Consistency beats
-          intensity—especially alongside GLP‑1 journeys.
+          Try “micro‑meditations” throughout the day: three slow breaths before opening email, a one‑minute pause in
+          the car before heading into the house, or a brief body‑scan after lunch. Frequency matters more than length.
         </p>
-        <h2>Habit Stack</h2>
         <p>
-          Attach a quick stretch or 10‑minute walk to things you already do
-          (morning coffee, lunch break, post‑dinner). Small, repeated wins
-          create lasting change.
+          For movement, consistency beats intensity. Aim for low‑to‑moderate activity most days—brisk walking,
+          light strength, yoga, or mobility flows. Many people feel great building to 6–10k steps daily with a few
+          short walks rather than one long session.
         </p>
-        <h2>Recover to Progress</h2>
         <p>
-          Restorative practices—yoga nidra, gentle stretching, and quality
-          sleep—help you adapt and avoid burnout.
+          Add a minimal effective dose of strength training 2–3 days a week. Focus on big movements—squats, hinges,
+          pushes, pulls—with 1–2 sets done well. Preserving muscle supports metabolism, posture, and confidence.
+        </p>
+        <p>
+          Habit‑stacking makes it stick: stretch while the coffee brews, do 10 air squats after bathroom breaks, or
+          take a 10‑minute walk after dinner. Tie the behavior to an existing routine so it happens automatically.
+        </p>
+        <p>
+          Recovery is part of training. Gentle stretching, yoga nidra, and quality sleep lower stress and help your body
+          adapt. Progress comes from repeating small, sustainable actions—not pushing to exhaustion.
         </p>
       </div>
 
