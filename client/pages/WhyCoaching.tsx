@@ -100,12 +100,6 @@ export default function WhyCoaching() {
           </Link>
         ))}
       </div>
-      <div className="mt-4">
-        <Link to="/blog" className="text-primary hover:underline">
-          View all blog posts →
-        </Link>
-      </div>
-
       <Disclaimer className="mt-10" />
     </div>
   );
