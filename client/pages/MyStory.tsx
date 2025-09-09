@@ -8,32 +8,63 @@ export default function MyStory() {
         My Story
       </h1>
       <p className="mt-3 text-lg text-muted-foreground">
-        Kayce's journey as an Independent OPTAVIA Certified Health Coach
+        About Lenee Rogers — Certified Health & Wellness Coach
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-2">
         <div className="prose prose-slate max-w-none">
+          <h2>Passionate Health Advocate</h2>
           <p>
-            <strong>
-              Losing 36 lbs in 2017 with OPTAVIA was life‑changing for me!
-            </strong>
+            Lenee Rogers is a passionate and dedicated certified health and wellness coach
+            with a wealth of experience in empowering individuals to make positive changes
+            in their lives. With a deep understanding of nutrition, fitness, and lifestyle
+            habits, Lenee is skilled at helping people develop and implement sustainable
+            changes that lead to improved overall well‑being.
+          </p>
+
+          <h2>Holistic Health Believer</h2>
+          <p>
+            As a firm believer in the power of holistic health, Lenee is committed to
+            guiding her clients toward optimal physical and mental wellness. With her
+            extensive knowledge and expertise, she has successfully supported numerous
+            individuals in achieving their health goals, transforming their lives for the
+            better.
+          </p>
+
+          <h2>Personalized Approach</h2>
+          <p>
+            Lenee's approach to coaching is rooted in empathy, understanding, and
+            personalized attention. She recognizes that each person's journey is unique and
+            requires tailored strategies. By listening attentively and understanding her
+            clients' needs and aspirations, Lenee develops effective action plans that are
+            realistic and achievable.
+          </p>
+
+          <h2>Optavia Expertise</h2>
+          <p>
+            One of the key resources Lenee utilizes in her coaching practice is Optavia.
+            This is a clinically proven plan with scientifically developed products called
+            fuelings. By leveraging Optavia's proven strategies and tools, Lenee ensures
+            that her clients have access to effective resources to support their
+            transformational journey.
+          </p>
+
+          <h2>Coaching Philosophy</h2>
+          <p>
+            Lenee's coaching style combines compassion, accountability, and motivation. She
+            creates a safe and nurturing environment where individuals can explore
+            challenges, overcome obstacles, and celebrate their successes. Through ongoing
+            guidance, encouragement, and practical advice, Lenee empowers clients to adopt
+            healthier habits, make informed choices, and sustain positive change in the
+            long term.
           </p>
           <p>
-            I was a stay‑at‑home mom—over‑exhausted and underwhelmed—when I had
-            a chance conversation with the coach who would change my life. I
-            jumped in with both feet.
+            With Lenee as your guide, you can expect a transformative experience that goes
+            beyond achieving weight loss or fitness goals. Her holistic approach fosters
+            balance, self‑acceptance, and personal growth—enhancing physical health as well
+            as mental and emotional resilience for a more fulfilling, vibrant life.
           </p>
-          <p>
-            OPTAVIA helped me change my relationship with food and gave me the
-            structure and energy to be the wife and mom I wanted to be. That
-            experience led me to coaching—so others can feel what I felt.
-          </p>
-          <p>
-            Six years later, I'm even more passionate about supporting clients
-            through simple steps, daily encouragement, and a community that
-            truly understands the journey.
-          </p>
-          <p>When you're ready, I'd be honored to be your coach.</p>
+
           <div className="mt-6">
             <a
               href={
@@ -44,68 +75,13 @@ export default function MyStory() {
               rel="noreferrer"
               className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
             >
-              Ready to Start Your Own Journey? Let Me Be Your Coach!
+              Start Your Journey with Lenee
             </a>
           </div>
         </div>
-        <div className="overflow-hidden rounded-2xl border bg-card p-2 shadow-sm">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5b0dafbaeac84bf8b97ef2a6e9700186?format=webp&width=1200"
-            alt="Kayce Smith"
-            className="h-auto w-full rounded-xl object-cover"
-          />
-        </div>
       </div>
 
-      <section className="mt-10">
-        <h2 className="text-2xl font-bold tracking-tight">
-          Follow on Instagram
-        </h2>
-        <p className="mt-2 text-muted-foreground">@smithkayce</p>
-        <div className="mt-4 max-w-xl">
-          <a
-            href="https://www.instagram.com/smithkayce/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-primary hover:underline"
-          >
-            Visit @smithkayce on Instagram
-          </a>
-        </div>
-      </section>
 
-      <section className="mt-10 rounded-2xl border bg-card p-4 shadow-sm max-w-3xl mx-auto">
-        <h2 className="text-lg font-semibold">Children's Books by Kayce</h2>
-        <p className="mt-2 text-sm text-foreground/80">
-          What Can Hayes Be? and “Hayes & the Big Game!”
-        </p>
-        <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 place-items-center">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F21ffa0e7b9d44094bc713665a04b67aa?format=webp&width=800"
-            alt="What Can Hayes Be? book cover"
-            className="mx-auto h-56 w-auto rounded-md border object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fa757bbca89da455d9171a2e999a75fb5?format=webp&width=800"
-            alt="Hayes and the Big Game book cover"
-            className="mx-auto h-56 w-auto rounded-md border object-contain"
-            loading="lazy"
-            decoding="async"
-          />
-        </div>
-        <div className="mt-4">
-          <a
-            href="https://www.whatcanhayesbe.com/"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex h-10 items-center justify-center rounded-md bg-gradient-to-r from-primary to-accent px-4 text-sm text-white shadow hover:opacity-95"
-          >
-            Shop the books
-          </a>
-        </div>
-      </section>
 
       <Disclaimer className="mt-10" />
     </div>
