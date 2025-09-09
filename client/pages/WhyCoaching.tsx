@@ -1,5 +1,8 @@
 import Disclaimer from "@/components/site/Disclaimer";
 
+import { Link } from "react-router-dom";
+import { posts } from "@/pages/blog/posts";
+
 export default function WhyCoaching() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
@@ -68,6 +71,37 @@ export default function WhyCoaching() {
             </li>
           </ul>
         </div>
+      </div>
+
+      <h2 className="mt-10 text-2xl font-bold tracking-tight">From the Blog</h2>
+      <p className="mt-2 text-sm text-muted-foreground">
+        Articles on GLP‑1 support, hydration, sleep, portions, protein, and more.
+      </p>
+      <div className="mt-4 grid gap-6 md:grid-cols-3">
+        {posts.slice(0, 6).map((p) => (
+          <Link
+            key={p.slug}
+            to={`/blog/${p.slug}`}
+            className="group rounded-2xl border bg-card p-2 shadow-sm"
+          >
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-xl bg-muted">
+              <img
+                src={p.image}
+                alt={p.title}
+                className="h-full w-full object-cover transition-transform duration-200 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <h3 className="mt-3 text-base font-semibold">{p.title}</h3>
+            <p className="text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
+            <p className="text-xs text-muted-foreground">Read more →</p>
+          </Link>
+        ))}
+      </div>
+      <div className="mt-4">
+        <Link to="/blog" className="text-primary hover:underline">
+          View all blog posts →
+        </Link>
       </div>
 
       <Disclaimer className="mt-10" />
