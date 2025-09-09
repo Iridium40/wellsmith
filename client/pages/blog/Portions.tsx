@@ -14,7 +14,7 @@ export default function BlogPortions() {
         </Link>
       </div>
       <SEO
-        title="Eating the Right Portions | Rogers Optimal Health"
+        title="Eating the Right Portions | WellSmith Blog"
         description="Simple portion targets to keep you satisfied and on‑plan without the guesswork."
         image="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1400&q=80"
       />
