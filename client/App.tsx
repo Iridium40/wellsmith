@@ -18,7 +18,7 @@ import MyStory from "@/pages/MyStory";
 import WhyCoaching from "@/pages/WhyCoaching";
 import GetStarted from "@/pages/GetStarted";
 import Privacy from "@/pages/Privacy";
-import BookWithKayce from "@/pages/BookWithKayce";
+import BookWithLenee from "@/pages/BookWithLenee";
 import BlogGLP1Eating from "@/pages/blog/GLP1Eating";
 import BlogHydration from "@/pages/blog/Hydration";
 import BlogSleep from "@/pages/blog/Sleep";
@@ -44,7 +44,7 @@ const App = () => (
           <Route path="/book-assessment" element={<BookAssessment />} />
           <Route path="/my-story" element={<MyStory />} />
           <Route path="/why-coaching" element={<WhyCoaching />} />
-          <Route path="/book-with-kayce" element={<BookWithKayce />} />
+          <Route path="/book-with-kayce" element={<BookWithLenee />} />
           <Route path="/get-started" element={<GetStarted />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route
