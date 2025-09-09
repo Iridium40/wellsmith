@@ -26,13 +26,13 @@ export default function BlogProtein() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
           Protein is the building block that helps preserve lean mass, steadies appetite, and supports recovery. It’s
           especially important during weight loss and on GLP‑1s when total food volume may be lower.
         </p>
         <p>
-          A practical range for many adults is <strong>0.7–1.0 g per pound of goal body weight</strong>, adjusted to
+          A practical range for many adults is <strong>0.7��1.0 g per pound of goal body weight</strong>, adjusted to
           your plan and medical guidance. Spread intake across the day so each meal delivers roughly 20–35 g.
         </p>
         <p>
