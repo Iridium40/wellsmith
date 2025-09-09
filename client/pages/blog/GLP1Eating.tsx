@@ -1,9 +1,13 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import SEO from "@/components/site/SEO";
+import { Link } from "react-router-dom";
 
 export default function BlogGLP1Eating() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <div className="mb-4">
+        <Link to="/why-coaching" className="text-sm text-primary hover:underline">← Back to Client Support</Link>
+      </div>
       <SEO
         title="Eating Right on GLP‑1s | WellSmith Blog"
         description="Strategies to feel your best, support muscle, and avoid common pitfalls while using GLP‑1 medications."
