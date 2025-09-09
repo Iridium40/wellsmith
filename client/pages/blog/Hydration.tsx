@@ -27,16 +27,33 @@ export default function BlogHydration() {
       </div>
 
       <div className="prose prose-slate mt-6 max-w-none">
-        <ul>
-          <li>Target 64+ oz daily; many feel best at ~½ body‑weight (oz).</li>
-          <li>
-            Spread intake through the day; start with 8–16 oz in the morning.
-          </li>
-          <li>
-            Consider electrolytes if lightheaded or cramping; limit sugary
-            drinks.
-          </li>
-        </ul>
+        <p>
+          Hydration influences appetite, energy, digestion, and even how your workouts feel. On GLP‑1s,
+          drinking consistently can ease GI side effects and help you feel steady between meals.
+        </p>
+        <p>
+          A practical target is <strong>64+ ounces</strong> daily, though many people do well closer to
+          half their body‑weight (in ounces). Use a marked bottle or set reminders to spread intake across
+          the day rather than chugging at night.
+        </p>
+        <p>
+          Start your morning with 8–16 oz of water before coffee. Keep a bottle visible at your desk or in
+          the car, and take a few sips whenever you switch tasks. Small, frequent sips are easier on the
+          stomach than large gulps.
+        </p>
+        <p>
+          If you notice lightheadedness, headaches, or muscle cramps—especially in heat or after exercise—add
+          electrolytes. Choose options low in sugar and monitor how you feel; you may only need them on more
+          active days.
+        </p>
+        <p>
+          Prefer flavor? Try infused water (citrus, berries, mint), unsweetened iced tea, or sparkling water.
+          Limit sugary beverages and alcohol, which can work against hydration goals and appetite signals.
+        </p>
+        <p>
+          Track your progress for a week and see what supports consistency—time blocks, favorite bottle,
+          flavored fizzy water, or pairing drinking with existing habits. The best plan is the one you’ll keep.
+        </p>
       </div>
 
       <Disclaimer className="mt-10" />
