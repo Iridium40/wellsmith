@@ -10,7 +10,10 @@ export const MY_STORY_PARAGRAPHS: string[] = [
 ];
 
 export function StoryProse({ limit }: { limit?: number }) {
-  const items = typeof limit === "number" ? MY_STORY_PARAGRAPHS.slice(0, limit) : MY_STORY_PARAGRAPHS;
+  const items =
+    typeof limit === "number"
+      ? MY_STORY_PARAGRAPHS.slice(0, limit)
+      : MY_STORY_PARAGRAPHS;
   return (
     <div className="max-w-none space-y-6">
       {items.map((text, i) => (

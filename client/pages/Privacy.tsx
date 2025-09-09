@@ -22,7 +22,8 @@ export default function Privacy() {
         Welcome to WellSmith ("we," "our," or "us"). This Privacy Policy
         explains how we collect, use, and protect your personal information when
         you visit our website {website} or use our services. WellSmith is the
-        personal brand of Kayce Smith, an Independent OPTAVIA Certified Health Coach.
+        personal brand of Kayce Smith, an Independent OPTAVIA Certified Health
+        Coach.
       </p>
       <p>
         By using our website or providing us with your personal information, you

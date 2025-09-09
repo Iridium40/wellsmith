@@ -89,10 +89,7 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
-          <p>
-            © {new Date().getFullYear()} WellSmith. All rights
-            reserved.
-          </p>
+          <p>© {new Date().getFullYear()} WellSmith. All rights reserved.</p>
           <p>Built with love for healthy habits.</p>
         </div>
       </div>

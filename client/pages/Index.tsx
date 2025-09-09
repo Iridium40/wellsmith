@@ -18,7 +18,8 @@ export default function Index() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 lg:grid-cols-12 lg:py-24">
           <div className="lg:col-span-7">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Hi, I'm Kayce Smith — Your Independent OPTAVIA Certified Health Coach
+              Hi, I'm Kayce Smith — Your Independent OPTAVIA Certified Health
+              Coach
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
               Ready to transform your relationship with food and find the energy
@@ -214,11 +215,7 @@ export default function Index() {
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
-              <a
-                href="/book-with-kayce"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <a href="/book-with-kayce" target="_blank" rel="noreferrer">
                 Book with Kayce
               </a>
             </Button>
