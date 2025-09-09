@@ -10,8 +10,8 @@ export default function BlogSleep() {
 
       <div className="mt-6 overflow-hidden rounded-2xl">
         <img
-          src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1400&q=80"
-          alt="Person sleeping peacefully"
+          src="https://cdn.pixabay.com/photo/2016/03/27/20/57/bed-1284238_1280.jpg"
+          alt="Cozy bed for restful sleep"
           className="h-auto w-full object-cover"
           loading="lazy"
         />
