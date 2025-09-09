@@ -3,9 +3,12 @@ import Disclaimer from "@/components/site/Disclaimer";
 export default function BlogPortions() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Eating the Right Portions</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+        Eating the Right Portions
+      </h1>
       <p className="mt-3 text-lg text-muted-foreground">
-        Portion targets keep you fueled without overeating—simple cues help you stay consistent.
+        Portion targets keep you fueled without overeating—simple cues help you
+        stay consistent.
       </p>
 
       <div className="mt-6 overflow-hidden rounded-2xl">

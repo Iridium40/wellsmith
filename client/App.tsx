@@ -51,12 +51,21 @@ const App = () => (
             <Route path="/get-started" element={<GetStarted />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/eating-right-on-glp1" element={<BlogGLP1Eating />} />
-            <Route path="/blog/drinking-enough-water" element={<BlogHydration />} />
+            <Route
+              path="/blog/eating-right-on-glp1"
+              element={<BlogGLP1Eating />}
+            />
+            <Route
+              path="/blog/drinking-enough-water"
+              element={<BlogHydration />}
+            />
             <Route path="/blog/getting-enough-sleep" element={<BlogSleep />} />
             <Route path="/blog/right-portions" element={<BlogPortions />} />
             <Route path="/blog/enough-protein" element={<BlogProtein />} />
-            <Route path="/blog/meditation-healthy-movement" element={<BlogMeditationMovement />} />
+            <Route
+              path="/blog/meditation-healthy-movement"
+              element={<BlogMeditationMovement />}
+            />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

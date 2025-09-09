@@ -54,9 +54,12 @@ const posts = [
 export default function Blog() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Blog</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+        Blog
+      </h1>
       <p className="mt-3 text-lg text-muted-foreground">
-        Evidence‑informed tips for weight loss, healthy habits, and GLP‑1 support.
+        Evidence‑informed tips for weight loss, healthy habits, and GLP‑1
+        support.
       </p>
 
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -75,7 +78,9 @@ export default function Blog() {
               />
             </div>
             <h2 className="mt-3 text-lg font-semibold">{p.title}</h2>
-            <p className="text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
+            <p className="text-sm text-muted-foreground line-clamp-2">
+              {p.excerpt}
+            </p>
             <p className="text-xs text-muted-foreground">Read more →</p>
           </Link>
         ))}

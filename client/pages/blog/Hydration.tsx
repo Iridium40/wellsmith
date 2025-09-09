@@ -3,9 +3,12 @@ import Disclaimer from "@/components/site/Disclaimer";
 export default function BlogHydration() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">Drinking Enough Water</h1>
+      <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+        Drinking Enough Water
+      </h1>
       <p className="mt-3 text-lg text-muted-foreground">
-        Hydration supports appetite regulation, energy, digestion, and overall wellbeing.
+        Hydration supports appetite regulation, energy, digestion, and overall
+        wellbeing.
       </p>
 
       <div className="mt-6 overflow-hidden rounded-2xl">
@@ -20,8 +23,13 @@ export default function BlogHydration() {
       <div className="prose prose-slate mt-6 max-w-none">
         <ul>
           <li>Target 64+ oz daily; many feel best at ~½ body‑weight (oz).</li>
-          <li>Spread intake through the day; start with 8–16 oz in the morning.</li>
-          <li>Consider electrolytes if lightheaded or cramping; limit sugary drinks.</li>
+          <li>
+            Spread intake through the day; start with 8–16 oz in the morning.
+          </li>
+          <li>
+            Consider electrolytes if lightheaded or cramping; limit sugary
+            drinks.
+          </li>
         </ul>
       </div>
 
