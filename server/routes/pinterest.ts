@@ -228,7 +228,7 @@ export const handlePinterest: RequestHandler = async (req, res) => {
 
     let pins: PinterestPin[] = items
       .map((it) => {
-        const title = (
+        let title = (
           typeof it?.title === "string"
             ? it.title
             : String(it?.title?.["#text"] ?? "")
@@ -236,6 +236,7 @@ export const handlePinterest: RequestHandler = async (req, res) => {
         const link = extractLinkFromItem(it) || "";
         const image = extractImageFromItem(it) || "";
         const description = (extractDescriptionFromItem(it) || "").trim();
+        if (!title && description) title = description.slice(0, 80);
         return { title, description, link, image } as PinterestPin;
       })
       .filter((p) => !!p.link);
@@ -260,10 +261,14 @@ export const handlePinterest: RequestHandler = async (req, res) => {
       }
     }
 
-    // Filter out items missing critical info
-    finalPins = finalPins.filter(
-      (p) => !!p.image && !!p.title?.trim() && !!p.description?.trim(),
-    );
+    // Filter out items missing critical info (relax: require image+link only)
+    finalPins = finalPins
+      .map((p) => ({
+        ...p,
+        title: p.title?.trim() || p.description?.slice(0, 80) || "Recipe",
+        description: p.description || p.title || "",
+      }))
+      .filter((p) => !!p.image && !!p.link);
 
     const resp: PinterestResponse = { pins: finalPins };
     res.json(resp);
