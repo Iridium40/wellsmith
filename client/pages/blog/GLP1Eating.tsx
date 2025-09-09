@@ -26,7 +26,7 @@ export default function BlogGLP1Eating() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
           GLP‑1 medications often reduce hunger and slow gastric emptying. That can be helpful for
           weight loss, but it also means nutrition quality matters more than ever. Your goal is to
