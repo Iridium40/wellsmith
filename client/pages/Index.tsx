@@ -204,7 +204,7 @@ export default function Index() {
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
-              <Link to="/book-with-kayce">Book with Lenee</Link>
+              <a href={import.meta.env.VITE_CALENDLY_URL} target="_blank" rel="noreferrer">Book with Lenee</a>
             </Button>
           </div>
         </div>
