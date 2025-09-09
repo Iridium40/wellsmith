@@ -2,10 +2,16 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Facebook, Instagram } from "lucide-react";
 import InstagramEmbed from "@/components/site/InstagramEmbed";
+import SEO from "@/components/site/SEO";
 
 export default function Contact() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16">
+      <SEO
+        title="Connect with Lenee Rogers | Rogers Optimal Health"
+        description="Get in touch with Lenee Rogers for coaching inquiries, OPTAVIA guidance, and support. Connect via social or schedule time."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Connect with Lenee
       </h1>
