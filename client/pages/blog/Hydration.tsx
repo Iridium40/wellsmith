@@ -26,7 +26,7 @@ export default function BlogHydration() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
           Hydration influences appetite, energy, digestion, and even how your workouts feel. On GLP‑1s,
           drinking consistently can ease GI side effects and help you feel steady between meals.
