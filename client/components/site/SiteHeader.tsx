@@ -21,11 +21,11 @@ export default function SiteHeader() {
         <Link
           to="/"
           className="flex items-center gap-2"
-          aria-label="WellSmith home"
+          aria-label="Rogers Optimal Health home"
         >
           <img
-            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fac77e7c0850e4d88a385f135957ff613?format=webp&width=800"
-            alt="WellSmith logo"
+            src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fef0136ecdde74b46be05d2666c884154?format=webp&width=800"
+            alt="Rogers Optimal Health logo"
             className="h-20 w-auto"
             loading="eager"
             decoding="async"
