@@ -1,8 +1,10 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function GetStarted() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <SEO title="Get Started with OPTAVIA | WellSmith" description="Start your OPTAVIA journey: program overview, what to expect, and next steps." />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Get Started with OPTAVIA
       </h1>

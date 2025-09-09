@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/site/SEO";
 
 export default function About() {
   return (
     <div>
+      <SEO title="About Kayce | WellSmith" description="Meet Kayce Smith, Independent OPTAVIA Certified Health Coach helping clients build healthy habits with compassionate, practical coaching." />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/40),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">

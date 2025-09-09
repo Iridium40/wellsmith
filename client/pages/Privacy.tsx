@@ -1,3 +1,5 @@
+import SEO from "@/components/site/SEO";
+
 export default function Privacy() {
   const effective = "September 5, 2025";
   const updated = "September 5, 2025";
@@ -7,6 +9,7 @@ export default function Privacy() {
       : "https://wellsmith.example";
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 prose prose-slate">
+      <SEO title="Privacy Policy | WellSmith" description="Read WellSmith’s privacy policy covering data use, cookies, and your choices." />
       <h1>Privacy Policy</h1>
       <p>
         <strong>Effective Date:</strong> {effective}

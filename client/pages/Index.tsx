@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/site/SEO";
 import Disclaimer from "@/components/site/Disclaimer";
 import { Instagram } from "lucide-react";
 
 export default function Index() {
   return (
     <div>
+      <SEO title="WellSmith | Weight Loss Coaching, Healthy Habits, GLP‑1 Support | Kayce Smith" description="Weight loss and healthy-habits coaching by Kayce Smith, Independent OPTAVIA Certified Health Coach. Lean & Green recipes, client support, and GLP‑1 lifestyle support." />
       {/* Hero */}
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(65%_40%_at_50%_-10%,theme(colors.secondary/70),transparent_70%)]" />

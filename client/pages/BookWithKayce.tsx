@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import SEO from "@/components/site/SEO";
 
 export default function BookWithKayce() {
   const calendlyUrl = import.meta.env.VITE_CALENDLY_URL as string | undefined;
@@ -9,6 +10,7 @@ export default function BookWithKayce() {
 
   return (
     <div>
+      <SEO title="Book with Kayce | WellSmith" description="Schedule time with Kayce Smith for coaching and program guidance." />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">

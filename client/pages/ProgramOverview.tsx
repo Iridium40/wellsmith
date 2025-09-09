@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import SEO from "@/components/site/SEO";
 
 export default function ProgramOverview() {
   return (
     <div>
+      <SEO title="Program Overview | OPTAVIA Coaching | WellSmith" description="How OPTAVIA plus one‑on‑one coaching works: assessment, structured fueling, daily support, and long‑term habits." />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(65%_40%_at_50%_-10%,theme(colors.secondary/60),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">
