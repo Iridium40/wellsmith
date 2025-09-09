@@ -26,7 +26,7 @@ export default function BlogSleep() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
           Better sleep improves appetite hormones, mood, and recovery—making healthy choices much easier the
           next day. On GLP‑1s, consistent sleep can also reduce nausea and support steady energy.
