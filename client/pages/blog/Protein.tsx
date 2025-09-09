@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function BlogProtein() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <SEO
+        title="Eating Enough Protein | WellSmith Blog"
+        description="How much protein you need, best sources, and easy ways to hit your target daily."
+        image="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1400&q=80"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Eating Enough Protein
       </h1>
