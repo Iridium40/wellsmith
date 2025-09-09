@@ -45,7 +45,13 @@ export default function Contact() {
             </a>
           </Button>
           <Button asChild>
-            <a href={import.meta.env.VITE_CALENDLY_URL} target="_blank" rel="noreferrer">Book with Lenee</a>
+            <a
+              href={import.meta.env.VITE_CALENDLY_URL}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Book with Lenee
+            </a>
           </Button>
         </div>
         <div className="mt-4 text-sm text-foreground/80">

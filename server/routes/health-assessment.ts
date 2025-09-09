@@ -69,13 +69,10 @@ export const handleHealthAssessment: RequestHandler = async (req, res) => {
   const to = "Leneerogers@gmail.com";
 
   if (!smtpHost || !smtpPort || !smtpUser || !smtpPass) {
-    return res
-      .status(500)
-      .json({
-        ok: false,
-        error:
-          "SMTP not configured (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)",
-      });
+    return res.status(500).json({
+      ok: false,
+      error: "SMTP not configured (SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS)",
+    });
   }
 
   const transporter = nodemailer.createTransport({

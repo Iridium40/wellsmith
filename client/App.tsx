@@ -30,43 +30,43 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/program" element={<ProgramOverview />} />
-            <Route path="/faqs" element={<FAQs />} />
-            <Route path="/recipes" element={<Recipes />} />
-            <Route path="/connect" element={<Contact />} />
-            <Route path="/book-assessment" element={<BookAssessment />} />
-            <Route path="/my-story" element={<MyStory />} />
-            <Route path="/why-coaching" element={<WhyCoaching />} />
-            <Route path="/book-with-kayce" element={<BookWithLenee />} />
-            <Route path="/get-started" element={<GetStarted />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route
-              path="/blog/eating-right-on-glp1"
-              element={<BlogGLP1Eating />}
-            />
-            <Route
-              path="/blog/drinking-enough-water"
-              element={<BlogHydration />}
-            />
-            <Route path="/blog/getting-enough-sleep" element={<BlogSleep />} />
-            <Route path="/blog/right-portions" element={<BlogPortions />} />
-            <Route path="/blog/enough-protein" element={<BlogProtein />} />
-            <Route
-              path="/blog/meditation-healthy-movement"
-              element={<BlogMeditationMovement />}
-            />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Layout>
-      </BrowserRouter>
+    <Toaster />
+    <Sonner />
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/program" element={<ProgramOverview />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/connect" element={<Contact />} />
+          <Route path="/book-assessment" element={<BookAssessment />} />
+          <Route path="/my-story" element={<MyStory />} />
+          <Route path="/why-coaching" element={<WhyCoaching />} />
+          <Route path="/book-with-kayce" element={<BookWithLenee />} />
+          <Route path="/get-started" element={<GetStarted />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route
+            path="/blog/eating-right-on-glp1"
+            element={<BlogGLP1Eating />}
+          />
+          <Route
+            path="/blog/drinking-enough-water"
+            element={<BlogHydration />}
+          />
+          <Route path="/blog/getting-enough-sleep" element={<BlogSleep />} />
+          <Route path="/blog/right-portions" element={<BlogPortions />} />
+          <Route path="/blog/enough-protein" element={<BlogProtein />} />
+          <Route
+            path="/blog/meditation-healthy-movement"
+            element={<BlogMeditationMovement />}
+          />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 

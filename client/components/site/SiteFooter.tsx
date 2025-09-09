@@ -38,7 +38,10 @@ export default function SiteFooter() {
               Book Assessment
             </Link>
             <a
-              href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach//leneerogers"}
+              href={
+                import.meta.env.VITE_OPTAVIA_COACH_URL ||
+                "https://www.optavia.com/us/en/coach//leneerogers"
+              }
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground"
@@ -86,7 +89,10 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
-          <p>© {new Date().getFullYear()} Rogers Optimal Health. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Rogers Optimal Health. All rights
+            reserved.
+          </p>
           <p>Built with love for healthy habits.</p>
         </div>
       </div>

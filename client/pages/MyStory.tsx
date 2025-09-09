@@ -21,54 +21,58 @@ export default function MyStory() {
         <div className="prose prose-slate max-w-none leading-relaxed space-y-6 prose-p:mt-0 prose-h2:mt-0 prose-h2:font-bold">
           <h2>Passionate Health Advocate</h2>
           <p>
-            Lenee Rogers is a passionate and dedicated certified health and wellness coach
-            with a wealth of experience in empowering individuals to make positive changes
-            in their lives. With a deep understanding of nutrition, fitness, and lifestyle
-            habits, Lenee is skilled at helping people develop and implement sustainable
-            changes that lead to improved overall well‑being.
+            Lenee Rogers is a passionate and dedicated certified health and
+            wellness coach with a wealth of experience in empowering individuals
+            to make positive changes in their lives. With a deep understanding
+            of nutrition, fitness, and lifestyle habits, Lenee is skilled at
+            helping people develop and implement sustainable changes that lead
+            to improved overall well‑being.
           </p>
 
           <h2>Holistic Health Believer</h2>
           <p>
-            As a firm believer in the power of holistic health, Lenee is committed to
-            guiding her clients toward optimal physical and mental wellness. With her
-            extensive knowledge and expertise, she has successfully supported numerous
-            individuals in achieving their health goals, transforming their lives for the
-            better.
+            As a firm believer in the power of holistic health, Lenee is
+            committed to guiding her clients toward optimal physical and mental
+            wellness. With her extensive knowledge and expertise, she has
+            successfully supported numerous individuals in achieving their
+            health goals, transforming their lives for the better.
           </p>
 
           <h2>Personalized Approach</h2>
           <p>
-            Lenee's approach to coaching is rooted in empathy, understanding, and
-            personalized attention. She recognizes that each person's journey is unique and
-            requires tailored strategies. By listening attentively and understanding her
-            clients' needs and aspirations, Lenee develops effective action plans that are
-            realistic and achievable.
+            Lenee's approach to coaching is rooted in empathy, understanding,
+            and personalized attention. She recognizes that each person's
+            journey is unique and requires tailored strategies. By listening
+            attentively and understanding her clients' needs and aspirations,
+            Lenee develops effective action plans that are realistic and
+            achievable.
           </p>
 
           <h2>Optavia Expertise</h2>
           <p>
-            One of the key resources Lenee utilizes in her coaching practice is Optavia.
-            This is a clinically proven plan with scientifically developed products called
-            fuelings. By leveraging Optavia's proven strategies and tools, Lenee ensures
-            that her clients have access to effective resources to support their
-            transformational journey.
+            One of the key resources Lenee utilizes in her coaching practice is
+            Optavia. This is a clinically proven plan with scientifically
+            developed products called fuelings. By leveraging Optavia's proven
+            strategies and tools, Lenee ensures that her clients have access to
+            effective resources to support their transformational journey.
           </p>
 
           <h2>Coaching Philosophy</h2>
           <p>
-            Lenee's coaching style combines compassion, accountability, and motivation. She
-            creates a safe and nurturing environment where individuals can explore
-            challenges, overcome obstacles, and celebrate their successes. Through ongoing
-            guidance, encouragement, and practical advice, Lenee empowers clients to adopt
-            healthier habits, make informed choices, and sustain positive change in the
+            Lenee's coaching style combines compassion, accountability, and
+            motivation. She creates a safe and nurturing environment where
+            individuals can explore challenges, overcome obstacles, and
+            celebrate their successes. Through ongoing guidance, encouragement,
+            and practical advice, Lenee empowers clients to adopt healthier
+            habits, make informed choices, and sustain positive change in the
             long term.
           </p>
           <p>
-            With Lenee as your guide, you can expect a transformative experience that goes
-            beyond achieving weight loss or fitness goals. Her holistic approach fosters
-            balance, self‑acceptance, and personal growth—enhancing physical health as well
-            as mental and emotional resilience for a more fulfilling, vibrant life.
+            With Lenee as your guide, you can expect a transformative experience
+            that goes beyond achieving weight loss or fitness goals. Her
+            holistic approach fosters balance, self‑acceptance, and personal
+            growth—enhancing physical health as well as mental and emotional
+            resilience for a more fulfilling, vibrant life.
           </p>
 
           <div className="mt-6">
@@ -93,8 +97,6 @@ export default function MyStory() {
           decoding="async"
         />
       </div>
-
-
 
       <Disclaimer className="mt-10" />
     </div>

@@ -16,7 +16,8 @@ export default function Privacy() {
         Welcome to WellSmith ("we," "our," or "us"). This Privacy Policy
         explains how we collect, use, and protect your personal information when
         you visit our website {website} or use our services. WellSmith is the
-        personal brand of Lenee Rogers, an Independent OPTAVIA Certified Health Coach.
+        personal brand of Lenee Rogers, an Independent OPTAVIA Certified Health
+        Coach.
       </p>
       <p>
         By using our website or providing us with your personal information, you
@@ -207,11 +208,23 @@ export default function Privacy() {
       <h2>9. Third-Party Links and Services</h2>
       <p>Our website may contain links to third-party websites, including:</p>
       <ul>
-        <li><strong>OPTAVIA's Official Website:</strong> <a href="https://www.optavia.com" target="_blank" rel="noreferrer">https://www.optavia.com</a></li>
-        <li><strong>Social Media Platforms</strong></li>
-        <li><strong>Other Health and Wellness Resources</strong></li>
+        <li>
+          <strong>OPTAVIA's Official Website:</strong>{" "}
+          <a href="https://www.optavia.com" target="_blank" rel="noreferrer">
+            https://www.optavia.com
+          </a>
+        </li>
+        <li>
+          <strong>Social Media Platforms</strong>
+        </li>
+        <li>
+          <strong>Other Health and Wellness Resources</strong>
+        </li>
       </ul>
-      <p>This Privacy Policy does not apply to third-party websites. We encourage you to review the privacy policies of any third-party sites you visit.</p>
+      <p>
+        This Privacy Policy does not apply to third-party websites. We encourage
+        you to review the privacy policies of any third-party sites you visit.
+      </p>
 
       <h2>10. Children's Privacy</h2>
       <p>
@@ -227,25 +240,58 @@ export default function Privacy() {
 
       <h2>12. California Privacy Rights (CCPA)</h2>
       <ul>
-        <li><strong>Right to Know:</strong> Request information about the categories and specific pieces of personal information we collect.</li>
-        <li><strong>Right to Delete:</strong> Request deletion of your personal information.</li>
-        <li><strong>Right to Opt-Out:</strong> Opt-out of the sale of personal information (we do not sell personal information).</li>
-        <li><strong>Right to Non-Discrimination:</strong> You will not be discriminated against for exercising your privacy rights.</li>
+        <li>
+          <strong>Right to Know:</strong> Request information about the
+          categories and specific pieces of personal information we collect.
+        </li>
+        <li>
+          <strong>Right to Delete:</strong> Request deletion of your personal
+          information.
+        </li>
+        <li>
+          <strong>Right to Opt-Out:</strong> Opt-out of the sale of personal
+          information (we do not sell personal information).
+        </li>
+        <li>
+          <strong>Right to Non-Discrimination:</strong> You will not be
+          discriminated against for exercising your privacy rights.
+        </li>
       </ul>
 
       <h2>13. European Privacy Rights (GDPR)</h2>
       <ul>
-        <li><strong>Legal Basis:</strong> We process your information based on legitimate interests, consent, or contractual necessity.</li>
-        <li><strong>Data Protection Officer:</strong> You may contact us regarding any GDPR-related concerns.</li>
-        <li><strong>Supervisory Authority:</strong> You have the right to file a complaint with your local data protection authority.</li>
+        <li>
+          <strong>Legal Basis:</strong> We process your information based on
+          legitimate interests, consent, or contractual necessity.
+        </li>
+        <li>
+          <strong>Data Protection Officer:</strong> You may contact us regarding
+          any GDPR-related concerns.
+        </li>
+        <li>
+          <strong>Supervisory Authority:</strong> You have the right to file a
+          complaint with your local data protection authority.
+        </li>
       </ul>
 
       <h2>14. Changes to This Privacy Policy</h2>
-      <p>We may update this Privacy Policy from time to time. When we make changes:</p>
+      <p>
+        We may update this Privacy Policy from time to time. When we make
+        changes:
+      </p>
       <ul>
-        <li><strong>Notification:</strong> We will post the updated policy on this page.</li>
-        <li><strong>Effective Date:</strong> The new policy will include an updated effective date.</li>
-        <li><strong>Material Changes:</strong> For significant changes, we may provide additional notice via email or website banner.</li>
+        <li>
+          <strong>Notification:</strong> We will post the updated policy on this
+          page.
+        </li>
+        <li>
+          <strong>Effective Date:</strong> The new policy will include an
+          updated effective date.
+        </li>
+        <li>
+          <strong>Material Changes:</strong> For significant changes, we may
+          provide additional notice via email or website banner.
+        </li>
       </ul>
 
       <h2>15. Contact Information</h2>
