@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 
 interface InstagramEmbedProps {
-  permalink: string; // e.g. https://www.instagram.com/smithkayce/
+  permalink: string; // e.g. https://www.instagram.com/leneerogers/
 }
 
 export default function InstagramEmbed({ permalink }: InstagramEmbedProps) {

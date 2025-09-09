@@ -7,10 +7,10 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-10 text-sm text-muted-foreground">
         <div className="grid gap-6 md:grid-cols-3">
           <div>
-            <Link to="/" aria-label="WellSmith home">
+            <Link to="/" aria-label="Rogers Optimal Health home">
               <img
-                src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F5c5b419b80d94e2fa4a2fc6699e87482?format=webp&width=800"
-                alt="WellSmith logo"
+                src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fef0136ecdde74b46be05d2666c884154?format=webp&width=800"
+                alt="Rogers Optimal Health logo"
                 className="h-16 w-auto md:h-20"
                 loading="lazy"
                 decoding="async"
@@ -37,11 +37,19 @@ export default function SiteFooter() {
             <Link to="/book-assessment" className="hover:text-foreground">
               Book Assessment
             </Link>
-            <Link to="/connect" className="hover:text-foreground">
-              Start Your Journey
-            </Link>
             <a
-              href="https://www.optavia.com/us/en/coach/kaycesmith"
+              href={
+                import.meta.env.VITE_OPTAVIA_COACH_URL ||
+                "https://www.optavia.com/us/en/coach//leneerogers"
+              }
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground"
+            >
+              Start Your Journey
+            </a>
+            <a
+              href="https://www.optavia.com/us/en/coach//leneerogers"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground"
@@ -49,7 +57,7 @@ export default function SiteFooter() {
               OPTAVIA Coach Profile
             </a>
             <a
-              href="https://www.facebook.com/kayces"
+              href="https://www.facebook.com/leneebiglane.rogers"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground inline-flex items-center gap-1"
@@ -57,20 +65,12 @@ export default function SiteFooter() {
               <Facebook className="h-4 w-4" /> Facebook
             </a>
             <a
-              href="https://www.instagram.com/smithkayce/"
+              href="https://www.instagram.com/leneerogers/"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground inline-flex items-center gap-1"
             >
               <Instagram className="h-4 w-4" /> Instagram
-            </a>
-            <a
-              href="https://www.whatcanhayesbe.com/"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-foreground"
-            >
-              Children’s Books
             </a>
           </nav>
           <div className="md:text-right">
@@ -78,7 +78,7 @@ export default function SiteFooter() {
             <a
               href={
                 import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                "https://www.optavia.com/us/en/coach//leneerogers"
               }
               target="_blank"
               rel="noreferrer"
@@ -89,7 +89,10 @@ export default function SiteFooter() {
           </div>
         </div>
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
-          <p>© {new Date().getFullYear()} WellSmith. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Rogers Optimal Health. All rights
+            reserved.
+          </p>
           <p>Built with love for healthy habits.</p>
         </div>
       </div>

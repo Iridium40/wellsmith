@@ -19,7 +19,7 @@ export default function Disclaimer({ className = "" }: { className?: string }) {
         and its coaches do not engage in or provide any medical services.
       </p>
       <p className="mt-2">
-        Kayce Smith is an Independent OPTAVIA Certified Health Coach.
+        Lenee Rogers is an Independent OPTAVIA Certified Health Coach.
       </p>
     </div>
   );
