@@ -42,7 +42,7 @@ export function createServer() {
       "/book-with-kayce",
       "/get-started",
       "/privacy",
-      "/blog",
+
       "/blog/eating-right-on-glp1",
       "/blog/drinking-enough-water",
       "/blog/getting-enough-sleep",
