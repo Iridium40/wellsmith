@@ -37,9 +37,14 @@ export default function SiteFooter() {
             <Link to="/book-assessment" className="hover:text-foreground">
               Book Assessment
             </Link>
-            <Link to="/connect" className="hover:text-foreground">
+            <a
+              href={import.meta.env.VITE_OPTAVIA_COACH_URL || "https://www.optavia.com/us/en/coach//leneerogers"}
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-foreground"
+            >
               Start Your Journey
-            </Link>
+            </a>
             <a
               href="https://www.optavia.com/us/en/coach//leneerogers"
               target="_blank"
