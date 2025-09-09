@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function BlogGLP1Eating() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <SEO
+        title="Eating Right on GLP‑1s | WellSmith Blog"
+        description="Strategies to feel your best, support muscle, and avoid common pitfalls while using GLP‑1 medications."
+        image="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Eating Right on GLP‑1s
       </h1>
