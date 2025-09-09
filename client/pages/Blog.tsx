@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import SEO from "@/components/site/SEO";
 
 const posts = [
   {
@@ -54,6 +55,11 @@ const posts = [
 export default function Blog() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <SEO
+        title="WellSmith Blog | GLP‑1 Support, Hydration, Sleep, Portions, Protein"
+        description="Evidence‑informed articles on weight loss, healthy habits, GLP‑1 support, hydration, sleep, portions, and protein from WellSmith."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Faea5685e48d24a62805449ee868fa228?format=webp&width=1200"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Blog
       </h1>
