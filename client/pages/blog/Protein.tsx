@@ -1,9 +1,13 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import SEO from "@/components/site/SEO";
+import { Link } from "react-router-dom";
 
 export default function BlogProtein() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <div className="mb-4">
+        <Link to="/why-coaching" className="text-sm text-primary hover:underline">← Back to Client Support</Link>
+      </div>
       <SEO
         title="Eating Enough Protein | WellSmith Blog"
         description="How much protein you need, best sources, and easy ways to hit your target daily."
@@ -32,7 +36,7 @@ export default function BlogProtein() {
           especially important during weight loss and on GLP‑1s when total food volume may be lower.
         </p>
         <p>
-          A practical range for many adults is <strong>0.7��1.0 g per pound of goal body weight</strong>, adjusted to
+          A practical range for many adults is <strong>0.7–1.0 g per pound of goal body weight</strong>, adjusted to
           your plan and medical guidance. Spread intake across the day so each meal delivers roughly 20–35 g.
         </p>
         <p>
