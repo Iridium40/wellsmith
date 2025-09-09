@@ -64,9 +64,17 @@ export default function Recipes() {
           !("pins" in data) ||
           !(data as PinterestResponse).pins?.length
         ) {
-          // Client-side fallback removed; rely on server to handle widget API fallback
-          const path = "";
-          if (false) {
+          const toPath = (u: string) => {
+            try {
+              const { pathname } = new URL(u);
+              return pathname.replace(/^\/+|\/+$/g, "");
+            } catch {
+              return "";
+            }
+          };
+          const fallbackBoard = "https://www.pinterest.com/optavia/lean-green/";
+          const path = toPath(fallbackBoard);
+          if (path) {
             try {
               const widgetRes = await fetchWithRetry(
                 `https://widgets.pinterest.com/v3/pidgets/boards/${path}/pins/`,
