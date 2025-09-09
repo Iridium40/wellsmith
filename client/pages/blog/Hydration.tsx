@@ -26,7 +26,7 @@ export default function BlogHydration() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
         <p>
           Hydration influences appetite, energy, digestion, and even how your workouts feel. On GLP‑1s,
           drinking consistently can ease GI side effects and help you feel steady between meals.
@@ -54,6 +54,11 @@ export default function BlogHydration() {
           Track your progress for a week and see what supports consistency—time blocks, favorite bottle,
           flavored fizzy water, or pairing drinking with existing habits. The best plan is the one you’ll keep.
         </p>
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://www.cdc.gov/nutrition/data-statistics/plain-water-the-healthier-choice.html" target="_blank" rel="noreferrer">CDC — Plain Water: The Healthier Choice</a></li>
+          <li><a href="https://www.hhs.gov/fitness/be-active/physical-activity-guidelines-for-americans/index.html" target="_blank" rel="noreferrer">HHS — Physical Activity Guidelines (hydration considerations)</a></li>
+        </ul>
       </div>
 
       <Disclaimer className="mt-10" />
