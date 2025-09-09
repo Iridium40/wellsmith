@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function BlogPortions() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <SEO
+        title="Eating the Right Portions | WellSmith Blog"
+        description="Simple portion targets to keep you satisfied and on‑plan without the guesswork."
+        image="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1400&q=80"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Eating the Right Portions
       </h1>
