@@ -18,11 +18,11 @@ export default function Contact() {
           Optavia Coach Profile:{" "}
           <a
             className="text-primary hover:underline"
-            href="https://www.optavia.com/us/en/coach/kaycesmith"
+            href="https://www.optavia.com/us/en/coach//leneerogers"
             target="_blank"
             rel="noreferrer"
           >
-            optavia.com/kaycesmith
+            optavia.com//leneerogers
           </a>
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
@@ -30,7 +30,7 @@ export default function Contact() {
             <a
               href={
                 import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                "https://www.optavia.com/us/en/coach//leneerogers"
               }
               target="_blank"
               rel="noreferrer"

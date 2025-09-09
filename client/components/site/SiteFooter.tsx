@@ -41,7 +41,7 @@ export default function SiteFooter() {
               Start Your Journey
             </Link>
             <a
-              href="https://www.optavia.com/us/en/coach/kaycesmith"
+              href="https://www.optavia.com/us/en/coach//leneerogers"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground"
@@ -78,7 +78,7 @@ export default function SiteFooter() {
             <a
               href={
                 import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                "https://www.optavia.com/us/en/coach//leneerogers"
               }
               target="_blank"
               rel="noreferrer"

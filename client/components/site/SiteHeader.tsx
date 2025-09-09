@@ -54,7 +54,7 @@ export default function SiteHeader() {
             <a
               href={
                 import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                "https://www.optavia.com/us/en/coach//leneerogers"
               }
               target="_blank"
               rel="noreferrer"
