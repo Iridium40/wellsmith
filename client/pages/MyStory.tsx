@@ -12,7 +12,7 @@ export default function MyStory() {
       </p>
 
       <div className="mt-8 grid grid-cols-2 gap-8">
-        <div className="prose prose-slate max-w-none">
+        <div className="prose prose-slate max-w-none leading-relaxed prose-p:mt-4 prose-h2:mt-6">
           <h2>Passionate Health Advocate</h2>
           <p>
             Lenee Rogers is a passionate and dedicated certified health and wellness coach
