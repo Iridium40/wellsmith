@@ -1,9 +1,13 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import SEO from "@/components/site/SEO";
+import { Link } from "react-router-dom";
 
 export default function BlogHydration() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <div className="mb-4">
+        <Link to="/why-coaching" className="text-sm text-primary hover:underline">← Back to Client Support</Link>
+      </div>
       <SEO
         title="Drinking Enough Water | WellSmith Blog"
         description="Hydration supports appetite regulation, energy, digestion, and overall wellbeing. Tips to hit your daily water goal."
