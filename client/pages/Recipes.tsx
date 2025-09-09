@@ -108,9 +108,13 @@ export default function Recipes() {
           throw lastErr || new Error("Unable to load");
 
         if (mounted) {
-          const list = (data as PinterestResponse).pins.filter(
-            (p) => !!p.image && !!p.title && !!p.description,
-          );
+          const list = (data as PinterestResponse).pins
+            .map((p) => ({
+              ...p,
+              title: p.title?.trim() || p.description?.slice(0, 80) || "Recipe",
+              description: p.description || p.title || "",
+            }))
+            .filter((p) => !!p.image && !!p.link);
           setPins(list);
           setError(list.length ? null : "No recipes found from Pinterest board.");
         }
@@ -153,8 +157,12 @@ export default function Recipes() {
       )}
       {error && (
         <div className="mt-6 rounded-md border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-          {error}. Please provide a public Pinterest board URL via the
-          PINTEREST_BOARD_URL environment variable.
+          {error}
+          {!pins?.length && (
+            <>
+              {" "}If this persists, ensure the public board URL is set via the PINTEREST_BOARD_URL environment variable.
+            </>
+          )}
         </div>
       )}
 
