@@ -27,5 +27,35 @@ export function createServer() {
   // Pinterest images (Lean & Green) from public board RSS
   app.get("/api/pinterest", handlePinterest);
 
+  // Sitemap
+  app.get("/sitemap.xml", (_req, res) => {
+    const routes = [
+      "/",
+      "/about",
+      "/program",
+      "/faqs",
+      "/recipes",
+      "/connect",
+      "/book-assessment",
+      "/my-story",
+      "/why-coaching",
+      "/book-with-kayce",
+      "/get-started",
+      "/privacy",
+    ];
+    const host = (_req.headers["x-forwarded-host"] || _req.headers.host || "").toString();
+    const proto = (_req.headers["x-forwarded-proto"] || "https").toString();
+    const base = host ? `${proto}://${host}` : "";
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">` +
+      routes
+        .map((p) =>
+          `<url><loc>${base}${p}</loc><changefreq>weekly</changefreq><priority>${p === "/" ? "1.0" : "0.7"}</priority></url>`,
+        )
+        .join("") +
+      `</urlset>`;
+    res.set("Content-Type", "application/xml").send(xml);
+  });
+
   return app;
 }
