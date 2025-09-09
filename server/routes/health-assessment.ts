@@ -66,7 +66,7 @@ export const handleHealthAssessment: RequestHandler = async (req, res) => {
   const smtpUser = process.env.SMTP_USER;
   const smtpPass = process.env.SMTP_PASS;
   const from = process.env.SMTP_FROM || smtpUser || "no-reply@example.com";
-  const to = "kaycecsmith@yahoo.com";
+  const to = "Leneerogers@gmail.com";
 
   if (!smtpHost || !smtpPort || !smtpUser || !smtpPass) {
     return res
