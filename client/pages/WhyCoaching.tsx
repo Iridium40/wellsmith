@@ -3,10 +3,16 @@ import Disclaimer from "@/components/site/Disclaimer";
 import { Link } from "react-router-dom";
 import { posts } from "@/pages/blog/posts";
 import ShareButton from "@/components/site/ShareButton";
+import SEO from "@/components/site/SEO";
 
 export default function WhyCoaching() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <SEO
+        title="Client Support | Rogers Optimal Health"
+        description="Success tips for the 5 & 1 Plan, hydration guidance, and practical coaching resources curated by Lenee Rogers."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
+      />
       <div className="flex flex-col gap-3 sm:gap-4">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
           Client Support
