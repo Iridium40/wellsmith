@@ -32,7 +32,7 @@ export default function BookWithLenee() {
               </div>
             ) : (
               <iframe
-                title="Book with Lenee — Calendly"
+                title="Book with Kayce — Calendly"
                 src={calendlyUrl}
                 className="h-[720px] w-full rounded-lg"
               />
