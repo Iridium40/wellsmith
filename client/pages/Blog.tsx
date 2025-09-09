@@ -15,7 +15,7 @@ const posts = [
     excerpt:
       "Why hydration matters for energy, appetite, and overall health—plus easy ways to hit your goal.",
     image:
-      "https://cdn.pixabay.com/photo/2016/11/29/05/33/beverage-1869598_1280.jpg",
+      "https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fd0195bb19ac44a7a9e95332565ec3727?format=webp&width=800",
   },
   {
     slug: "getting-enough-sleep",

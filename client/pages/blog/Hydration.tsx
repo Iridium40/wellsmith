@@ -10,7 +10,7 @@ export default function BlogHydration() {
 
       <div className="mt-6 overflow-hidden rounded-2xl">
         <img
-          src="https://cdn.pixabay.com/photo/2016/11/29/05/33/beverage-1869598_1280.jpg"
+          src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2Fd0195bb19ac44a7a9e95332565ec3727?format=webp&width=800"
           alt="Glass of water being poured"
           className="h-auto w-full object-cover"
           loading="lazy"
