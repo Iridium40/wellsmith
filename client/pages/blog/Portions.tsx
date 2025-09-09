@@ -26,7 +26,7 @@ export default function BlogPortions() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
           Portion awareness helps you stay satisfied without overeating—especially when your hunger signals are
           changing on GLP‑1s. Think of your plate as a simple framework rather than a strict rulebook.
