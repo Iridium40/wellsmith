@@ -26,7 +26,7 @@ export default function BlogPortions() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
         <p>
           Portion awareness helps you stay satisfied without overeating—especially when your hunger signals are
           changing on GLP‑1s. Think of your plate as a simple framework rather than a strict rulebook.
@@ -52,6 +52,11 @@ export default function BlogPortions() {
           Dining out? Scan the menu for a protein + veggie combo, ask for sauces on the side, and box half if portions
           are large. Consistency—not perfection—wins.
         </p>
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://www.myplate.gov/" target="_blank" rel="noreferrer">USDA — MyPlate</a></li>
+          <li><a href="https://www.dietaryguidelines.gov/" target="_blank" rel="noreferrer">Dietary Guidelines for Americans</a></li>
+        </ul>
       </div>
 
       <Disclaimer className="mt-10" />
