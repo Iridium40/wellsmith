@@ -251,7 +251,7 @@ export default function Privacy() {
         <br />
         <strong>Independent OPTAVIA Certified Health Coach</strong>
         <br />
-        <strong>Email:</strong> kaycecsmith@yahoo.com
+        <strong>Email:</strong> Leneerogers@gmail.com
         <br />
         <strong>Phone:</strong> 214-728-8810
         <br />
