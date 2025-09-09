@@ -1,9 +1,13 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import SEO from "@/components/site/SEO";
+import { Link } from "react-router-dom";
 
 export default function BlogMeditationMovement() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <div className="mb-4">
+        <Link to="/why-coaching" className="text-sm text-primary hover:underline">← Back to Client Support</Link>
+      </div>
       <SEO
         title="Meditation and Healthy Movement | WellSmith Blog"
         description="Reduce stress and build consistent movement with short, sustainable practices and breathwork."
