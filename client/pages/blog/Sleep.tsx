@@ -26,7 +26,7 @@ export default function BlogSleep() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
         <p>
           Better sleep improves appetite hormones, mood, and recovery—making healthy choices much easier the
           next day. On GLP‑1s, consistent sleep can also reduce nausea and support steady energy.
@@ -51,6 +51,11 @@ export default function BlogSleep() {
           Naps are fine when you need them; cap them at ~20–30 minutes and avoid late‑evening naps that make it
           harder to fall asleep at night.
         </p>
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://www.cdc.gov/sleep/about_sleep/how_much_sleep.html" target="_blank" rel="noreferrer">CDC — How Much Sleep Do I Need?</a></li>
+          <li><a href="https://aasm.org/" target="_blank" rel="noreferrer">American Academy of Sleep Medicine — Sleep Guidelines & Resources</a></li>
+        </ul>
       </div>
 
       <Disclaimer className="mt-10" />
