@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function GetStarted() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
+      <SEO
+        title="Get Started with OPTAVIA | Rogers Optimal Health"
+        description="Overview of the OPTAVIA program and what to expect working with coach Lenee Rogers."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Get Started with OPTAVIA
       </h1>
