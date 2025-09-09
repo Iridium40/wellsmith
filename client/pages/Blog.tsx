@@ -15,7 +15,7 @@ const posts = [
     excerpt:
       "Why hydration matters for energy, appetite, and overall health—plus easy ways to hit your goal.",
     image:
-      "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=1200&q=80",
+      "https://cdn.pixabay.com/photo/2016/11/29/05/33/beverage-1869598_1280.jpg",
   },
   {
     slug: "getting-enough-sleep",
@@ -23,7 +23,7 @@ const posts = [
     excerpt:
       "Sleep is a superpower for weight loss and health—here’s how to improve your nightly routine.",
     image:
-      "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=1200&q=80",
+      "https://cdn.pixabay.com/photo/2016/03/27/20/57/bed-1284238_1280.jpg",
   },
   {
     slug: "right-portions",
