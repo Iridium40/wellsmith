@@ -26,6 +26,7 @@ import BlogHydration from "@/pages/blog/Hydration";
 import BlogSleep from "@/pages/blog/Sleep";
 import BlogPortions from "@/pages/blog/Portions";
 import BlogProtein from "@/pages/blog/Protein";
+import BlogMeditationMovement from "@/pages/blog/MeditationMovement";
 
 const queryClient = new QueryClient();
 
@@ -55,6 +56,7 @@ const App = () => (
             <Route path="/blog/getting-enough-sleep" element={<BlogSleep />} />
             <Route path="/blog/right-portions" element={<BlogPortions />} />
             <Route path="/blog/enough-protein" element={<BlogProtein />} />
+            <Route path="/blog/meditation-healthy-movement" element={<BlogMeditationMovement />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
