@@ -15,13 +15,14 @@ export default function WhyCoaching() {
           Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®,
           hydration guidance, and coaching resources—everything in one place.
         </p>
-        <div className="mt-4 self-center">
+        <div className="mt-4 flex items-center justify-center gap-3">
           <a
             href="/book-with-kayce"
             className="inline-flex h-11 items-center justify-center rounded-md bg-primary px-6 text-white shadow hover:opacity-95"
           >
             Book with Kayce
           </a>
+          <ShareButton buttonLabel="Share Client Support" size="sm" title="Client Support | WellSmith" description="Tips for success on the 5 & 1 Plan, hydration guidance, and resources." />
         </div>
       </div>
 
