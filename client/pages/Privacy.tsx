@@ -1,10 +1,7 @@
 export default function Privacy() {
   const effective = "September 9, 2025";
   const updated = "September 9, 2025";
-  const website =
-    typeof window !== "undefined"
-      ? window.location.origin
-      : "https://wellsmith.example";
+  const website = "https://rogersoptimalhealth.com";
   return (
     <div className="mx-auto max-w-3xl px-4 py-16 prose prose-slate">
       <h1>Privacy Policy</h1>
