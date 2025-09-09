@@ -55,7 +55,7 @@ export default function Contact() {
           <span className="mx-2">•</span>
           <a
             className="text-primary hover:underline inline-flex items-center gap-1"
-            href="https://www.instagram.com/smithkayce/"
+            href="https://www.instagram.com/leneerogers/"
             target="_blank"
             rel="noreferrer"
           >
@@ -65,7 +65,7 @@ export default function Contact() {
       </div>
 
       <div className="mt-8">
-        <InstagramEmbed permalink="https://www.instagram.com/smithkayce/" />
+        <InstagramEmbed permalink="https://www.instagram.com/leneerogers/" />
       </div>
 
       <div className="mt-8 rounded-2xl border bg-white p-6 text-xs leading-6 text-muted-foreground">
