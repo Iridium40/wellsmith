@@ -26,7 +26,7 @@ export default function BlogProtein() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
         <p>
           Protein is the building block that helps preserve lean mass, steadies appetite, and supports recovery. It’s
           especially important during weight loss and on GLP‑1s when total food volume may be lower.
@@ -51,6 +51,11 @@ export default function BlogProtein() {
           If appetite is low, start meals with protein first and take small bites. Your coach can help personalize the
           amount as your training, goals, or medication dose change.
         </p>
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://www.hsph.harvard.edu/nutritionsource/what-should-you-eat/protein/" target="_blank" rel="noreferrer">Harvard T.H. Chan — The Nutrition Source: Protein</a></li>
+          <li><a href="https://www.myplate.gov/eat-healthy/protein-foods" target="_blank" rel="noreferrer">USDA — Protein Foods Group</a></li>
+        </ul>
       </div>
 
       <Disclaimer className="mt-10" />
