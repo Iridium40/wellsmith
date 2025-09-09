@@ -23,7 +23,7 @@ const posts = [
     excerpt:
       "Sleep is a superpower for weight loss and health—here’s how to improve your nightly routine.",
     image:
-      "https://cdn.pixabay.com/photo/2016/03/27/20/57/bed-1284238_1280.jpg",
+      "https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F155c7ececc0848188255f02e0c732cc6?format=webp&width=800",
   },
   {
     slug: "right-portions",
