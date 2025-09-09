@@ -22,8 +22,7 @@ export default function Privacy() {
         Welcome to WellSmith ("we," "our," or "us"). This Privacy Policy
         explains how we collect, use, and protect your personal information when
         you visit our website {website} or use our services. WellSmith is the
-        personal brand of Lenee Rogers, an Independent OPTAVIA Certified Health
-        Coach.
+        personal brand of Kayce Smith, an Independent OPTAVIA Certified Health Coach.
       </p>
       <p>
         By using our website or providing us with your personal information, you
@@ -302,7 +301,7 @@ export default function Privacy() {
 
       <h2>15. Contact Information</h2>
       <p>
-        <strong>Lenee Rogers - WellSmith</strong>
+        <strong>Kayce Smith - WellSmith</strong>
         <br />
         <strong>Independent OPTAVIA Certified Health Coach</strong>
         <br />
@@ -315,7 +314,7 @@ export default function Privacy() {
 
       <h2>16. Disclaimer</h2>
       <p>
-        <strong>Important:</strong> Lenee Rogers is an Independent OPTAVIA
+        <strong>Important:</strong> Kayce Smith is an Independent OPTAVIA
         Certified Health Coach. This website and its privacy practices are
         separate from OPTAVIA's official website and privacy policy.
       </p>
