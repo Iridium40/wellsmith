@@ -41,6 +41,14 @@ const posts = [
     image:
       "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80",
   },
+  {
+    slug: "meditation-healthy-movement",
+    title: "Meditation and Healthy Movement",
+    excerpt:
+      "Reduce stress and build consistent movement with short, sustainable practices.",
+    image:
+      "https://images.unsplash.com/photo-1540206276207-3af25c08abc4?auto=format&fit=crop&w=1200&q=80",
+  },
 ];
 
 export default function Blog() {
