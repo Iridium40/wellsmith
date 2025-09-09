@@ -65,7 +65,7 @@ export default function Index() {
                 <div className="text-center">
                   <div className="relative inline-block">
                     <img
-                      src="https://cdn.builder.io/o/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F79af2e9d675c4612881ad4e31a21d56e?alt=media&token=5992b69c-4b7c-4626-b11a-3ff3fd9133bd&apiKey=a42b6f9ec53e4654a92af75aad56d14f"
+                      src="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F6b0c18aa9d394275b3597c5f0dc1c993"
                       alt="Kayce Smith"
                       className="mx-auto h-64 w-auto rounded-xl"
                       loading="eager"
