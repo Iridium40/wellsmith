@@ -75,7 +75,7 @@ export default function WhyCoaching() {
         </div>
       </div>
 
-      <h2 className="mt-10 text-2xl font-bold tracking-tight">From the Blog</h2>
+      <h2 className="mt-10 text-2xl font-bold tracking-tight">Health and Wellness Information</h2>
       <p className="mt-2 text-sm text-muted-foreground">
         Articles on GLP‑1 support, hydration, sleep, portions, protein, and more.
       </p>
