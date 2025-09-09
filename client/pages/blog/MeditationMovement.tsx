@@ -26,7 +26,7 @@ export default function BlogMeditationMovement() {
         />
       </div>
 
-      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6">
+      <div className="prose prose-slate mt-6 max-w-none leading-relaxed prose-p:my-4 prose-p:indent-6 space-y-6">
         <p>
           A calmer nervous system makes behavior change easier. Begin with 2–5 minutes of diaphragmatic breathing
           or a simple box breath (inhale 4, hold 4, exhale 4, hold 4). Even one short session can reduce stress‑eating
