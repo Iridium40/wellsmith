@@ -1,8 +1,14 @@
 import Disclaimer from "@/components/site/Disclaimer";
+import SEO from "@/components/site/SEO";
 
 export default function BlogSleep() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
+      <SEO
+        title="Getting Enough Sleep | WellSmith Blog"
+        description="Sleep quality influences hunger hormones, recovery, and weight management. Practical tips for better rest."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F155c7ececc0848188255f02e0c732cc6?format=webp&width=1200"
+      />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Getting Enough Sleep
       </h1>
