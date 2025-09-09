@@ -27,11 +27,31 @@ export default function BlogPortions() {
       </div>
 
       <div className="prose prose-slate mt-6 max-w-none">
-        <ul>
-          <li>Lean protein: 5–7 oz cooked (palm‑size) for most adults.</li>
-          <li>Non‑starchy vegetables: 3 servings per Lean & Green meal.</li>
-          <li>Healthy fats/condiments: follow plan guidance to personalize.</li>
-        </ul>
+        <p>
+          Portion awareness helps you stay satisfied without overeating—especially when your hunger signals are
+          changing on GLP‑1s. Think of your plate as a simple framework rather than a strict rulebook.
+        </p>
+        <p>
+          A reliable starting point for a Lean & Green is palm‑size <strong>lean protein (5–7 oz cooked)</strong>,
+          a generous serving of non‑starchy vegetables (about half the plate), and plan‑appropriate healthy fats.
+          Adjust up or down based on energy, goals, and guidance from your coach.
+        </p>
+        <p>
+          Hand‑based cues are helpful anywhere: palm = protein, fist = veggies, thumb = fats. These visual anchors
+          work at home, at restaurants, and while traveling.
+        </p>
+        <p>
+          If measuring once or twice a week helps calibration, use a food scale or measuring cups during meal prep.
+          Over time you’ll estimate by sight with confidence.
+        </p>
+        <p>
+          Eat slowly and pause at <em>comfortable</em> fullness rather than clearing the plate by default. Leftovers
+          make excellent next‑day lunches and protect your progress.
+        </p>
+        <p>
+          Dining out? Scan the menu for a protein + veggie combo, ask for sauces on the side, and box half if portions
+          are large. Consistency—not perfection—wins.
+        </p>
       </div>
 
       <Disclaimer className="mt-10" />
