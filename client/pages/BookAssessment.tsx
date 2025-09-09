@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import ShareButton from "@/components/site/ShareButton";
+import SEO from "@/components/site/SEO";
 import type {
   HealthAssessmentRequest,
   HealthAssessmentResponse,
@@ -99,6 +100,11 @@ export default function BookAssessment() {
 
   return (
     <div>
+      <SEO
+        title="Book Your Free Health Assessment | Rogers Optimal Health"
+        description="Complete a quick health assessment and, once submitted, schedule time with coach Lenee Rogers."
+        image="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
+      />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
         <div className="mx-auto max-w-6xl px-4 py-16">
