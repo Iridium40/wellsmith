@@ -82,7 +82,7 @@ export default function Index() {
                   </p>
                   <div className="mt-3 text-sm">
                     <a
-                      href="https://www.instagram.com/smithkayce/"
+                      href="https://www.instagram.com/leneerogers/"
                       target="_blank"
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 text-primary hover:underline"
