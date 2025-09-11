@@ -100,8 +100,10 @@
 
     <script type="module" src="/client/App.tsx"></script>
     
-    <!-- Service Worker Registration -->
+    <!-- Service Worker Registration - Temporarily disabled for debugging -->
     <script>
+      // Temporarily disable service worker to debug routing issues
+      /*
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
@@ -113,6 +115,7 @@
             });
         });
       }
+      */
     </script>
     
     <!-- Google Analytics (replace with your tracking ID) -->

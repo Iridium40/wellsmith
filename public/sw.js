@@ -1,25 +1,29 @@
 const CACHE_NAME = 'wellsmith-v1';
 const STATIC_CACHE_URLS = [
   '/',
-  '/about',
-  '/program',
-  '/faqs',
-  '/recipes',
-  '/connect',
-  '/my-story',
-  '/why-coaching',
-  '/get-started',
-  '/privacy',
+  '/index.html',
+  '/favicon.ico',
+  '/robots.txt',
+  '/sitemap.xml',
 ];
 
-// Install event - cache static assets
+// Install event - cache static assets only
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        return cache.addAll(STATIC_CACHE_URLS);
+        // Only cache actual static files, not SPA routes
+        return cache.addAll(STATIC_CACHE_URLS.filter(url => {
+          // Only cache files that actually exist as static assets
+          return url === '/' || url.includes('.') || url === '/index.html';
+        }));
       })
       .then(() => {
+        return self.skipWaiting();
+      })
+      .catch((error) => {
+        console.log('Service worker install failed:', error);
+        // Don't fail the install if some files can't be cached
         return self.skipWaiting();
       })
   );
@@ -54,6 +58,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
+  // Skip SPA routes - let them be handled by the main app
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith('/') && !url.pathname.includes('.') && url.pathname !== '/') {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
@@ -65,18 +75,24 @@ self.addEventListener('fetch', (event) => {
               return fetchResponse;
             }
 
-            // Clone the response
-            const responseToCache = fetchResponse.clone();
-
-            // Cache static assets
-            if (STATIC_CACHE_URLS.some(url => event.request.url.includes(url))) {
+            // Only cache actual static assets (files with extensions)
+            if (url.pathname.includes('.') || url.pathname === '/') {
+              const responseToCache = fetchResponse.clone();
               caches.open(CACHE_NAME)
                 .then((cache) => {
                   cache.put(event.request, responseToCache);
+                })
+                .catch((error) => {
+                  console.log('Cache put failed:', error);
                 });
             }
 
             return fetchResponse;
+          })
+          .catch((error) => {
+            console.log('Fetch failed:', error);
+            // Return a basic response for failed fetches
+            return new Response('Network error', { status: 408 });
           });
       })
   );
