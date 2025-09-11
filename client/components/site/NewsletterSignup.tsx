@@ -177,7 +177,10 @@ export default function NewsletterSignup({
             {isLoading ? "Subscribing..." : buttonText}
           </Button>
           <p className="text-xs text-muted-foreground text-center">
-            We respect your privacy. Unsubscribe at any time.
+            We respect your privacy. Unsubscribe at any time.{" "}
+            <a href="/privacy" className="text-primary hover:underline">
+              Privacy Policy
+            </a>
           </p>
         </form>
       </CardContent>

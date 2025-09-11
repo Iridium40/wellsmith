@@ -34,9 +34,11 @@ export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
 
     // Add to HubSpot
     const hubspotResult = await addToHubSpot(email);
+    console.log("HubSpot result:", hubspotResult);
     
     // Send welcome email via Resend
     const resendResult = await sendWelcomeEmail(email);
+    console.log("Resend result:", resendResult);
 
     if (hubspotResult.success && resendResult.success) {
       res.json({
@@ -133,7 +135,9 @@ async function addToHubSpot(email: string): Promise<{ success: boolean; contactI
       if (updateResponse.ok) {
         return { success: true, contactId };
       } else {
-        throw new Error(`HubSpot update failed: ${updateResponse.statusText}`);
+        const errorData = await updateResponse.text();
+        console.error("HubSpot update error:", errorData);
+        throw new Error(`HubSpot update failed: ${updateResponse.statusText} - ${errorData}`);
       }
     } else {
       // Create new contact
@@ -162,7 +166,9 @@ async function addToHubSpot(email: string): Promise<{ success: boolean; contactI
         const createData = await createResponse.json();
         return { success: true, contactId: createData.id };
       } else {
-        throw new Error(`HubSpot create failed: ${createResponse.statusText}`);
+        const errorData = await createResponse.text();
+        console.error("HubSpot create error:", errorData);
+        throw new Error(`HubSpot create failed: ${createResponse.statusText} - ${errorData}`);
       }
     }
   } catch (error) {

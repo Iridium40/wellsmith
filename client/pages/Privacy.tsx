@@ -38,6 +38,9 @@ export default function Privacy() {
           number
         </li>
         <li>
+          <strong>Newsletter Subscription:</strong> Email address for newsletter and health tips delivery
+        </li>
+        <li>
           <strong>Health Assessment Information:</strong> Health goals, current
           weight, dietary preferences, medical history (if voluntarily shared)
         </li>
@@ -75,6 +78,9 @@ export default function Privacy() {
           health coaching and OPTAVIA program guidance
         </li>
         <li>
+          <strong>Newsletter and Marketing:</strong> To send you health tips, recipes, coaching insights, and promotional content via email
+        </li>
+        <li>
           <strong>Communication:</strong> To respond to your inquiries, schedule
           consultations, and provide ongoing support
         </li>
@@ -91,12 +97,18 @@ export default function Privacy() {
           and client relationships
         </li>
       </ul>
+      <h3>Newsletter Subscription</h3>
+      <p>When you subscribe to our newsletter:</p>
+      <ul>
+        <li><strong>Email Collection:</strong> We collect your email address for newsletter delivery</li>
+        <li><strong>HubSpot Integration:</strong> Your email is stored in our HubSpot CRM system for contact management</li>
+        <li><strong>Email Marketing:</strong> We use Resend email service to deliver newsletters and health content</li>
+        <li><strong>Unsubscribe:</strong> You can unsubscribe at any time using the link in our emails or by contacting us directly</li>
+      </ul>
+      
       <h3>Important Note About Data Storage</h3>
       <p>
-        <strong>
-          We do not store your personal information on our servers.
-        </strong>{" "}
-        Information collected through our web forms is immediately transmitted
+        <strong>Newsletter subscribers:</strong> Your email address is stored in our HubSpot CRM system and used for email marketing purposes. Other information collected through our web forms is immediately transmitted
         via email to our coaching team and is not retained in any database or
         server storage system.
       </p>
@@ -115,9 +127,12 @@ export default function Privacy() {
         </li>
         <li>
           <strong>Service Providers:</strong> With trusted third-party service
-          providers who assist us with website hosting, email services, and
-          other business operations (these providers are bound by
-          confidentiality agreements)
+          providers who assist us with:
+          <ul>
+            <li><strong>HubSpot:</strong> Customer relationship management and email marketing</li>
+            <li><strong>Resend:</strong> Email delivery service for newsletters and communications</li>
+            <li><strong>Website hosting and other business operations</strong> (these providers are bound by confidentiality agreements)</li>
+          </ul>
         </li>
         <li>
           <strong>Legal Requirements:</strong> When required by law, legal
@@ -148,7 +163,10 @@ export default function Privacy() {
       <h2>6. Data Retention</h2>
       <ul>
         <li>
-          <strong>Form Submissions:</strong> Information is immediately
+          <strong>Newsletter Subscribers:</strong> Your email address and subscription information are retained in our HubSpot CRM system until you unsubscribe or request deletion
+        </li>
+        <li>
+          <strong>Form Submissions:</strong> Other information is immediately
           transmitted via email and not retained on our website
         </li>
         <li>
@@ -158,7 +176,7 @@ export default function Privacy() {
         </li>
         <li>
           <strong>Deletion Requests:</strong> You may request deletion of your
-          information from our email records at any time
+          information from our records at any time by contacting us or using the unsubscribe link in our emails
         </li>
       </ul>
 
@@ -306,11 +324,23 @@ export default function Privacy() {
         <br />
         <strong>Independent OPTAVIA Certified Health Coach</strong>
         <br />
-        <strong>Email:</strong> Leneerogers@gmail.com
+        <strong>Email:</strong> kayce@smithhelthwellness.com
         <br />
-        <strong>Phone:</strong> 214-728-8810
+        <strong>Website:</strong> wellsmith.com
         <br />
-        <strong>Website:</strong> {website}
+        <strong>Instagram:</strong> @smithkayce
+      </p>
+      
+      <h3>Newsletter Unsubscribe</h3>
+      <p>To unsubscribe from our newsletter:</p>
+      <ul>
+        <li>Click the "Unsubscribe" link in any of our emails</li>
+        <li>Email us at kayce@smithhelthwellness.com with "Unsubscribe" in the subject line</li>
+        <li>Contact us through our website contact form</li>
+      </ul>
+      
+      <p>
+        For OPTAVIA-related privacy questions, please refer to OPTAVIA's official privacy policy at their website.
       </p>
 
       <h2>16. Disclaimer</h2>
