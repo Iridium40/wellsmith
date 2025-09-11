@@ -57,14 +57,14 @@ async function addToHubSpot(email: string) {
             "Authorization": `Bearer ${hubspotToken}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            properties: {
-              hs_analytics_source: "wellsmith",
-              hs_email_optout: "false",
-              lifecyclestage: "subscriber",
-              hs_analytics_source_data_1: "newsletter_signup",
-            },
-          }),
+        body: JSON.stringify({
+          properties: {
+            hs_analytics_source: "wellsmith",
+            hs_email_optout: false,
+            lifecyclestage: "subscriber",
+            hs_analytics_source_data_1: "newsletter_signup",
+          },
+        }),
         }
       );
 
@@ -87,7 +87,7 @@ async function addToHubSpot(email: string) {
             properties: {
               email: email,
               hs_analytics_source: "wellsmith",
-              hs_email_optout: "false",
+              hs_email_optout: false,
               lifecyclestage: "subscriber",
               hs_analytics_source_data_1: "newsletter_signup",
               createdate: new Date().toISOString(),
@@ -126,19 +126,66 @@ async function sendWelcomeEmail(email: string) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "kayce@smithhelthwellness.com",
+        from: "WellSmith <kayce@smithhealthwellness.com>",
         to: [email],
         subject: "Welcome to WellSmith! 🎉",
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h1 style="color: #2563eb;">Welcome to WellSmith!</h1>
-            <p>Thank you for subscribing to our newsletter. You'll receive health tips, recipes, and coaching insights delivered to your inbox.</p>
-            <p>We're excited to be part of your wellness journey!</p>
-            <p>Best regards,<br>Kayce Smith<br>Independent OPTAVIA Certified Health Coach</p>
-            <hr>
-            <p style="font-size: 12px; color: #666;">
-              You can unsubscribe at any time by clicking the link in our emails or contacting us directly.
-            </p>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+            <!-- Logo Section -->
+            <div style="text-align: center; margin-bottom: 30px;">
+              <div style="display: inline-block; margin-bottom: 15px;">
+                <!-- WellSmith Logo Icon -->
+                <svg width="80" height="80" viewBox="0 0 100 100" style="display: block; margin: 0 auto;">
+                  <!-- Teal petals (top, bottom, left, right) -->
+                  <path d="M50 10 L60 30 L50 50 L40 30 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
+                  <path d="M50 50 L60 70 L50 90 L40 70 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
+                  <path d="M10 50 L30 40 L50 50 L30 60 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
+                  <path d="M50 50 L70 40 L90 50 L70 60 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
+                  <!-- Transparent petals (diagonal) -->
+                  <path d="M50 10 L70 30 L50 50 L30 30 Z" fill="transparent" stroke="#000" stroke-width="1"/>
+                  <path d="M50 50 L70 70 L50 90 L30 70 Z" fill="transparent" stroke="#000" stroke-width="1"/>
+                  <path d="M10 50 L30 30 L50 50 L30 70 Z" fill="transparent" stroke="#000" stroke-width="1"/>
+                  <path d="M50 50 L70 30 L90 50 L70 70 Z" fill="transparent" stroke="#000" stroke-width="1"/>
+                </svg>
+              </div>
+              <!-- Brand Name -->
+              <div style="text-align: center;">
+                <span style="font-family: 'Times New Roman', serif; font-size: 28px; font-weight: bold; color: #000;">WELL</span>
+                <span style="font-family: 'Brush Script MT', cursive; font-size: 28px; color: #000; margin-left: 5px;">Smith</span>
+              </div>
+            </div>
+            
+            <!-- Welcome Content -->
+            <div style="text-align: center; margin-bottom: 30px;">
+              <h1 style="color: #00C0C0; font-size: 32px; margin-bottom: 20px; font-weight: 300;">Welcome to WellSmith!</h1>
+              <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
+                Thank you for subscribing to our newsletter. You'll receive health tips, recipes, and coaching insights delivered to your inbox.
+              </p>
+              <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 30px;">
+                We're excited to be part of your wellness journey!
+              </p>
+            </div>
+            
+            <!-- Signature -->
+            <div style="text-align: center; margin-bottom: 30px; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+              <p style="font-size: 16px; color: #333; margin: 0;">
+                Best regards,<br>
+                <strong style="color: #00C0C0;">Kayce Smith</strong><br>
+                <em style="color: #666;">Independent OPTAVIA Certified Health Coach</em>
+              </p>
+            </div>
+            
+            <!-- Footer -->
+            <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 30px 0;">
+            <div style="text-align: center;">
+              <p style="font-size: 12px; color: #666; margin: 0;">
+                You can unsubscribe at any time by clicking the link in our emails or contacting us directly.
+              </p>
+              <p style="font-size: 12px; color: #666; margin: 10px 0 0 0;">
+                <a href="https://wellsmith.com" style="color: #00C0C0; text-decoration: none;">wellsmith.com</a> | 
+                <a href="https://wellsmith.com/privacy" style="color: #00C0C0; text-decoration: none;">Privacy Policy</a>
+              </p>
+            </div>
           </div>
         `,
       }),
