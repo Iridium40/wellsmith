@@ -27,11 +27,8 @@ async function addToHubSpot(email: string) {
         body: JSON.stringify({
           properties: {
             email: email,
-            hs_analytics_source: "wellsmith",
-            hs_email_optout: false,
+            hs_analytics_source: "EMAIL_MARKETING",
             lifecyclestage: "subscriber",
-            hs_analytics_source_data_1: "newsletter_signup",
-            createdate: new Date().toISOString(),
           },
         }),
       }
@@ -91,10 +88,8 @@ async function addToHubSpot(email: string) {
                 },
                 body: JSON.stringify({
                   properties: {
-                    hs_analytics_source: "wellsmith",
-                    hs_email_optout: false,
+                    hs_analytics_source: "EMAIL_MARKETING",
                     lifecyclestage: "subscriber",
-                    hs_analytics_source_data_1: "newsletter_signup",
                   },
                 }),
               }
