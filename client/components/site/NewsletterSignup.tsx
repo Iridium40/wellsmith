@@ -55,6 +55,7 @@ export default function NewsletterSignup({
     setIsLoading(true);
 
     try {
+      console.log("Making newsletter subscription request...");
       const response = await fetch("/api/newsletter/subscribe", {
         method: "POST",
         headers: {
@@ -63,7 +64,15 @@ export default function NewsletterSignup({
         body: JSON.stringify({ email: email.trim() }),
       });
 
+      console.log("Response status:", response.status);
+      console.log("Response headers:", response.headers);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
+      console.log("Response data:", data);
 
       if (response.ok) {
         setIsSubscribed(true);

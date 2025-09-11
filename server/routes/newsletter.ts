@@ -14,9 +14,16 @@ interface NewsletterResponse {
 
 export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
   try {
+    console.log("Newsletter subscription request received:", {
+      method: req.method,
+      body: req.body,
+      headers: req.headers,
+    });
+
     // Validate request body
     const validation = subscribeSchema.safeParse(req.body);
     if (!validation.success) {
+      console.log("Validation failed:", validation.error);
       return res.status(400).json({
         success: false,
         message: "Invalid email address",
@@ -179,7 +186,7 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Kayce Smith <kayce@wellsmith.com>", // Update with your actual email
+        from: "Kayce Smith <kayce@smithhelthwellness.com>", // Update with your actual email
         to: [email],
         subject: "Welcome to WellSmith - Your Health Journey Starts Here!",
         html: `
