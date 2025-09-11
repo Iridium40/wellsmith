@@ -16,10 +16,11 @@
       content="weight loss, healthy habits, GLP-1, Ozempic, Wegovy, Mounjaro, Optavia, Lean & Green recipes, health coach, wellness, nutrition"
     />
     <meta name="robots" content="index,follow" />
-    <meta name="theme-color" content="#00bfa5" />
+    <meta name="theme-color" content="#1babe0" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="WellSmith" />
-    <meta property="og:url" content="/" />
+    <meta property="og:url" content="https://wellsmith.example/" />
+    <meta property="og:locale" content="en_US" />
     <meta
       property="og:title"
       content="WellSmith | Weight Loss Coaching, Healthy Habits, GLP-1 Support | Kayce Smith"
@@ -33,6 +34,8 @@
       content="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F67f507b077de46a0bb2324ea8656430b?format=webp&width=1200"
     />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@smithkayce" />
+    <meta name="twitter:creator" content="@smithkayce" />
     <meta
       name="twitter:title"
       content="WellSmith | Weight Loss & GLP-1 Support"
@@ -75,11 +78,53 @@
       rel="apple-touch-icon"
       href="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F1835ba37cf0e40ee994b64ee957c79a7?format=webp&width=180"
     />
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdn.builder.io" />
+    <link rel="preconnect" href="https://www.instagram.com" />
+    <link rel="preconnect" href="https://www.optavia.com" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" as="style" />
+    <link rel="preload" href="https://cdn.builder.io/api/v1/image/assets%2Fa42b6f9ec53e4654a92af75aad56d14f%2F6b0c18aa9d394275b3597c5f0dc1c993" as="image" />
+    
+    <!-- DNS prefetch for additional performance -->
+    <link rel="dns-prefetch" href="//widgets.pinterest.com" />
+    <link rel="dns-prefetch" href="//www.pinterest.com" />
   </head>
 
   <body>
     <div id="root"></div>
 
     <script type="module" src="/client/App.tsx"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+    
+    <!-- Google Analytics (replace with your tracking ID) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LZWYWCMX4T', {
+        page_title: document.title,
+        page_location: window.location.href,
+      });
+    </script>
   </body>
 </html>

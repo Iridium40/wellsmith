@@ -5,6 +5,13 @@ export interface SEOProps {
   description?: string;
   image?: string;
   canonical?: string;
+  type?: "website" | "article" | "profile";
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  section?: string;
+  tags?: string[];
+  noindex?: boolean;
 }
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
@@ -38,16 +45,33 @@ export default function SEO({
   description,
   image,
   canonical,
+  type = "website",
+  publishedTime,
+  modifiedTime,
+  author,
+  section,
+  tags,
+  noindex = false,
 }: SEOProps) {
   useEffect(() => {
     if (title) document.title = title;
     if (description) upsertMeta("name", "description", description);
 
+    // Robots
+    upsertMeta("name", "robots", noindex ? "noindex,nofollow" : "index,follow");
+
     // Open Graph
     if (title) upsertMeta("property", "og:title", title);
     if (description) upsertMeta("property", "og:description", description);
     if (image) upsertMeta("property", "og:image", image);
-    upsertMeta("property", "og:type", "website");
+    upsertMeta("property", "og:type", type);
+    if (publishedTime) upsertMeta("property", "article:published_time", publishedTime);
+    if (modifiedTime) upsertMeta("property", "article:modified_time", modifiedTime);
+    if (author) upsertMeta("property", "article:author", author);
+    if (section) upsertMeta("property", "article:section", section);
+    if (tags) {
+      tags.forEach(tag => upsertMeta("property", "article:tag", tag));
+    }
 
     // Twitter
     upsertMeta("name", "twitter:card", "summary_large_image");
@@ -59,7 +83,7 @@ export default function SEO({
     const url =
       canonical || (typeof window !== "undefined" ? window.location.href : "");
     if (url) setCanonical(url);
-  }, [title, description, image, canonical]);
+  }, [title, description, image, canonical, type, publishedTime, modifiedTime, author, section, tags, noindex]);
 
   return null;
 }

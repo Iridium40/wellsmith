@@ -1,5 +1,6 @@
 import Disclaimer from "@/components/site/Disclaimer";
 import SEO from "@/components/site/SEO";
+import StructuredData, { createArticleSchema, createBreadcrumbSchema } from "@/components/site/StructuredData";
 import { Link } from "react-router-dom";
 
 export default function BlogGLP1Eating() {
@@ -17,6 +18,32 @@ export default function BlogGLP1Eating() {
         title="Eating Right on GLP‑1s | WellSmith Blog"
         description="Strategies to feel your best, support muscle, and avoid common pitfalls while using GLP‑1 medications."
         image="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80"
+        type="article"
+        publishedTime="2024-01-15T00:00:00Z"
+        author="Kayce Smith"
+        section="Health & Wellness"
+        tags={["GLP-1", "nutrition", "weight loss", "healthy eating", "medication support"]}
+      />
+      
+      <StructuredData
+        data={createArticleSchema({
+          title: "Eating Right on GLP‑1s",
+          description: "Strategies to feel your best, support muscle, and avoid common pitfalls while using GLP‑1 medications.",
+          author: "Kayce Smith",
+          publishedTime: "2024-01-15T00:00:00Z",
+          image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80",
+          url: "https://wellsmith.example/blog/eating-right-on-glp1",
+          section: "Health & Wellness",
+          tags: ["GLP-1", "nutrition", "weight loss", "healthy eating", "medication support"],
+        })}
+      />
+      
+      <StructuredData
+        data={createBreadcrumbSchema([
+          { name: "Home", url: "https://wellsmith.example/" },
+          { name: "Blog", url: "https://wellsmith.example/blog" },
+          { name: "Eating Right on GLP‑1s", url: "https://wellsmith.example/blog/eating-right-on-glp1" },
+        ])}
       />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Eating Right on GLP‑1s
