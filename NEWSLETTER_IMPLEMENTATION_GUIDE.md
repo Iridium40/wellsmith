@@ -199,7 +199,11 @@ function NewsletterSignup() {
 - **Account**: Uses existing WellSmith HubSpot account
 - **Properties Set**:
   - `email`: User's email address
+  - `hs_analytics_source`: "wellsmith"
+  - `hs_email_optout`: false
   - `lifecyclestage`: "subscriber"
+  - `hs_analytics_source_data_1`: "newsletter_signup"
+  - `createdate`: Current timestamp
 - **Behavior**: Creates new contact or updates existing contact
 
 ### Resend Integration
