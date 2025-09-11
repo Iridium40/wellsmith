@@ -15,9 +15,9 @@ async function addToHubSpot(email: string) {
   }
 
   try {
-    // Search for existing contact
-    const searchResponse = await fetch(
-      `https://api.hubapi.com/crm/v3/objects/contacts/search`,
+    // Try to create contact directly first (simpler approach)
+    const createResponse = await fetch(
+      "https://api.hubapi.com/crm/v3/objects/contacts",
       {
         method: "POST",
         headers: {
@@ -25,84 +25,87 @@ async function addToHubSpot(email: string) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          filterGroups: [
-            {
-              filters: [
-                {
-                  propertyName: "email",
-                  operator: "EQ",
-                  value: email,
-                },
-              ],
-            },
-          ],
+          properties: {
+            email: email,
+            lifecyclestage: "subscriber",
+          },
         }),
       }
     );
 
-    if (!searchResponse.ok) {
-      throw new Error(`HubSpot search failed: ${searchResponse.statusText}`);
-    }
-
-    const searchData = await searchResponse.json();
-
-    if (searchData.results && searchData.results.length > 0) {
-      // Update existing contact
-      const contactId = searchData.results[0].id;
-      const updateResponse = await fetch(
-        `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Authorization": `Bearer ${hubspotToken}`,
-            "Content-Type": "application/json",
-          },
-        body: JSON.stringify({
-          properties: {
-            hs_analytics_source: "wellsmith",
-            hs_email_optout: false,
-            lifecyclestage: "subscriber",
-            hs_analytics_source_data_1: "newsletter_signup",
-          },
-        }),
-        }
-      );
-
-      if (updateResponse.ok) {
-        return { success: true, contactId };
-      } else {
-        throw new Error(`HubSpot update failed: ${updateResponse.statusText}`);
-      }
+    if (createResponse.ok) {
+      const createData = await createResponse.json();
+      console.log("HubSpot contact created successfully:", createData);
+      return { success: true, contactId: createData.id };
     } else {
-      // Create new contact
-      const createResponse = await fetch(
-        "https://api.hubapi.com/crm/v3/objects/contacts",
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${hubspotToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            properties: {
-              email: email,
-              hs_analytics_source: "wellsmith",
-              hs_email_optout: false,
-              lifecyclestage: "subscriber",
-              hs_analytics_source_data_1: "newsletter_signup",
-              createdate: new Date().toISOString(),
+      const errorData = await createResponse.text();
+      console.error("HubSpot create error:", errorData);
+      
+      // If contact already exists, try to update it
+      if (createResponse.status === 409) {
+        console.log("Contact already exists, attempting to update...");
+        
+        // Search for existing contact
+        const searchResponse = await fetch(
+          `https://api.hubapi.com/crm/v3/objects/contacts/search`,
+          {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${hubspotToken}`,
+              "Content-Type": "application/json",
             },
-          }),
-        }
-      );
+            body: JSON.stringify({
+              filterGroups: [
+                {
+                  filters: [
+                    {
+                      propertyName: "email",
+                      operator: "EQ",
+                      value: email,
+                    },
+                  ],
+                },
+              ],
+            }),
+          }
+        );
 
-      if (createResponse.ok) {
-        const createData = await createResponse.json();
-        return { success: true, contactId: createData.id };
-      } else {
-        const errorData = await createResponse.text();
-        throw new Error(`HubSpot create failed: ${createResponse.statusText} - ${errorData}`);
+        if (searchResponse.ok) {
+          const searchData = await searchResponse.json();
+          if (searchData.results && searchData.results.length > 0) {
+            const contactId = searchData.results[0].id;
+            console.log("Found existing contact, updating:", contactId);
+            
+            // Update existing contact with minimal properties
+            const updateResponse = await fetch(
+              `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`,
+              {
+                method: "PATCH",
+                headers: {
+                  "Authorization": `Bearer ${hubspotToken}`,
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  properties: {
+                    lifecyclestage: "subscriber",
+                  },
+                }),
+              }
+            );
+
+            if (updateResponse.ok) {
+              console.log("HubSpot contact updated successfully");
+              return { success: true, contactId };
+            } else {
+              const updateErrorData = await updateResponse.text();
+              console.error("HubSpot update error:", updateErrorData);
+              throw new Error(`HubSpot update failed: ${updateResponse.statusText} - ${updateErrorData}`);
+            }
+          }
+        }
       }
+      
+      throw new Error(`HubSpot create failed: ${createResponse.statusText} - ${errorData}`);
     }
   } catch (error) {
     console.error("HubSpot integration error:", error);
@@ -256,7 +259,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const resendResult = await sendWelcomeEmail(email);
     console.log("Resend result:", resendResult);
 
-    if (hubspotResult.success && resendResult.success) {
+    // Consider it successful if Resend works (user gets welcome email)
+    // HubSpot is nice to have but not critical for the user experience
+    if (resendResult.success) {
       res.json({
         success: true,
         message: "Successfully subscribed to newsletter",
@@ -266,7 +271,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     } else {
       res.status(500).json({
         success: false,
-        error: "Newsletter subscription partial failure",
+        error: "Newsletter subscription failed",
         details: {
           hubspot: hubspotResult,
           resend: resendResult,
