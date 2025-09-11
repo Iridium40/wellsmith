@@ -68,13 +68,23 @@ export default function NewsletterSignup({
       console.log("Response headers:", response.headers);
 
       if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+        const errorText = await response.text();
+        console.error("Error response:", errorText);
+        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+      }
+
+      // Check if response has content before trying to parse JSON
+      const contentType = response.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const text = await response.text();
+        console.log("Non-JSON response:", text);
+        throw new Error("Server response error - please try again");
       }
 
       const data = await response.json();
       console.log("Response data:", data);
 
-      if (response.ok) {
+      if (data && data.success) {
         setIsSubscribed(true);
         setEmail("");
         toast({
@@ -82,7 +92,7 @@ export default function NewsletterSignup({
           description: "Thank you for joining the WellSmith community. Check your email for a welcome message.",
         });
       } else {
-        throw new Error(data.message || "Subscription failed");
+        throw new Error(data?.error || data?.message || "Subscription failed");
       }
     } catch (error) {
       console.error("Newsletter subscription error:", error);
