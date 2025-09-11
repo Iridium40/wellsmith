@@ -24,17 +24,38 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    // For now, return a simple success response to test the API routing
-    res.json({
-      success: true,
-      message: 'Newsletter API is working',
+    // Import and use the actual newsletter handler
+    const { handleNewsletterSubscribe } = await import('../../server/routes/newsletter');
+    
+    // Convert Vercel request/response to Express format
+    const expressReq = {
       method: req.method,
-      timestamp: new Date().toISOString(),
-      env: {
-        hasHubspotToken: !!hubspotToken,
-        hasResendKey: !!resendKey,
-      }
-    });
+      body: req.body,
+      headers: req.headers,
+    } as any;
+
+    const expressRes = {
+      json: (data: any) => {
+        console.log('Sending JSON response:', data);
+        return res.json(data);
+      },
+      status: (code: number) => ({
+        json: (data: any) => {
+          console.log(`Sending ${code} JSON response:`, data);
+          return res.status(code).json(data);
+        },
+        send: (data: any) => {
+          console.log(`Sending ${code} response:`, data);
+          return res.status(code).send(data);
+        },
+      }),
+      send: (data: any) => {
+        console.log('Sending response:', data);
+        return res.send(data);
+      },
+    } as any;
+
+    await handleNewsletterSubscribe(expressReq, expressRes);
 
   } catch (error) {
     console.error('Newsletter API handler error:', error);

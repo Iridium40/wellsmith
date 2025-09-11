@@ -67,24 +67,28 @@ export default function NewsletterSignup({
       console.log("Response status:", response.status);
       console.log("Response headers:", response.headers);
 
+      // Always get the response text first to avoid parsing issues
+      const responseText = await response.text();
+      console.log("Raw response:", responseText);
+
       if (!response.ok) {
-        const errorText = await response.text();
-        console.error("Error response:", errorText);
-        throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
+        console.error("HTTP error response:", responseText);
+        throw new Error(`Server error (${response.status}): Please try again later`);
       }
 
-      // Check if response has content before trying to parse JSON
-      const contentType = response.headers.get("content-type");
-      if (!contentType || !contentType.includes("application/json")) {
-        const text = await response.text();
-        console.log("Non-JSON response:", text);
+      // Try to parse as JSON, but handle failures gracefully
+      let data;
+      try {
+        data = JSON.parse(responseText);
+        console.log("Parsed response data:", data);
+      } catch (parseError) {
+        console.error("Failed to parse JSON response:", parseError);
+        console.log("Response was not valid JSON:", responseText);
         throw new Error("Server response error - please try again");
       }
 
-      const data = await response.json();
-      console.log("Response data:", data);
-
-      if (data && data.success) {
+      // Check if we got a valid success response
+      if (data && typeof data === 'object' && data.success === true) {
         setIsSubscribed(true);
         setEmail("");
         toast({
@@ -92,13 +96,15 @@ export default function NewsletterSignup({
           description: "Thank you for joining the WellSmith community. Check your email for a welcome message.",
         });
       } else {
-        throw new Error(data?.error || data?.message || "Subscription failed");
+        const errorMessage = data?.error || data?.message || "Subscription failed";
+        console.error("Subscription failed:", errorMessage);
+        throw new Error(errorMessage);
       }
     } catch (error) {
       console.error("Newsletter subscription error:", error);
       toast({
         title: "Subscription Failed",
-        description: "Something went wrong. Please try again later.",
+        description: error instanceof Error ? error.message : "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     } finally {
