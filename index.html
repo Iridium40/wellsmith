@@ -98,31 +98,57 @@
   <body>
     <div id="root"></div>
 
-    <script type="module" src="/client/App.tsx"></script>
+    <script type="module" src="/client/App.tsx?v=2"></script>
     
-    <!-- Service Worker Completely Removed -->
+    <!-- Service Worker Completely Removed - Aggressive Cache Clearing -->
     <script>
-      // Clear any existing service workers and caches
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.getRegistrations().then(function(registrations) {
-          for(let registration of registrations) {
-            registration.unregister();
-            console.log('Service worker unregistered');
-          }
-        });
-      }
-      
-      // Clear all caches
-      if ('caches' in window) {
-        caches.keys().then(function(cacheNames) {
-          return Promise.all(
-            cacheNames.map(function(cacheName) {
-              console.log('Deleting cache:', cacheName);
-              return caches.delete(cacheName);
-            })
-          );
-        });
-      }
+      // Force clear everything immediately and prevent SW registration
+      (function() {
+        console.log('Clearing all caches and service workers...');
+        
+        // Override service worker registration to prevent any new ones
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register = function() {
+            console.log('Service worker registration blocked');
+            return Promise.reject(new Error('Service worker registration blocked'));
+          };
+          
+          // Clear existing service workers
+          navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            registrations.forEach(function(registration) {
+              registration.unregister().then(function(boolean) {
+                console.log('Service worker unregistered:', boolean);
+              });
+            });
+          });
+        }
+        
+        // Clear all caches
+        if ('caches' in window) {
+          caches.keys().then(function(cacheNames) {
+            cacheNames.forEach(function(cacheName) {
+              caches.delete(cacheName).then(function(boolean) {
+                console.log('Cache deleted:', cacheName, boolean);
+              });
+            });
+          });
+        }
+        
+        // Clear localStorage and sessionStorage
+        try {
+          localStorage.clear();
+          sessionStorage.clear();
+          console.log('Local storage cleared');
+        } catch(e) {
+          console.log('Could not clear storage:', e);
+        }
+        
+        // Force reload if we detect old cached content
+        if (window.location.search.indexOf('reload') === -1) {
+          console.log('Forcing page reload to clear cache...');
+          window.location.href = window.location.href + (window.location.search ? '&' : '?') + 'reload=1';
+        }
+      })();
     </script>
     
     <!-- Google Analytics (replace with your tracking ID) -->
