@@ -29,7 +29,6 @@ async function addToHubSpot(email: string) {
             email: email,
             hs_analytics_source: "EMAIL_MARKETING",
             lifecyclestage: "subscriber",
-            hs_analytics_source_data_2: "wellsmith",
           },
         }),
       }
@@ -91,7 +90,6 @@ async function addToHubSpot(email: string) {
                   properties: {
                     hs_analytics_source: "EMAIL_MARKETING",
                     lifecyclestage: "subscriber",
-                    hs_analytics_source_data_2: "wellsmith",
                   },
                 }),
               }
