@@ -4,6 +4,7 @@ import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleHealthAssessment } from "./routes/health-assessment";
 import { handlePinterest } from "./routes/pinterest";
+import { handleNewsletterSubscribe } from "./routes/newsletter";
 
 export function createServer() {
   const app = express();
@@ -26,6 +27,9 @@ export function createServer() {
 
   // Pinterest images (Lean & Green) from public board RSS
   app.get("/api/pinterest", handlePinterest);
+
+  // Newsletter subscription
+  app.post("/api/newsletter/subscribe", handleNewsletterSubscribe);
 
   // Sitemap
   app.get("/sitemap.xml", (_req, res) => {

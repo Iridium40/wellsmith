@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram } from "lucide-react";
+import NewsletterSignup from "./NewsletterSignup";
 
 export default function SiteFooter() {
   return (
@@ -88,6 +89,16 @@ export default function SiteFooter() {
             </a>
           </div>
         </div>
+        {/* Newsletter Signup */}
+        <div className="mt-8 border-t pt-8">
+          <NewsletterSignup
+            title="Stay Updated"
+            description="Get health tips and recipes delivered to your inbox."
+            variant="compact"
+            className="mb-6"
+          />
+        </div>
+
         <div className="mt-8 flex flex-col items-center justify-between gap-2 border-t pt-6 md:flex-row">
           <p>© {new Date().getFullYear()} WellSmith. All rights reserved.</p>
           <p>Built with love for healthy habits.</p>

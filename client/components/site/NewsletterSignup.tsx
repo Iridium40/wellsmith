@@ -1,0 +1,177 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Mail, CheckCircle, AlertCircle } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
+
+interface NewsletterSignupProps {
+  title?: string;
+  description?: string;
+  placeholder?: string;
+  buttonText?: string;
+  className?: string;
+  variant?: "default" | "compact" | "inline";
+}
+
+export default function NewsletterSignup({
+  title = "Stay Updated with WellSmith",
+  description = "Get health tips, recipes, and coaching insights delivered to your inbox.",
+  placeholder = "Enter your email address",
+  buttonText = "Subscribe",
+  className = "",
+  variant = "default",
+}: NewsletterSignupProps) {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email.trim()) {
+      toast({
+        title: "Email Required",
+        description: "Please enter your email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/newsletter/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsSubscribed(true);
+        setEmail("");
+        toast({
+          title: "Successfully Subscribed!",
+          description: "Thank you for joining the WellSmith community. Check your email for a welcome message.",
+        });
+      } else {
+        throw new Error(data.message || "Subscription failed");
+      }
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      toast({
+        title: "Subscription Failed",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  if (isSubscribed) {
+    return (
+      <Card className={`${className}`}>
+        <CardContent className="p-6 text-center">
+          <CheckCircle className="mx-auto h-12 w-12 text-green-500 mb-4" />
+          <h3 className="text-lg font-semibold mb-2">Welcome to WellSmith!</h3>
+          <p className="text-muted-foreground">
+            You're now subscribed to our newsletter. Check your email for a welcome message.
+          </p>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (variant === "compact") {
+    return (
+      <div className={`${className}`}>
+        <form onSubmit={handleSubmit} className="flex gap-2">
+          <Input
+            type="email"
+            placeholder={placeholder}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            disabled={isLoading}
+            className="flex-1"
+          />
+          <Button type="submit" disabled={isLoading} size="sm">
+            {isLoading ? "..." : buttonText}
+          </Button>
+        </form>
+      </div>
+    );
+  }
+
+  if (variant === "inline") {
+    return (
+      <div className={`${className}`}>
+        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+          <div className="flex-1">
+            <Input
+              type="email"
+              placeholder={placeholder}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
+              className="w-full"
+            />
+          </div>
+          <Button type="submit" disabled={isLoading} className="sm:w-auto">
+            {isLoading ? "Subscribing..." : buttonText}
+          </Button>
+        </form>
+      </div>
+    );
+  }
+
+  return (
+    <Card className={`${className}`}>
+      <CardHeader className="text-center">
+        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+          <Mail className="h-6 w-6 text-primary" />
+        </div>
+        <CardTitle className="text-xl">{title}</CardTitle>
+        <CardDescription>{description}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <Input
+              type="email"
+              placeholder={placeholder}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
+              className="w-full"
+            />
+          </div>
+          <Button type="submit" disabled={isLoading} className="w-full">
+            {isLoading ? "Subscribing..." : buttonText}
+          </Button>
+          <p className="text-xs text-muted-foreground text-center">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
+        </form>
+      </CardContent>
+    </Card>
+  );
+}

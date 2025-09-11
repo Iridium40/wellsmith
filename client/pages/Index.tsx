@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import SEO from "@/components/site/SEO";
 import Disclaimer from "@/components/site/Disclaimer";
+import NewsletterSignup from "@/components/site/NewsletterSignup";
 import { Instagram, HeartPulse, Utensils, Users, Target } from "lucide-react";
 import { StoryProse } from "@/components/site/MyStoryShared";
 
@@ -223,6 +224,15 @@ export default function Index() {
           </div>
         </div>
         <Disclaimer className="mt-6" />
+      </section>
+
+      {/* Newsletter Signup */}
+      <section className="mx-auto max-w-4xl px-4 py-16">
+        <NewsletterSignup
+          title="Stay Connected with Your Health Journey"
+          description="Get weekly tips, recipes, and motivation delivered to your inbox. Join hundreds of others on their wellness journey."
+          variant="default"
+        />
       </section>
     </div>
   );
