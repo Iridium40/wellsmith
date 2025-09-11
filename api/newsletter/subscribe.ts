@@ -136,31 +136,12 @@ async function sendWelcomeEmail(email: string) {
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <!-- Logo Section -->
             <div style="text-align: center; margin-bottom: 30px;">
-              <div style="display: inline-block; margin-bottom: 15px;">
-                <!-- WellSmith Logo Icon -->
-                <svg width="80" height="80" viewBox="0 0 100 100" style="display: block; margin: 0 auto;">
-                  <!-- Teal petals (top, bottom, left, right) -->
-                  <path d="M50 10 L60 30 L50 50 L40 30 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
-                  <path d="M50 50 L60 70 L50 90 L40 70 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
-                  <path d="M10 50 L30 40 L50 50 L30 60 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
-                  <path d="M50 50 L70 40 L90 50 L70 60 Z" fill="#00C0C0" stroke="#000" stroke-width="1"/>
-                  <!-- Transparent petals (diagonal) -->
-                  <path d="M50 10 L70 30 L50 50 L30 30 Z" fill="transparent" stroke="#000" stroke-width="1"/>
-                  <path d="M50 50 L70 70 L50 90 L30 70 Z" fill="transparent" stroke="#000" stroke-width="1"/>
-                  <path d="M10 50 L30 30 L50 50 L30 70 Z" fill="transparent" stroke="#000" stroke-width="1"/>
-                  <path d="M50 50 L70 30 L90 50 L70 70 Z" fill="transparent" stroke="#000" stroke-width="1"/>
-                </svg>
-              </div>
-              <!-- Brand Name -->
-              <div style="text-align: center;">
-                <span style="font-family: 'Times New Roman', serif; font-size: 28px; font-weight: bold; color: #000;">WELL</span>
-                <span style="font-family: 'Brush Script MT', cursive; font-size: 28px; color: #000; margin-left: 5px;">Smith</span>
-              </div>
+              <img src="https://wellsmith.com/logo.png" alt="WellSmith" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />
             </div>
             
             <!-- Welcome Content -->
             <div style="text-align: center; margin-bottom: 30px;">
-              <h1 style="color: #00C0C0; font-size: 32px; margin-bottom: 20px; font-weight: 300;">Welcome to WellSmith!</h1>
+              <h1 style="color: #00C0C0; font-size: 32px; margin-bottom: 20px; font-weight: 300;">Welcome!</h1>
               <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 20px;">
                 Thank you for subscribing to our newsletter. You'll receive health tips, recipes, and coaching insights delivered to your inbox.
               </p>
