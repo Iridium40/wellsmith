@@ -123,7 +123,7 @@ async function sendWelcomeEmail(email: string) {
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <!-- Logo Section -->
             <div style="text-align: center; margin-bottom: 30px;">
-              <img src="https://wellsmith.com/logo.png" alt="WellSmith" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />
+              <img src="https://wellsmith.com/wellsmith-logo.png" alt="WellSmith" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />
             </div>
             
             <!-- Welcome Content -->
