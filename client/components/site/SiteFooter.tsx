@@ -32,7 +32,7 @@ export default function SiteFooter() {
               Client Support
             </Link>
             <Link to="/recipes" className="hover:text-foreground">
-              Lean & Green Recipe Ideas
+              OPTAVIA Lean & Green™ Recipe Ideas
             </Link>
             <Link to="/book-assessment" className="hover:text-foreground">
               Book Assessment

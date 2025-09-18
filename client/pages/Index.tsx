@@ -11,7 +11,7 @@ export default function Index() {
     <div>
       <SEO
         title="WellSmith | Weight Loss Coaching, Healthy Habits, GLP‑1 Support | Kayce Smith"
-        description="Weight loss and healthy-habits coaching by Kayce Smith, Independent OPTAVIA Certified Health Coach. Lean & Green recipes, client support, and GLP‑1 lifestyle support."
+        description="Weight loss and healthy-habits coaching by Kayce Smith, Independent OPTAVIA Certified Health Coach. OPTAVIA Lean & Green™ recipes, client support, and GLP‑1 lifestyle support."
       />
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -121,7 +121,7 @@ export default function Index() {
             },
             {
               title: "Meal Planning & Recipes",
-              desc: "Lean & Green meals, shopping lists, and prep tips.",
+              desc: "OPTAVIA Lean & Green™ meals, shopping lists, and prep tips.",
               icon: Utensils,
             },
             {
@@ -170,7 +170,7 @@ export default function Index() {
         <h2 className="text-2xl font-bold tracking-tight">Why OPTAVIA Works</h2>
         <ul className="mt-4 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-3">
           <li className="rounded-lg border bg-white/60 px-4 py-3">
-            Average weight loss on the Optimal Weight 5 & 1 Plan® is 12 pounds*
+            Average weight loss on the OPTAVIA Optimal Weight 5 & 1 Plan® is 12 pounds*
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
             More than 3 million lives impacted and counting
@@ -198,7 +198,7 @@ export default function Index() {
             Science‑backed nutrition plans
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
-            Lean & Green meal guidance
+            OPTAVIA Lean & Green™ meal guidance
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
             Access to GLP‑1 options (if clinically appropriate)*

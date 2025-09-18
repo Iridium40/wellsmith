@@ -10,14 +10,14 @@ export default function WhyCoaching() {
     <div className="mx-auto max-w-6xl px-4 py-16">
       <SEO
         title="Client Support | WellSmith"
-        description="Tips for success on the 5 & 1 Plan, hydration guidance, and coaching resources in one place."
+        description="Tips for success on the OPTAVIA Optimal Weight 5 & 1 Plan®, hydration guidance, and coaching resources in one place."
       />
       <div className="flex flex-col gap-3 sm:gap-4">
         <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
           Client Support
         </h1>
         <p className="text-lg text-muted-foreground">
-          Practical tips for success on OPTAVIA's Optimal Weight 5 & 1 Plan®,
+          Practical tips for success on the OPTAVIA Optimal Weight 5 & 1 Plan®,
           hydration guidance, and coaching resources—everything in one place.
         </p>
         <div className="mt-4 flex items-center justify-center gap-3">
@@ -31,7 +31,7 @@ export default function WhyCoaching() {
             buttonLabel="Share Client Support"
             size="sm"
             title="Client Support | WellSmith"
-            description="Tips for success on the 5 & 1 Plan, hydration guidance, and resources."
+            description="Tips for success on the OPTAVIA Optimal Weight 5 & 1 Plan®, hydration guidance, and resources."
           />
         </div>
       </div>
@@ -39,13 +39,13 @@ export default function WhyCoaching() {
       {/* Client Success */}
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <div className="rounded-2xl border bg-card p-6 shadow-sm">
-          <h2 className="text-xl font-bold">Success Tips for the 5 & 1 Plan</h2>
+          <h2 className="text-xl font-bold">Success Tips for the OPTAVIA Optimal Weight 5 & 1 Plan®</h2>
           <ul className="mt-3 grid gap-2 text-sm text-foreground/80">
             <li>
-              Eat all 5 fuelings plus 1 Lean & Green—set reminders if needed.
+              Eat all 5 fuelings plus 1 OPTAVIA Lean & Green™—set reminders if needed.
             </li>
             <li>
-              Keep Lean & Green simple: 5–7 oz lean protein + 3 servings
+              Keep OPTAVIA Lean & Green™ simple: 5–7 oz lean protein + 3 servings
               non‑starchy veggies.
             </li>
             <li>
