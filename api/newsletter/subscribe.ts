@@ -135,6 +135,14 @@ async function sendWelcomeEmail(email: string) {
               <p style="font-size: 16px; line-height: 1.6; color: #333; margin-bottom: 30px;">
                 We're excited to be part of your wellness journey!
               </p>
+              
+              <!-- Call to Action Button -->
+              <div style="margin: 30px 0;">
+                <a href="https://www.wellsmith.com/book-assessment" 
+                   style="display: inline-block; background-color: #00C0C0; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                  Start Your Journey Today!
+                </a>
+              </div>
             </div>
             
             <!-- Signature -->
