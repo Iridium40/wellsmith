@@ -68,7 +68,7 @@ async function sendNotificationEmail(subscriberEmail: string) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.NEWSLETTER_FROM_EMAIL || "WellSmith <hello@smithhealthwellness.com>",
+        from: process.env.NEWSLETTER_FROM_EMAIL || "WellSmith <kayce@smithhealthwellness.com>",
         to: [notificationEmail],
         subject: "New Newsletter Subscriber - WellSmith",
         html: `
@@ -116,7 +116,7 @@ async function sendWelcomeEmail(email: string) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.NEWSLETTER_FROM_EMAIL || "WellSmith <hello@smithhealthwellness.com>",
+        from: process.env.NEWSLETTER_FROM_EMAIL || "WellSmith <kayce@smithhealthwellness.com>",
         to: [email],
         subject: "Welcome to WellSmith! 🎉",
         html: `
