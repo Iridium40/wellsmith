@@ -6,111 +6,46 @@ const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
-// HubSpot integration
-async function addToHubSpot(email: string) {
-  const hubspotToken = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
+// Resend contact management - add to audience
+async function addToResendAudience(email: string) {
+  const resendKey = process.env.RESEND_API_KEY;
+  const audienceId = '03361f25-292c-4ecb-968e-43c17c83c5ee';
   
-  if (!hubspotToken) {
-    throw new Error('HubSpot token not configured');
+  if (!resendKey) {
+    throw new Error('Resend API key not configured');
   }
 
   try {
-    // Try to create contact directly first (simpler approach)
-    const createResponse = await fetch(
-      "https://api.hubapi.com/crm/v3/objects/contacts",
-      {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${hubspotToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          properties: {
-            email: email,
-            hs_analytics_source: "EMAIL_MARKETING",
-            lifecyclestage: "subscriber",
-          },
-        }),
-      }
-    );
+    const response = await fetch(`https://api.resend.com/audiences/${audienceId}/contacts`, {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${resendKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        unsubscribed: false,
+      }),
+    });
 
-    if (createResponse.ok) {
-      const createData = await createResponse.json();
-      console.log("HubSpot contact created successfully:", createData);
-      return { success: true, contactId: createData.id };
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Contact added to Resend audience successfully:", data);
+      return { success: true, contactId: data.id };
     } else {
-      const errorData = await createResponse.text();
-      console.error("HubSpot create error:", errorData);
+      const errorData = await response.text();
+      console.error("Resend audience error:", errorData);
       
-      // If contact already exists, try to update it
-      if (createResponse.status === 409) {
-        console.log("Contact already exists, attempting to update...");
-        
-        // Search for existing contact
-        const searchResponse = await fetch(
-          `https://api.hubapi.com/crm/v3/objects/contacts/search`,
-          {
-            method: "POST",
-            headers: {
-              "Authorization": `Bearer ${hubspotToken}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              filterGroups: [
-                {
-                  filters: [
-                    {
-                      propertyName: "email",
-                      operator: "EQ",
-                      value: email,
-                    },
-                  ],
-                },
-              ],
-            }),
-          }
-        );
-
-        if (searchResponse.ok) {
-          const searchData = await searchResponse.json();
-          if (searchData.results && searchData.results.length > 0) {
-            const contactId = searchData.results[0].id;
-            console.log("Found existing contact, updating:", contactId);
-            
-            // Update existing contact with minimal properties
-            const updateResponse = await fetch(
-              `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`,
-              {
-                method: "PATCH",
-                headers: {
-                  "Authorization": `Bearer ${hubspotToken}`,
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                  properties: {
-                    hs_analytics_source: "EMAIL_MARKETING",
-                    lifecyclestage: "subscriber",
-                  },
-                }),
-              }
-            );
-
-            if (updateResponse.ok) {
-              console.log("HubSpot contact updated successfully");
-              return { success: true, contactId };
-            } else {
-              const updateErrorData = await updateResponse.text();
-              console.error("HubSpot update error:", updateErrorData);
-              throw new Error(`HubSpot update failed: ${updateResponse.statusText} - ${updateErrorData}`);
-            }
-          }
-        }
+      // If contact already exists in audience, that's still success
+      if (response.status === 409) {
+        console.log("Contact already exists in audience - that's fine");
+        return { success: true, contactId: 'existing' };
       }
       
-      throw new Error(`HubSpot create failed: ${createResponse.statusText} - ${errorData}`);
+      throw new Error(`Resend audience failed: ${response.statusText} - ${errorData}`);
     }
   } catch (error) {
-    console.error("HubSpot integration error:", error);
+    console.error("Resend audience integration error:", error);
     return { success: false, error: error instanceof Error ? error.message : "Unknown error" };
   }
 }
@@ -198,12 +133,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
 
     // Check environment variables
-    const hubspotToken = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
     const resendKey = process.env.RESEND_API_KEY;
 
-    if (!hubspotToken || !resendKey) {
+    if (!resendKey) {
       console.error('Missing environment variables:', {
-        hasHubspotToken: !!hubspotToken,
         hasResendKey: !!resendKey,
       });
       return res.status(500).json({
@@ -234,30 +167,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const { email } = validation.data;
 
-    // Add to HubSpot
-    const hubspotResult = await addToHubSpot(email);
-    console.log("HubSpot result:", hubspotResult);
+    // Add to Resend audience
+    const audienceResult = await addToResendAudience(email);
+    console.log("Resend audience result:", audienceResult);
     
     // Send welcome email via Resend
-    const resendResult = await sendWelcomeEmail(email);
-    console.log("Resend result:", resendResult);
+    const emailResult = await sendWelcomeEmail(email);
+    console.log("Resend email result:", emailResult);
 
-    // Consider it successful if Resend works (user gets welcome email)
-    // HubSpot is nice to have but not critical for the user experience
-    if (resendResult.success) {
+    // Both operations need to succeed for overall success
+    if (audienceResult.success && emailResult.success) {
       res.json({
         success: true,
         message: "Successfully subscribed to newsletter",
-        hubspot: hubspotResult,
-        resend: resendResult,
+        audience: audienceResult,
+        email: emailResult,
       });
     } else {
       res.status(500).json({
         success: false,
         error: "Newsletter subscription failed",
         details: {
-          hubspot: hubspotResult,
-          resend: resendResult,
+          audience: audienceResult,
+          email: emailResult,
         },
       });
     }
