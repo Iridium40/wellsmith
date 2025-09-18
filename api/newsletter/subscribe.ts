@@ -9,7 +9,7 @@ const emailSchema = z.object({
 // Resend contact management - add to audience
 async function addToResendAudience(email: string) {
   const resendKey = process.env.RESEND_API_KEY;
-  const audienceId = '03361f25-292c-4ecb-968e-43c17c83c5ee';
+  const audienceId = process.env.RESEND_AUDIENCE_ID;
   
   if (!resendKey) {
     throw new Error('Resend API key not configured');
@@ -134,10 +134,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     // Check environment variables
     const resendKey = process.env.RESEND_API_KEY;
+    const audienceId = process.env.RESEND_AUDIENCE_ID;
 
-    if (!resendKey) {
+    if (!resendKey || !audienceId) {
       console.error('Missing environment variables:', {
         hasResendKey: !!resendKey,
+        hasAudienceId: !!audienceId,
       });
       return res.status(500).json({
         success: false,
