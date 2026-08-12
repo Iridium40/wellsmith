@@ -24,4 +24,8 @@ dist-ssr
 *.sw?
 
 .config/
-!.env
+
+# Environment files — never commit real credentials
+.env
+.env.*
+!.env.example
