@@ -102,7 +102,7 @@ export default function BookAssessment() {
     <div>
       <SEO
         title="Book Your Free Health Assessment | WellSmith"
-        description="Book a free 30‑minute health assessment with Kayce to discuss goals and the OPTAVIA program."
+        description="Book a free 30‑minute health assessment with Kayce to discuss goals and the Trilivy program."
       />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/60),transparent_70%)]" />
@@ -114,7 +114,7 @@ export default function BookAssessment() {
               </h1>
               <p className="mt-4 text-lg text-muted-foreground">
                 A 30-minute conversation to learn about your goals and share how
-                the Optavia program and personalized coaching can help. No
+                the Trilivy program and personalized coaching can help. No
                 pressure—just helpful, practical guidance.
               </p>
               {!calendlyUrl && (

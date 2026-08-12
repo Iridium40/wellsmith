@@ -7,7 +7,7 @@ export default function About() {
     <div>
       <SEO
         title="About Kayce | WellSmith"
-        description="Meet Kayce Smith, Independent OPTAVIA Certified Health Coach helping clients build healthy habits with compassionate, practical coaching."
+        description="Meet Kayce Smith, Independent Trilivy Certified Health Coach helping clients build healthy habits with compassionate, practical coaching."
       />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_40%_at_50%_0%,theme(colors.secondary/40),transparent_70%)]" />
@@ -34,7 +34,7 @@ export default function About() {
               </p>
               <div className="mt-4 flex flex-wrap gap-2 text-sm">
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-primary">
-                  Independent Certified Optavia coach
+                  Independent Certified Trilivy coach
                 </span>
                 <span className="rounded-full bg-accent/10 px-3 py-1 text-accent">
                   Shriners mama

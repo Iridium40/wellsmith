@@ -11,7 +11,7 @@ export default function Index() {
     <div>
       <SEO
         title="WellSmith | Weight Loss Coaching, Healthy Habits, GLP‑1 Support | Kayce Smith"
-        description="Weight loss and healthy-habits coaching by Kayce Smith, Independent OPTAVIA Certified Health Coach. OPTAVIA Lean & Green™ recipes, client support, and GLP‑1 lifestyle support."
+        description="Weight loss and healthy-habits coaching by Kayce Smith, Independent Trilivy Certified Health Coach. Trilivy Lean & Green™ recipes, client support, and GLP‑1 lifestyle support."
       />
       {/* Hero */}
       <section className="relative overflow-hidden">
@@ -19,7 +19,7 @@ export default function Index() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-16 lg:grid-cols-12 lg:py-24">
           <div className="order-2 lg:order-1 lg:col-span-7">
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-              Hi, I'm Kayce Smith — Your Independent OPTAVIA Certified Health
+              Hi, I'm Kayce Smith — Your Independent Trilivy Certified Health
               Coach
             </h1>
             <p className="mt-4 text-lg text-muted-foreground">
@@ -30,8 +30,8 @@ export default function Index() {
               <Button asChild size="lg" className="shadow" variant="gradient">
                 <a
                   href={
-                    import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                    "https://www.optavia.com/us/en/coach/kaycesmith"
+                    import.meta.env.VITE_TRILIVY_COACH_URL ||
+                    "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
                   }
                   target="_blank"
                   rel="noreferrer"
@@ -46,7 +46,7 @@ export default function Index() {
             <ul className="mt-8 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2">
               {[
                 "Personalized one-on-one coaching",
-                "Proven Optavia program results",
+                "Proven Trilivy program results",
                 "Ongoing support and accountability",
                 "Flexible online coaching sessions",
                 "Safe, supportive environment",
@@ -86,7 +86,7 @@ export default function Index() {
                   </p>
                   <p className="text-2xl font-bold">Kayce Smith</p>
                   <p className="mt-1 text-sm text-muted-foreground">
-                    Independent OPTAVIA Certified Health Coach
+                    Independent Trilivy Certified Health Coach
                   </p>
                   <div className="mt-3 text-sm">
                     <a
@@ -121,7 +121,7 @@ export default function Index() {
             },
             {
               title: "Meal Planning & Recipes",
-              desc: "OPTAVIA Lean & Green™ meals, shopping lists, and prep tips.",
+              desc: "Trilivy Lean & Green™ meals, shopping lists, and prep tips.",
               icon: Utensils,
             },
             {
@@ -165,12 +165,12 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Why OPTAVIA Works */}
+      {/* Why Trilivy Works */}
       <section className="mx-auto max-w-7xl px-4 py-14">
-        <h2 className="text-2xl font-bold tracking-tight">Why OPTAVIA Works</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Why Trilivy Works</h2>
         <ul className="mt-4 grid gap-3 text-sm text-foreground/80 sm:grid-cols-2 lg:grid-cols-3">
           <li className="rounded-lg border bg-white/60 px-4 py-3">
-            Average weight loss on the OPTAVIA Optimal Weight 5 & 1 Plan® is 12 pounds*
+            Average weight loss on the Trilivy Optimal Weight 5 & 1 Plan® is 12 pounds*
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
             More than 3 million lives impacted and counting
@@ -198,7 +198,7 @@ export default function Index() {
             Science‑backed nutrition plans
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
-            OPTAVIA Lean & Green™ meal guidance
+            Trilivy Lean & Green™ meal guidance
           </li>
           <li className="rounded-lg border bg-white/60 px-4 py-3">
             Access to GLP‑1 options (if clinically appropriate)*

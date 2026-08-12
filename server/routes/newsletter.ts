@@ -211,7 +211,7 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
               
               <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
                 <h2 style="color: #1d4388; margin-top: 0;">Hi there!</h2>
-                <p>Thank you for joining the WellSmith community! I'm Kayce Smith, your Independent OPTAVIA Certified Health Coach, and I'm thrilled to have you on this journey with us.</p>
+                <p>Thank you for joining the WellSmith community! I'm Kayce Smith, your Independent Trilivy Certified Health Coach, and I'm thrilled to have you on this journey with us.</p>
                 
                 <p>As a subscriber, you'll receive:</p>
                 <ul style="color: #555;">
@@ -236,7 +236,7 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
               
               <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
                 <p style="font-size: 12px; color: #999;">
-                  WellSmith | Independent OPTAVIA Certified Health Coach<br>
+                  WellSmith | Independent Trilivy Certified Health Coach<br>
                   <a href="https://wellsmith.com" style="color: #1babe0;">wellsmith.com</a> | 
                   <a href="https://instagram.com/smithkayce" style="color: #1babe0;">@smithkayce</a>
                 </p>

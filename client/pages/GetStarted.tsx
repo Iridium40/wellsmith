@@ -5,11 +5,11 @@ export default function GetStarted() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <SEO
-        title="Get Started with OPTAVIA | WellSmith"
-        description="Start your OPTAVIA journey: program overview, what to expect, and next steps."
+        title="Get Started with Trilivy | WellSmith"
+        description="Start your Trilivy journey: program overview, what to expect, and next steps."
       />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
-        Get Started with OPTAVIA
+        Get Started with Trilivy
       </h1>
       <p className="mt-3 text-lg text-muted-foreground">
         Official program overview and next steps
@@ -38,8 +38,8 @@ export default function GetStarted() {
       <div className="mt-8 flex flex-wrap gap-3">
         <a
           href={
-            import.meta.env.VITE_OPTAVIA_COACH_URL ||
-            "https://www.optavia.com/us/en/coach/kaycesmith"
+            import.meta.env.VITE_TRILIVY_COACH_URL ||
+            "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
           }
           target="_blank"
           rel="noreferrer"
@@ -48,12 +48,12 @@ export default function GetStarted() {
           Start Your Journey
         </a>
         <a
-          href="https://www.optavia.com/us/en/optavia-program"
+          href="https://www.trilivyhealth.com/us/en/trilivy-program"
           target="_blank"
           rel="noreferrer"
           className="inline-flex h-11 items-center justify-center rounded-md border px-6 hover:bg-secondary"
         >
-          Learn More About OPTAVIA
+          Learn More About Trilivy
         </a>
       </div>
 

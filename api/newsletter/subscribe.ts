@@ -150,7 +150,7 @@ async function sendWelcomeEmail(email: string) {
               <p style="font-size: 16px; color: #333; margin: 0;">
                 Best regards,<br>
                 <strong style="color: #00C0C0;">Kayce Smith</strong><br>
-                <em style="color: #666;">Independent OPTAVIA Certified Health Coach</em>
+                <em style="color: #666;">Independent Trilivy Certified Health Coach</em>
               </p>
             </div>
             

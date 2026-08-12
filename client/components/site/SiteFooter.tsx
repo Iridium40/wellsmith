@@ -17,7 +17,7 @@ export default function SiteFooter() {
               />
             </Link>
             <p className="mt-2 max-w-xs">
-              Personalized Optavia coaching for sustainable, healthy living.
+              Personalized Trilivy coaching for sustainable, healthy living.
             </p>
             <p className="mt-2 max-w-xs text-xs text-muted-foreground">
               This site does not provide medical advice. Consult your physician
@@ -32,15 +32,15 @@ export default function SiteFooter() {
               Client Support
             </Link>
             <Link to="/recipes" className="hover:text-foreground">
-              OPTAVIA Lean & Green™ Recipe Ideas
+              Trilivy Lean & Green™ Recipe Ideas
             </Link>
             <Link to="/book-assessment" className="hover:text-foreground">
               Book Assessment
             </Link>
             <a
               href={
-                import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                import.meta.env.VITE_TRILIVY_COACH_URL ||
+                "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
               }
               target="_blank"
               rel="noreferrer"
@@ -49,12 +49,12 @@ export default function SiteFooter() {
               Start Your Journey
             </a>
             <a
-              href="https://www.optavia.com/us/en/coach/kaycesmith"
+              href="https://www.trilivyhealth.com/us/en/coach/kaycesmith"
               target="_blank"
               rel="noreferrer"
               className="hover:text-foreground"
             >
-              OPTAVIA Coach Profile
+              Trilivy Coach Profile
             </a>
             <a
               href="https://www.facebook.com/kayces"
@@ -77,8 +77,8 @@ export default function SiteFooter() {
             <div className="font-medium text-foreground">Ready to begin?</div>
             <a
               href={
-                import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                import.meta.env.VITE_TRILIVY_COACH_URL ||
+                "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
               }
               target="_blank"
               rel="noreferrer"

@@ -7,7 +7,7 @@ const navItems = [
   { to: "/", label: "Home" },
   { to: "/my-story", label: "My Story" },
   { to: "/why-coaching", label: "Client Support" },
-  { to: "/recipes", label: "OPTAVIA Lean & Green™ Recipe Ideas" },
+  { to: "/recipes", label: "Trilivy Lean & Green™ Recipe Ideas" },
   { to: "/book-assessment", label: "Book Assessment" },
   { to: "/connect", label: "Connect with Kayce" },
 ];
@@ -53,8 +53,8 @@ export default function SiteHeader() {
           <Button asChild size="lg" variant="gradient" className="shadow-sm">
             <a
               href={
-                import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                import.meta.env.VITE_TRILIVY_COACH_URL ||
+                "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
               }
               target="_blank"
               rel="noreferrer"

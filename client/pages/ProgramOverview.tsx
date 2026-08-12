@@ -6,8 +6,8 @@ export default function ProgramOverview() {
   return (
     <div>
       <SEO
-        title="Program Overview | OPTAVIA Coaching | WellSmith"
-        description="How OPTAVIA plus one‑on‑one coaching works: assessment, structured fueling, daily support, and long‑term habits."
+        title="Program Overview | Trilivy Coaching | WellSmith"
+        description="How Trilivy plus one‑on‑one coaching works: assessment, structured fueling, daily support, and long‑term habits."
       />
       <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(65%_40%_at_50%_-10%,theme(colors.secondary/60),transparent_70%)]" />
@@ -16,7 +16,7 @@ export default function ProgramOverview() {
             Program Overview
           </h1>
           <p className="mt-4 max-w-3xl text-lg text-muted-foreground">
-            The Optavia approach pairs a scientifically designed nutrition plan
+            The Trilivy approach pairs a scientifically designed nutrition plan
             with daily coaching and community support. Here's what working
             together looks like.
           </p>

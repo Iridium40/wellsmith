@@ -9,38 +9,38 @@ export default function Contact() {
     <div className="mx-auto max-w-4xl px-4 py-16">
       <SEO
         title="Connect with Kayce | WellSmith"
-        description="Connect with Kayce Smith. Book a call, message on social, or start through OPTAVIA."
+        description="Connect with Kayce Smith. Book a call, message on social, or start through Trilivy."
       />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         Connect with Kayce
       </h1>
       <p className="mt-3 text-lg text-muted-foreground">
-        Start your journey through OPTAVIA's official system.
+        Start your journey through Trilivy's official system.
       </p>
 
       <div className="mt-8 rounded-2xl border bg-card p-6 shadow-sm">
         <p className="text-sm text-foreground/80">
-          Optavia Coach Profile:{" "}
+          Trilivy Coach Profile:{" "}
           <a
             className="text-primary hover:underline"
-            href="https://www.optavia.com/us/en/coach/kaycesmith"
+            href="https://www.trilivyhealth.com/us/en/coach/kaycesmith"
             target="_blank"
             rel="noreferrer"
           >
-            optavia.com/kaycesmith
+            trilivyhealth.com/kaycesmith
           </a>
         </p>
         <div className="mt-4 flex flex-wrap gap-3">
           <Button asChild variant="gradient">
             <a
               href={
-                import.meta.env.VITE_OPTAVIA_COACH_URL ||
-                "https://www.optavia.com/us/en/coach/kaycesmith"
+                import.meta.env.VITE_TRILIVY_COACH_URL ||
+                "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
               }
               target="_blank"
               rel="noreferrer"
             >
-              Connect via OPTAVIA
+              Connect via Trilivy
             </a>
           </Button>
           <Button asChild>

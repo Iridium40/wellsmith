@@ -8,13 +8,13 @@ export default function MyStory() {
     <div className="mx-auto max-w-6xl px-4 py-16">
       <SEO
         title="My Story | WellSmith"
-        description="Kayce’s 36‑lb transformation with OPTAVIA and how it led to coaching others to lasting change."
+        description="Kayce’s 36‑lb transformation with Trilivy and how it led to coaching others to lasting change."
       />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
         My Story
       </h1>
       <p className="mt-3 text-lg text-muted-foreground">
-        Kayce's journey as an Independent OPTAVIA Certified Health Coach
+        Kayce's journey as an Independent Trilivy Certified Health Coach
       </p>
 
       <div className="mt-8 grid gap-8 lg:grid-cols-2">
@@ -41,17 +41,17 @@ export default function MyStory() {
             The Transformation That Saved Me
           </h2>
           <p>
-            That's when I had a chance conversation with an OPTAVIA coach who
+            That's when I had a chance conversation with an Trilivy coach who
             would change my life. I was over-exhausted and underwhelmed, but I
             knew I had to jump in with both feet—not just for me, but for Hayes.
           </p>
           <p>
             <strong>
-              Losing 36 lbs in 2017 with OPTAVIA was life-changing for me!
+              Losing 36 lbs in 2017 with Trilivy was life-changing for me!
             </strong>
           </p>
           <p>
-            OPTAVIA helped me change my relationship with food and gave me the
+            Trilivy helped me change my relationship with food and gave me the
             structure and energy to be the wife and mom I wanted to be—the mom
             Hayes deserved. For the first time in years, I felt like{" "}
             <em>myself</em> again. I had energy to keep up with medical
@@ -153,7 +153,7 @@ export default function MyStory() {
           <p>
             From finding strength in my darkest moment to losing weight,
             becoming a coach, writing books, and building resources for other
-            families—my OPTAVIA transformation was the catalyst that made it all
+            families—my Trilivy transformation was the catalyst that made it all
             possible.
           </p>
           <p>
@@ -179,8 +179,8 @@ export default function MyStory() {
       <div className="mt-6">
         <a
           href={
-            import.meta.env.VITE_OPTAVIA_COACH_URL ||
-            "https://www.optavia.com/us/en/coach/kaycesmith"
+            import.meta.env.VITE_TRILIVY_COACH_URL ||
+            "https://www.trilivyhealth.com/us/en/coach/kaycesmith"
           }
           target="_blank"
           rel="noreferrer"
