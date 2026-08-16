@@ -3,7 +3,6 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleHealthAssessment } from "./routes/health-assessment";
-import { handlePinterest } from "./routes/pinterest";
 import { handleNewsletterSubscribe } from "./routes/newsletter";
 
 export function createServer() {
@@ -27,9 +26,6 @@ export function createServer() {
 
   // Health Assessment form submission
   app.post("/api/health-assessment", handleHealthAssessment);
-
-  // Pinterest images (Lean & Green) from public board RSS
-  app.get("/api/pinterest", handlePinterest);
 
   // Newsletter subscription
   app.post("/api/newsletter/subscribe", handleNewsletterSubscribe);
