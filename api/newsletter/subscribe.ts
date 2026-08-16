@@ -1,9 +1,11 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { z } from 'zod';
+import { verifyTurnstile, clientIp } from '../../server/lib/turnstile';
 
 // Email validation schema
 const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
+  turnstileToken: z.string().optional(),
 });
 
 // Public site origin. Used for every link in outgoing email — these land in
@@ -234,7 +236,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       });
     }
 
-    const { email } = validation.data;
+    const { email, turnstileToken } = validation.data;
+
+    // Bot check before anything that costs money or writes state.
+    const turnstile = await verifyTurnstile(
+      turnstileToken,
+      clientIp(req.headers as Record<string, unknown>),
+    );
+    if (!turnstile.ok) {
+      console.warn('Turnstile rejected a subscription:', turnstile.reason);
+      return res.status(403).json({
+        success: false,
+        error: 'Could not verify that you are human. Please try again.',
+      });
+    }
 
     // Add to Resend audience
     const audienceResult = await addToResendAudience(email);

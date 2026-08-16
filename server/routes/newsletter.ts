@@ -1,5 +1,6 @@
 import { RequestHandler } from "express";
 import { z } from "zod";
+import { verifyTurnstile, clientIp } from "../lib/turnstile";
 
 // Public site origin. Used for every link in outgoing email — these land in
 // inboxes we cannot edit later, so they must point at the live domain.
@@ -8,6 +9,7 @@ const SITE_URL = "https://www.smithhealthwellness.com";
 // Validation schema
 const subscribeSchema = z.object({
   email: z.string().email("Invalid email address"),
+  turnstileToken: z.string().optional(),
 });
 
 export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
@@ -28,7 +30,20 @@ export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
       });
     }
 
-    const { email } = validation.data;
+    const { email, turnstileToken } = validation.data;
+
+    // Bot check before anything that costs money or writes state.
+    const turnstile = await verifyTurnstile(
+      turnstileToken,
+      clientIp(req.headers as Record<string, unknown>),
+    );
+    if (!turnstile.ok) {
+      console.warn("Turnstile rejected a subscription:", turnstile.reason);
+      return res.status(403).json({
+        success: false,
+        message: "Could not verify that you are human. Please try again.",
+      });
+    }
 
     // Send welcome email via Resend
     const resendResult = await sendWelcomeEmail(email);

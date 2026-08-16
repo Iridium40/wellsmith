@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Mail, CheckCircle, AlertCircle } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import Turnstile, { TURNSTILE_SITE_KEY } from "@/components/site/Turnstile";
 
 interface NewsletterSignupProps {
   title?: string;
@@ -25,6 +32,13 @@ export default function NewsletterSignup({
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  // Bumping this resets the widget: Turnstile tokens are single-use, so a
+  // retry after a failure needs a fresh one.
+  const [turnstileNonce, setTurnstileNonce] = useState(0);
+
+  // When Turnstile is configured, hold submission until a token arrives.
+  const blocked = !!TURNSTILE_SITE_KEY && !turnstileToken;
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -33,7 +47,7 @@ export default function NewsletterSignup({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!email.trim()) {
       toast({
         title: "Email Required",
@@ -61,7 +75,10 @@ export default function NewsletterSignup({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email: email.trim() }),
+        body: JSON.stringify({
+          email: email.trim(),
+          ...(turnstileToken ? { turnstileToken } : {}),
+        }),
       });
 
       console.log("Response status:", response.status);
@@ -73,7 +90,9 @@ export default function NewsletterSignup({
 
       if (!response.ok) {
         console.error("HTTP error response:", responseText);
-        throw new Error(`Server error (${response.status}): Please try again later`);
+        throw new Error(
+          `Server error (${response.status}): Please try again later`,
+        );
       }
 
       // Try to parse as JSON, but handle failures gracefully
@@ -88,23 +107,29 @@ export default function NewsletterSignup({
       }
 
       // Check if we got a valid success response
-      if (data && typeof data === 'object' && data.success === true) {
+      if (data && typeof data === "object" && data.success === true) {
         setIsSubscribed(true);
         setEmail("");
         toast({
           title: "Successfully Subscribed!",
-          description: "Thank you for joining the WellSmith community. Check your email for a welcome message.",
+          description:
+            "Thank you for joining the WellSmith community. Check your email for a welcome message.",
         });
       } else {
-        const errorMessage = data?.error || data?.message || "Subscription failed";
+        const errorMessage =
+          data?.error || data?.message || "Subscription failed";
         console.error("Subscription failed:", errorMessage);
         throw new Error(errorMessage);
       }
     } catch (error) {
       console.error("Newsletter subscription error:", error);
+      setTurnstileNonce((n) => n + 1);
       toast({
         title: "Subscription Failed",
-        description: error instanceof Error ? error.message : "Something went wrong. Please try again later.",
+        description:
+          error instanceof Error
+            ? error.message
+            : "Something went wrong. Please try again later.",
         variant: "destructive",
       });
     } finally {
@@ -119,7 +144,8 @@ export default function NewsletterSignup({
           <CheckCircle className="mx-auto h-12 w-12 text-green-500 mb-4" />
           <h3 className="text-lg font-semibold mb-2">Welcome to WellSmith!</h3>
           <p className="text-muted-foreground">
-            You're now subscribed to our newsletter. Check your email for a welcome message.
+            You're now subscribed to our newsletter. Check your email for a
+            welcome message.
           </p>
         </CardContent>
       </Card>
@@ -129,18 +155,25 @@ export default function NewsletterSignup({
   if (variant === "compact") {
     return (
       <div className={`${className}`}>
-        <form onSubmit={handleSubmit} className="flex gap-2">
-          <Input
-            type="email"
-            placeholder={placeholder}
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={isLoading}
-            className="flex-1"
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+          <div className="flex gap-2">
+            <Input
+              type="email"
+              placeholder={placeholder}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
+              className="flex-1"
+            />
+            <Button type="submit" disabled={isLoading || blocked} size="sm">
+              {isLoading ? "..." : buttonText}
+            </Button>
+          </div>
+          <Turnstile
+            onToken={setTurnstileToken}
+            resetKey={turnstileNonce}
+            className="flex justify-center"
           />
-          <Button type="submit" disabled={isLoading} size="sm">
-            {isLoading ? "..." : buttonText}
-          </Button>
         </form>
       </div>
     );
@@ -149,20 +182,31 @@ export default function NewsletterSignup({
   if (variant === "inline") {
     return (
       <div className={`${className}`}>
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
-          <div className="flex-1">
-            <Input
-              type="email"
-              placeholder={placeholder}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={isLoading}
-              className="w-full"
-            />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex-1">
+              <Input
+                type="email"
+                placeholder={placeholder}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={isLoading}
+                className="w-full"
+              />
+            </div>
+            <Button
+              type="submit"
+              disabled={isLoading || blocked}
+              className="sm:w-auto"
+            >
+              {isLoading ? "Subscribing..." : buttonText}
+            </Button>
           </div>
-          <Button type="submit" disabled={isLoading} className="sm:w-auto">
-            {isLoading ? "Subscribing..." : buttonText}
-          </Button>
+          <Turnstile
+            onToken={setTurnstileToken}
+            resetKey={turnstileNonce}
+            className="flex justify-center"
+          />
         </form>
       </div>
     );
@@ -189,7 +233,16 @@ export default function NewsletterSignup({
               className="w-full"
             />
           </div>
-          <Button type="submit" disabled={isLoading} className="w-full">
+          <Turnstile
+            onToken={setTurnstileToken}
+            resetKey={turnstileNonce}
+            className="flex justify-center"
+          />
+          <Button
+            type="submit"
+            disabled={isLoading || blocked}
+            className="w-full"
+          >
             {isLoading ? "Subscribing..." : buttonText}
           </Button>
           <p className="text-xs text-muted-foreground text-center">
