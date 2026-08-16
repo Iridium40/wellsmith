@@ -1,22 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { handleDemo } from '../server/routes/demo';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Convert Vercel request/response to Express format
-  const expressReq = {
-    method: req.method,
-    body: req.body,
-    headers: req.headers,
-  } as any;
-
-  const expressRes = {
-    json: (data: any) => res.json(data),
-    status: (code: number) => ({
-      json: (data: any) => res.status(code).json(data),
-      send: (data: any) => res.status(code).send(data),
-    }),
-    send: (data: any) => res.send(data),
-  } as any;
-
-  await handleDemo(expressReq, expressRes);
+/*
+ * Self-contained on purpose: Vercel does not bundle sources from outside
+ * api/, so importing handleDemo from server/routes/demo.ts failed to resolve
+ * at runtime and the function died with ERR_MODULE_NOT_FOUND.
+ */
+export default async function handler(_req: VercelRequest, res: VercelResponse) {
+  res.status(200).json({ message: 'Hello from Express server' });
 }
