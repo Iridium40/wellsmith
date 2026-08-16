@@ -217,9 +217,7 @@ export default function Index() {
           </div>
           <div className="md:text-right">
             <Button asChild size="lg" className="shadow" variant="gradient">
-              <a href="/book-with-kayce" target="_blank" rel="noreferrer">
-                Book with Kayce
-              </a>
+              <a href="/book-assessment">Book with Kayce</a>
             </Button>
           </div>
         </div>

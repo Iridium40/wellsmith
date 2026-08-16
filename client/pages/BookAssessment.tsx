@@ -8,15 +8,9 @@ import type {
 } from "@shared/api";
 
 export default function BookAssessment() {
-  const calendlyUrl = import.meta.env.VITE_CALENDLY_URL as string | undefined;
-  const tz = useMemo(
-    () => Intl.DateTimeFormat().resolvedOptions().timeZone,
-    [],
-  );
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<"success" | "error" | null>(null);
   const today = useMemo(() => new Date().toISOString().slice(0, 10), []);
-  const unlocked = result === "success";
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -83,8 +77,8 @@ export default function BookAssessment() {
           setResult("success");
           e.currentTarget.reset();
           document
-            .getElementById("schedule")
-            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+            .getElementById("assessment-result")
+            ?.scrollIntoView({ behavior: "smooth", block: "center" });
         } else {
           setResult("error");
         }
@@ -117,22 +111,14 @@ export default function BookAssessment() {
                 the Trilivy program and personalized coaching can help. No
                 pressure—just helpful, practical guidance.
               </p>
-              {!calendlyUrl && (
-                <div className="mt-6 rounded-lg border bg-white p-4 text-sm text-amber-700">
-                  Calendly is not configured yet. Add VITE_CALENDLY_URL to
-                  enable inline booking. You can still contact via the form
-                  below.
-                </div>
-              )}
+              <p className="mt-4 text-muted-foreground">
+                Complete the health assessment below and Kayce will email you to
+                arrange a time that works for you.
+              </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Button asChild size="lg">
                   <a href="#health-assessment">Fill Health Assessment</a>
                 </Button>
-                {calendlyUrl && unlocked && (
-                  <Button asChild size="lg" variant="outline">
-                    <a href="#schedule">Proceed to Calendar</a>
-                  </Button>
-                )}
               </div>
             </div>
             <div>
@@ -145,35 +131,13 @@ export default function BookAssessment() {
                   decoding="async"
                 />
               </div>
-              {!calendlyUrl ? (
-                <div
-                  id="schedule"
-                  className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm"
-                >
-                  <div className="p-6 text-sm text-muted-foreground">
-                    Calendar will appear here once connected.
-                  </div>
-                </div>
-              ) : !unlocked ? (
-                <div className="flex justify-center">
-                  <ShareButton
-                    size="lg"
-                    title="Book Your Free Health Assessment"
-                    description="Complete this quick assessment and book time with Kayce."
-                  />
-                </div>
-              ) : (
-                <div
-                  id="schedule"
-                  className="w-full overflow-hidden rounded-xl border bg-card p-2 shadow-sm"
-                >
-                  <iframe
-                    title="Book with Kayce — Calendly"
-                    src={`${calendlyUrl}`}
-                    className="h-[640px] w-full rounded-lg"
-                  />
-                </div>
-              )}
+              <div className="flex justify-center">
+                <ShareButton
+                  size="lg"
+                  title="Book Your Free Health Assessment"
+                  description="Complete this quick assessment and book time with Kayce."
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -189,9 +153,11 @@ export default function BookAssessment() {
             securely to Kayce for review before your call.
           </p>
 
+          <div id="assessment-result" />
           {result === "success" && (
             <div className="mt-6 rounded-md border border-emerald-200 bg-emerald-50 p-4 text-emerald-900">
-              Thanks! Your Health Assessment was submitted successfully.
+              Thanks! Your Health Assessment was submitted successfully. Kayce
+              will email you shortly to arrange a time for your call.
             </div>
           )}
           {result === "error" && (

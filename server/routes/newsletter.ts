@@ -230,7 +230,7 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
               <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px;">
                 <p style="font-size: 14px; color: #666; text-align: center;">
                   Ready to start your transformation?<br>
-                  <a href="https://wellsmith.com/book-with-kayce" style="color: #1babe0;">Book a consultation with me</a>
+                  <a href="https://www.smithhealthwellness.com/book-assessment" style="color: #1babe0;">Book a consultation with me</a>
                 </p>
               </div>
               
