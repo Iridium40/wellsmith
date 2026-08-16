@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import type { Metric } from "web-vitals";
 
 export default function PerformanceMonitor() {
   useEffect(() => {
@@ -6,7 +7,7 @@ export default function PerformanceMonitor() {
     if (process.env.NODE_ENV !== "production") return;
 
     // Web Vitals monitoring
-    const reportWebVitals = (metric: any) => {
+    const reportWebVitals = (metric: Metric) => {
       // Send to analytics
       if (typeof window !== "undefined" && (window as any).gtag) {
         (window as any).gtag("event", metric.name, {
@@ -18,13 +19,14 @@ export default function PerformanceMonitor() {
       }
     };
 
-    // Import and initialize web-vitals
-    import("web-vitals").then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(reportWebVitals);
-      getFID(reportWebVitals);
-      getFCP(reportWebVitals);
-      getLCP(reportWebVitals);
-      getTTFB(reportWebVitals);
+    // Import and initialize web-vitals. v3 renamed getX to onX, and v4
+    // dropped FID in favour of INP, which replaced it as a Core Web Vital.
+    import("web-vitals").then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+      onCLS(reportWebVitals);
+      onINP(reportWebVitals);
+      onFCP(reportWebVitals);
+      onLCP(reportWebVitals);
+      onTTFB(reportWebVitals);
     });
 
     // Resource timing monitoring
