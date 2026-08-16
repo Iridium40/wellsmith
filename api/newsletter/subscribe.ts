@@ -6,6 +6,11 @@ const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
 });
 
+// Public site origin. Used for every link in outgoing email — these land in
+// inboxes we cannot edit later, so they must point at the live domain.
+const SITE_URL = 'https://www.smithhealthwellness.com';
+const DEFAULT_FROM = 'Kayce Smith <kayce@smithhealthwellness.com>';
+
 // Resend contact management - add to audience
 async function addToResendAudience(email: string) {
   const resendKey = process.env.RESEND_API_KEY;
@@ -68,7 +73,7 @@ async function sendNotificationEmail(subscriberEmail: string) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.NEWSLETTER_FROM_EMAIL || "WellSmith <hello@wellsmith.com>",
+        from: process.env.NEWSLETTER_FROM_EMAIL || DEFAULT_FROM,
         to: [notificationEmail],
         subject: "New Newsletter Subscriber - WellSmith",
         html: `
@@ -116,14 +121,14 @@ async function sendWelcomeEmail(email: string) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: process.env.NEWSLETTER_FROM_EMAIL || "WellSmith <hello@wellsmith.com>",
+        from: process.env.NEWSLETTER_FROM_EMAIL || DEFAULT_FROM,
         to: [email],
         subject: "Welcome to WellSmith! 🎉",
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <!-- Logo Section -->
             <div style="text-align: center; margin-bottom: 30px;">
-              <img src="https://wellsmith.com/wellsmith-logo.png" alt="WellSmith" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />
+              <img src="${SITE_URL}/wellsmith-logo.png" alt="WellSmith" style="max-width: 200px; height: auto; display: block; margin: 0 auto;" />
             </div>
             
             <!-- Welcome Content -->
@@ -138,7 +143,7 @@ async function sendWelcomeEmail(email: string) {
               
               <!-- Call to Action Button -->
               <div style="margin: 30px 0;">
-                <a href="https://www.wellsmith.com/book-assessment" 
+                <a href="${SITE_URL}/book-assessment" 
                    style="display: inline-block; background-color: #00C0C0; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
                   Start Your Journey Today!
                 </a>
@@ -161,8 +166,8 @@ async function sendWelcomeEmail(email: string) {
                 You can unsubscribe at any time by clicking the link in our emails or contacting us directly.
               </p>
               <p style="font-size: 12px; color: #666; margin: 10px 0 0 0;">
-                <a href="https://wellsmith.com" style="color: #00C0C0; text-decoration: none;">wellsmith.com</a> | 
-                <a href="https://wellsmith.com/privacy" style="color: #00C0C0; text-decoration: none;">Privacy Policy</a>
+                <a href="${SITE_URL}" style="color: #00C0C0; text-decoration: none;">smithhealthwellness.com</a> | 
+                <a href="${SITE_URL}/privacy" style="color: #00C0C0; text-decoration: none;">Privacy Policy</a>
               </p>
             </div>
           </div>

@@ -14,8 +14,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       method: req.method,
       timestamp: new Date().toISOString(),
       env: {
-        hasHubspotToken: !!process.env.HUBSPOT_PRIVATE_APP_TOKEN,
         hasResendKey: !!process.env.RESEND_API_KEY,
+        hasResendAudience: !!process.env.RESEND_AUDIENCE_ID,
       }
     });
   } catch (error) {

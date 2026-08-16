@@ -101,14 +101,14 @@ export default function Privacy() {
       <p>When you subscribe to our newsletter:</p>
       <ul>
         <li><strong>Email Collection:</strong> We collect your email address for newsletter delivery</li>
-        <li><strong>HubSpot Integration:</strong> Your email is stored in our HubSpot CRM system for contact management</li>
+        <li><strong>Contact Storage:</strong> Your email address is stored in our Resend audience for newsletter management</li>
         <li><strong>Email Marketing:</strong> We use Resend email service to deliver newsletters and health content</li>
         <li><strong>Unsubscribe:</strong> You can unsubscribe at any time using the link in our emails or by contacting us directly</li>
       </ul>
       
       <h3>Important Note About Data Storage</h3>
       <p>
-        <strong>Newsletter subscribers:</strong> Your email address is stored in our HubSpot CRM system and used for email marketing purposes. Other information collected through our web forms is immediately transmitted
+        <strong>Newsletter subscribers:</strong> Your email address is stored in our Resend audience and used for email marketing purposes. Other information collected through our web forms is immediately transmitted
         via email to our coaching team and is not retained in any database or
         server storage system.
       </p>
@@ -129,7 +129,6 @@ export default function Privacy() {
           <strong>Service Providers:</strong> With trusted third-party service
           providers who assist us with:
           <ul>
-            <li><strong>HubSpot:</strong> Customer relationship management and email marketing</li>
             <li><strong>Resend:</strong> Email delivery service for newsletters and communications</li>
             <li><strong>Website hosting and other business operations</strong> (these providers are bound by confidentiality agreements)</li>
           </ul>
@@ -163,7 +162,7 @@ export default function Privacy() {
       <h2>6. Data Retention</h2>
       <ul>
         <li>
-          <strong>Newsletter Subscribers:</strong> Your email address and subscription information are retained in our HubSpot CRM system until you unsubscribe or request deletion
+          <strong>Newsletter Subscribers:</strong> Your email address and subscription information are retained in our Resend audience until you unsubscribe or request deletion
         </li>
         <li>
           <strong>Form Submissions:</strong> Other information is immediately
@@ -324,9 +323,9 @@ export default function Privacy() {
         <br />
         <strong>Independent Trilivy Certified Health Coach</strong>
         <br />
-        <strong>Email:</strong> kayce@smithhelthwellness.com
+        <strong>Email:</strong> kayce@smithhealthwellness.com
         <br />
-        <strong>Website:</strong> wellsmith.com
+        <strong>Website:</strong> smithhealthwellness.com
         <br />
         <strong>Instagram:</strong> @smithkayce
       </p>
@@ -335,7 +334,7 @@ export default function Privacy() {
       <p>To unsubscribe from our newsletter:</p>
       <ul>
         <li>Click the "Unsubscribe" link in any of our emails</li>
-        <li>Email us at kayce@smithhelthwellness.com with "Unsubscribe" in the subject line</li>
+        <li>Email us at kayce@smithhealthwellness.com with "Unsubscribe" in the subject line</li>
         <li>Contact us through our website contact form</li>
       </ul>
       

@@ -1,16 +1,14 @@
 import { RequestHandler } from "express";
 import { z } from "zod";
 
+// Public site origin. Used for every link in outgoing email — these land in
+// inboxes we cannot edit later, so they must point at the live domain.
+const SITE_URL = "https://www.smithhealthwellness.com";
+
 // Validation schema
 const subscribeSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
-
-interface NewsletterResponse {
-  success: boolean;
-  message: string;
-  contactId?: string;
-}
 
 export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
   try {
@@ -32,31 +30,20 @@ export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
 
     const { email } = validation.data;
 
-    // Add to HubSpot
-    const hubspotResult = await addToHubSpot(email);
-    console.log("HubSpot result:", hubspotResult);
-    
     // Send welcome email via Resend
     const resendResult = await sendWelcomeEmail(email);
     console.log("Resend result:", resendResult);
 
-    if (hubspotResult.success && resendResult.success) {
+    if (resendResult.success) {
       res.json({
         success: true,
         message: "Successfully subscribed to newsletter",
-        contactId: hubspotResult.contactId,
       });
     } else {
-      // Log the error but still return success if at least one worked
-      console.error("Newsletter subscription partial failure:", {
-        hubspot: hubspotResult,
-        resend: resendResult,
-      });
-      
-      res.json({
-        success: true,
-        message: "Successfully subscribed to newsletter",
-        contactId: hubspotResult.contactId,
+      console.error("Newsletter subscription failed:", resendResult);
+      res.status(502).json({
+        success: false,
+        message: "Could not send the welcome email. Please try again.",
       });
     }
   } catch (error) {
@@ -67,115 +54,6 @@ export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
     });
   }
 };
-
-async function addToHubSpot(email: string): Promise<{ success: boolean; contactId?: string; error?: string }> {
-  try {
-    const hubspotToken = process.env.HUBSPOT_PRIVATE_APP_TOKEN;
-    
-    if (!hubspotToken) {
-      throw new Error("HubSpot token not configured");
-    }
-
-    // Check if contact already exists
-    const searchResponse = await fetch(
-      `https://api.hubapi.com/crm/v3/objects/contacts/search`,
-      {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${hubspotToken}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          filterGroups: [
-            {
-              filters: [
-                {
-                  propertyName: "email",
-                  operator: "EQ",
-                  value: email,
-                },
-              ],
-            },
-          ],
-          properties: ["email", "firstname", "lastname"],
-        }),
-      }
-    );
-
-    if (!searchResponse.ok) {
-      throw new Error(`HubSpot search failed: ${searchResponse.statusText}`);
-    }
-
-    const searchData = await searchResponse.json();
-    
-    // If contact exists, update their subscription status
-    if (searchData.results && searchData.results.length > 0) {
-      const contactId = searchData.results[0].id;
-      
-      // Update contact with newsletter subscription
-      const updateResponse = await fetch(
-        `https://api.hubapi.com/crm/v3/objects/contacts/${contactId}`,
-        {
-          method: "PATCH",
-          headers: {
-            "Authorization": `Bearer ${hubspotToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            properties: {
-              hs_analytics_source: "wellsmith",
-              hs_email_optout: "false",
-              lifecyclestage: "subscriber",
-              hs_analytics_source_data_1: "newsletter_signup",
-            },
-          }),
-        }
-      );
-
-      if (updateResponse.ok) {
-        return { success: true, contactId };
-      } else {
-        const errorData = await updateResponse.text();
-        console.error("HubSpot update error:", errorData);
-        throw new Error(`HubSpot update failed: ${updateResponse.statusText} - ${errorData}`);
-      }
-    } else {
-      // Create new contact
-      const createResponse = await fetch(
-        "https://api.hubapi.com/crm/v3/objects/contacts",
-        {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${hubspotToken}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            properties: {
-              email: email,
-              hs_analytics_source: "wellsmith",
-              hs_email_optout: "false",
-              lifecyclestage: "subscriber",
-              hs_analytics_source_data_1: "newsletter_signup",
-              createdate: new Date().toISOString(),
-            },
-          }),
-        }
-      );
-
-      if (createResponse.ok) {
-        const createData = await createResponse.json();
-        return { success: true, contactId: createData.id };
-      } else {
-        const errorData = await createResponse.text();
-        console.error("HubSpot create error:", errorData);
-        throw new Error(`HubSpot create failed: ${createResponse.statusText} - ${errorData}`);
-      }
-    }
-  } catch (error) {
-    console.error("HubSpot integration error:", error);
-    return { success: false, error: error instanceof Error ? error.message : "Unknown error" };
-  }
-}
 
 async function sendWelcomeEmail(email: string): Promise<{ success: boolean; error?: string }> {
   try {
@@ -192,7 +70,9 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Kayce Smith <kayce@smithhelthwellness.com>", // Update with your actual email
+        from:
+          process.env.NEWSLETTER_FROM_EMAIL ||
+          "Kayce Smith <kayce@smithhealthwellness.com>",
         to: [email],
         subject: "Welcome to WellSmith - Your Health Journey Starts Here!",
         html: `
@@ -224,25 +104,25 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
               </div>
               
               <div style="text-align: center; margin: 30px 0;">
-                <a href="https://wellsmith.com/my-story" style="background-color: #1babe0; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">Read My Story</a>
+                <a href="${SITE_URL}/my-story" style="background-color: #1babe0; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">Read My Story</a>
               </div>
               
               <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px;">
                 <p style="font-size: 14px; color: #666; text-align: center;">
                   Ready to start your transformation?<br>
-                  <a href="https://www.smithhealthwellness.com/book-assessment" style="color: #1babe0;">Book a consultation with me</a>
+                  <a href="${SITE_URL}/book-assessment" style="color: #1babe0;">Book a consultation with me</a>
                 </p>
               </div>
               
               <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
                 <p style="font-size: 12px; color: #999;">
                   WellSmith | Independent Trilivy Certified Health Coach<br>
-                  <a href="https://wellsmith.com" style="color: #1babe0;">wellsmith.com</a> | 
+                  <a href="${SITE_URL}" style="color: #1babe0;">smithhealthwellness.com</a> | 
                   <a href="https://instagram.com/smithkayce" style="color: #1babe0;">@smithkayce</a>
                 </p>
                 <p style="font-size: 12px; color: #999; margin-top: 10px;">
-                  <a href="https://wellsmith.com/unsubscribe" style="color: #999;">Unsubscribe</a> | 
-                  <a href="https://wellsmith.com/privacy" style="color: #999;">Privacy Policy</a>
+                  <a href="${SITE_URL}/unsubscribe" style="color: #999;">Unsubscribe</a> | 
+                  <a href="${SITE_URL}/privacy" style="color: #999;">Privacy Policy</a>
                 </p>
               </div>
             </body>
