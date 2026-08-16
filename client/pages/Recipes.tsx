@@ -154,45 +154,51 @@ export default function Recipes() {
                 <DialogDescription>{selected.description}</DialogDescription>
               </DialogHeader>
 
-              <div className="aspect-[16/9] w-full overflow-hidden rounded-xl bg-muted">
-                <img
-                  src={selected.image}
-                  alt={selected.title}
-                  className="h-full w-full object-cover"
-                />
-              </div>
-
-              <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
-                <span>Prep {selected.prepTime} min</span>
-                <span>Cook {selected.cookTime} min</span>
-                <span>{selected.servings} servings</span>
-                <span>{selected.difficulty}</span>
-              </div>
-              <CountBadges counts={selected.counts} />
-
-              <div className="grid gap-6 sm:grid-cols-2">
-                <div>
-                  <h4 className="text-sm font-semibold">Ingredients</h4>
-                  <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
-                    {selected.ingredients.map((ing, i) => (
-                      <li key={i}>{ing}</li>
-                    ))}
-                  </ul>
+              {/* Single grid child: DialogContent is a bare `grid` with no row
+                  template, so a stretched item sized by aspect-ratio balloons
+                  and later rows paint on top of it. Keep the body in one cell
+                  and lay it out with normal flow. */}
+              <div className="space-y-4">
+                <div className="h-56 w-full overflow-hidden rounded-xl bg-muted">
+                  <img
+                    src={selected.image}
+                    alt={selected.title}
+                    className="h-full w-full object-cover"
+                  />
                 </div>
-                <div>
-                  <h4 className="text-sm font-semibold">Instructions</h4>
-                  <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
-                    {selected.instructions.map((step, i) => (
-                      <li key={i}>{step}</li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
 
-              <p className="text-xs text-muted-foreground">
-                Serving counts are estimates. Confirm against your current
-                Trilivy plan and consult your coach for personalized guidance.
-              </p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+                  <span>Prep {selected.prepTime} min</span>
+                  <span>Cook {selected.cookTime} min</span>
+                  <span>{selected.servings} servings</span>
+                  <span>{selected.difficulty}</span>
+                </div>
+                <CountBadges counts={selected.counts} />
+
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div>
+                    <h4 className="text-sm font-semibold">Ingredients</h4>
+                    <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-muted-foreground">
+                      {selected.ingredients.map((ing, i) => (
+                        <li key={i}>{ing}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-semibold">Instructions</h4>
+                    <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-muted-foreground">
+                      {selected.instructions.map((step, i) => (
+                        <li key={i}>{step}</li>
+                      ))}
+                    </ol>
+                  </div>
+                </div>
+
+                <p className="text-xs text-muted-foreground">
+                  Serving counts are estimates. Confirm against your current
+                  Trilivy plan and consult your coach for personalized guidance.
+                </p>
+              </div>
             </>
           )}
         </DialogContent>
