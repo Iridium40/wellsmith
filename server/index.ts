@@ -3,7 +3,10 @@ import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleHealthAssessment } from "./routes/health-assessment";
-import { handleNewsletterSubscribe } from "./routes/newsletter";
+import {
+  handleNewsletterSubscribe,
+  handleNewsletterUnsubscribe,
+} from "./routes/newsletter";
 
 export function createServer() {
   const app = express();
@@ -29,6 +32,7 @@ export function createServer() {
 
   // Newsletter subscription
   app.post("/api/newsletter/subscribe", handleNewsletterSubscribe);
+  app.post("/api/newsletter/unsubscribe", handleNewsletterUnsubscribe);
 
   // Sitemap
   app.get("/sitemap.xml", (_req, res) => {

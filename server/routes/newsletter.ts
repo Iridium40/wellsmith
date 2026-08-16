@@ -55,6 +55,64 @@ export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
   }
 };
 
+/**
+ * Marks a contact unsubscribed in the Resend audience.
+ *
+ * Resolves by email address rather than contact id, so no lookup is needed.
+ * A 404 means the address was never subscribed — the same end state from the
+ * caller's point of view, so it is reported as success.
+ */
+export const handleNewsletterUnsubscribe: RequestHandler = async (req, res) => {
+  try {
+    const validation = subscribeSchema.safeParse(req.body);
+    if (!validation.success) {
+      return res.status(400).json({
+        success: false,
+        error: "Please enter a valid email address",
+      });
+    }
+
+    const resendApiKey = process.env.RESEND_API_KEY;
+    const audienceId = process.env.RESEND_AUDIENCE_ID;
+    if (!resendApiKey || !audienceId) {
+      return res.status(502).json({
+        success: false,
+        error: "We could not process that just now. Please try again.",
+      });
+    }
+
+    const response = await fetch(
+      `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(validation.data.email)}`,
+      {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${resendApiKey}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ unsubscribed: true }),
+      },
+    );
+
+    if (!response.ok && response.status !== 404) {
+      console.error(
+        "Resend unsubscribe failed:",
+        response.status,
+        await response.text(),
+      );
+      return res.status(502).json({
+        success: false,
+        error: "We could not process that just now. Please try again.",
+      });
+    }
+
+    // Deliberately uniform: never reveal whether an address was on the list.
+    res.json({ success: true, message: "You have been unsubscribed." });
+  } catch (error) {
+    console.error("Unsubscribe error:", error);
+    res.status(500).json({ success: false, error: "Internal server error" });
+  }
+};
+
 async function sendWelcomeEmail(email: string): Promise<{ success: boolean; error?: string }> {
   try {
     const resendApiKey = process.env.RESEND_API_KEY;
