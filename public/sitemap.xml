@@ -1,109 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://wellsmith.example/</loc>
+    <loc>https://www.smithhealthwellness.com/</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/about</loc>
+    <loc>https://www.smithhealthwellness.com/about</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/program</loc>
+    <loc>https://www.smithhealthwellness.com/program</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/faqs</loc>
+    <loc>https://www.smithhealthwellness.com/faqs</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/recipes</loc>
+    <loc>https://www.smithhealthwellness.com/recipes</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/connect</loc>
+    <loc>https://www.smithhealthwellness.com/connect</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/book-assessment</loc>
+    <loc>https://www.smithhealthwellness.com/book-assessment</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/my-story</loc>
+    <loc>https://www.smithhealthwellness.com/my-story</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/why-coaching</loc>
+    <loc>https://www.smithhealthwellness.com/why-coaching</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/book-with-kayce</loc>
+    <loc>https://www.smithhealthwellness.com/get-started</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/get-started</loc>
-    <lastmod>2024-01-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://wellsmith.example/privacy</loc>
+    <loc>https://www.smithhealthwellness.com/privacy</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/blog/eating-right-on-glp1</loc>
+    <loc>https://www.smithhealthwellness.com/blog/eating-right-on-glp1</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/blog/drinking-enough-water</loc>
+    <loc>https://www.smithhealthwellness.com/blog/drinking-enough-water</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/blog/getting-enough-sleep</loc>
+    <loc>https://www.smithhealthwellness.com/blog/getting-enough-sleep</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/blog/right-portions</loc>
+    <loc>https://www.smithhealthwellness.com/blog/right-portions</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/blog/enough-protein</loc>
+    <loc>https://www.smithhealthwellness.com/blog/enough-protein</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wellsmith.example/blog/meditation-healthy-movement</loc>
+    <loc>https://www.smithhealthwellness.com/blog/meditation-healthy-movement</loc>
     <lastmod>2024-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

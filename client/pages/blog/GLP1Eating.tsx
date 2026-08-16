@@ -32,7 +32,7 @@ export default function BlogGLP1Eating() {
           author: "Kayce Smith",
           publishedTime: "2024-01-15T00:00:00Z",
           image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1400&q=80",
-          url: "https://wellsmith.example/blog/eating-right-on-glp1",
+          url: "https://www.smithhealthwellness.com/blog/eating-right-on-glp1",
           section: "Health & Wellness",
           tags: ["GLP-1", "nutrition", "weight loss", "healthy eating", "medication support"],
         })}
@@ -40,9 +40,9 @@ export default function BlogGLP1Eating() {
       
       <StructuredData
         data={createBreadcrumbSchema([
-          { name: "Home", url: "https://wellsmith.example/" },
-          { name: "Blog", url: "https://wellsmith.example/blog" },
-          { name: "Eating Right on GLP‑1s", url: "https://wellsmith.example/blog/eating-right-on-glp1" },
+          { name: "Home", url: "https://www.smithhealthwellness.com/" },
+          { name: "Blog", url: "https://www.smithhealthwellness.com/blog" },
+          { name: "Eating Right on GLP‑1s", url: "https://www.smithhealthwellness.com/blog/eating-right-on-glp1" },
         ])}
       />
       <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">

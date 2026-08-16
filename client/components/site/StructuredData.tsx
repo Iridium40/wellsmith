@@ -48,7 +48,7 @@ export const createArticleSchema = ({
   author: {
     "@type": "Person",
     name: author,
-    url: "https://wellsmith.example/about",
+    url: "https://www.smithhealthwellness.com/about",
   },
   publisher: {
     "@type": "Organization",
