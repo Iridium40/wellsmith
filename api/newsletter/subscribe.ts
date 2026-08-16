@@ -1,12 +1,77 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { z } from 'zod';
-import { verifyTurnstile, clientIp } from '../../server/lib/turnstile';
 
 // Email validation schema
 const emailSchema = z.object({
   email: z.string().email('Invalid email address'),
   turnstileToken: z.string().optional(),
 });
+
+/*
+ * Turnstile verification is duplicated here rather than imported from
+ * server/lib/turnstile.ts on purpose.
+ *
+ * Vercel compiles each file under api/ into its own function but does not
+ * bundle sources from outside that directory, so importing across the
+ * boundary resolves to a path that does not exist in the deployed function
+ * and the module fails to load — taking the whole endpoint down with
+ * ERR_MODULE_NOT_FOUND before the handler ever runs. Keep this file
+ * self-contained. server/lib/turnstile.ts remains the copy the Express
+ * route uses; changes belong in both.
+ */
+const TURNSTILE_VERIFY_URL =
+  'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+
+async function verifyTurnstile(
+  token: unknown,
+  remoteip?: string,
+): Promise<{ ok: boolean; reason?: string }> {
+  const secret = process.env.TURNSTILE_SECRET_KEY;
+
+  if (!secret) {
+    console.warn(
+      'TURNSTILE_SECRET_KEY is not set — skipping bot verification. ' +
+        'The form is unprotected until this is configured.',
+    );
+    return { ok: true };
+  }
+
+  if (typeof token !== 'string' || !token) {
+    return { ok: false, reason: 'missing-token' };
+  }
+
+  const body = new URLSearchParams({ secret, response: token });
+  if (remoteip) body.set('remoteip', remoteip);
+
+  try {
+    const res = await fetch(TURNSTILE_VERIFY_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body,
+    });
+    if (!res.ok) return { ok: false, reason: `siteverify-http-${res.status}` };
+
+    const data = (await res.json()) as {
+      success?: boolean;
+      'error-codes'?: string[];
+    };
+    if (data.success) return { ok: true };
+    return { ok: false, reason: (data['error-codes'] || ['unknown']).join(',') };
+  } catch (error) {
+    // Cloudflare unreachable. Fail closed: a bot check that errors open is
+    // not a bot check.
+    console.error('Turnstile verification error:', error);
+    return { ok: false, reason: 'verification-unavailable' };
+  }
+}
+
+/** Best-effort client IP from proxy headers, for Turnstile's remoteip field. */
+function clientIp(headers: Record<string, unknown>): string | undefined {
+  const raw = headers['x-forwarded-for'];
+  const value = Array.isArray(raw) ? raw[0] : raw;
+  if (typeof value !== 'string') return undefined;
+  return value.split(',')[0]?.trim() || undefined;
+}
 
 // Public site origin. Used for every link in outgoing email — these land in
 // inboxes we cannot edit later, so they must point at the live domain.
