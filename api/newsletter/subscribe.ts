@@ -122,56 +122,6 @@ async function addToResendAudience(email: string) {
   }
 }
 
-// Send notification email to Kayce about new subscriber
-async function sendNotificationEmail(subscriberEmail: string) {
-  const resendKey = process.env.RESEND_API_KEY;
-  const notificationEmail = process.env.NEWSLETTER_TO_EMAIL;
-  
-  if (!resendKey || !notificationEmail) {
-    console.log('Notification email skipped - missing configuration');
-    return { success: false, error: 'Notification email not configured' };
-  }
-
-  try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${resendKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: process.env.NEWSLETTER_FROM_EMAIL || DEFAULT_FROM,
-        to: [notificationEmail],
-        subject: "New Newsletter Subscriber - WellSmith",
-        html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <h2 style="color: #00C0C0;">New Newsletter Subscriber!</h2>
-            <p><strong>Email:</strong> ${subscriberEmail}</p>
-            <p><strong>Subscribed:</strong> ${new Date().toLocaleString()}</p>
-            <p><strong>Source:</strong> WellSmith Website</p>
-            <hr style="margin: 20px 0;">
-            <p style="font-size: 14px; color: #666;">
-              This subscriber has been added to your WellSmith audience in Resend and has received a welcome email.
-            </p>
-          </div>
-        `,
-      }),
-    });
-
-    if (response.ok) {
-      console.log("Notification email sent successfully");
-      return { success: true };
-    } else {
-      const errorData = await response.text();
-      console.error("Notification email failed:", errorData);
-      return { success: false, error: `Notification failed: ${response.statusText}` };
-    }
-  } catch (error) {
-    console.error("Notification email error:", error);
-    return { success: false, error: error instanceof Error ? error.message : "Unknown error" };
-  }
-}
-
 // Resend integration
 async function sendWelcomeEmail(email: string) {
   const resendKey = process.env.RESEND_API_KEY;
@@ -230,10 +180,11 @@ async function sendWelcomeEmail(email: string) {
             <hr style="border: none; border-top: 1px solid #e0e0e0; margin: 30px 0;">
             <div style="text-align: center;">
               <p style="font-size: 12px; color: #666; margin: 0;">
-                You can unsubscribe at any time by clicking the link in our emails or contacting us directly.
+                You can unsubscribe at any time.
               </p>
               <p style="font-size: 12px; color: #666; margin: 10px 0 0 0;">
-                <a href="${SITE_URL}" style="color: #00C0C0; text-decoration: none;">smithhealthwellness.com</a> | 
+                <a href="${SITE_URL}" style="color: #00C0C0; text-decoration: none;">smithhealthwellness.com</a> |
+                <a href="${SITE_URL}/unsubscribe" style="color: #666; text-decoration: underline;">Unsubscribe</a> |
                 <a href="${SITE_URL}/privacy" style="color: #00C0C0; text-decoration: none;">Privacy Policy</a>
               </p>
             </div>
@@ -266,14 +217,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const resendKey = process.env.RESEND_API_KEY;
     const audienceId = process.env.RESEND_AUDIENCE_ID;
     const fromEmail = process.env.NEWSLETTER_FROM_EMAIL;
-    const toEmail = process.env.NEWSLETTER_TO_EMAIL;
 
     if (!resendKey || !audienceId) {
       console.error('Missing required environment variables:', {
         hasResendKey: !!resendKey,
         hasAudienceId: !!audienceId,
         hasFromEmail: !!fromEmail,
-        hasToEmail: !!toEmail,
       });
       return res.status(500).json({
         success: false,
@@ -323,20 +272,13 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     // Send welcome email via Resend
     const emailResult = await sendWelcomeEmail(email);
     console.log("Resend email result:", emailResult);
-    
-    // Send notification email to Kayce
-    const notificationResult = await sendNotificationEmail(email);
-    console.log("Notification email result:", notificationResult);
 
-    // Main operations need to succeed (audience + welcome email)
-    // Notification email is optional
     if (audienceResult.success && emailResult.success) {
       res.json({
         success: true,
         message: "Successfully subscribed to newsletter",
         audience: audienceResult,
         email: emailResult,
-        notification: notificationResult,
       });
     } else {
       res.status(500).json({
@@ -345,7 +287,6 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         details: {
           audience: audienceResult,
           email: emailResult,
-          notification: notificationResult,
         },
       });
     }
