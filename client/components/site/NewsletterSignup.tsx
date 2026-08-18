@@ -36,9 +36,17 @@ export default function NewsletterSignup({
   // Bumping this resets the widget: Turnstile tokens are single-use, so a
   // retry after a failure needs a fresh one.
   const [turnstileNonce, setTurnstileNonce] = useState(0);
+  // Set when the widget cannot produce a token at all (bad sitekey, blocked
+  // script, Cloudflare down). Without this the submit button would stay
+  // disabled forever and nobody could subscribe.
+  const [turnstileUnavailable, setTurnstileUnavailable] = useState(false);
 
-  // When Turnstile is configured, hold submission until a token arrives.
-  const blocked = !!TURNSTILE_SITE_KEY && !turnstileToken;
+  // Hold submission until a token arrives — but never when the widget is
+  // broken, or the form becomes unusable. The server still verifies and fails
+  // closed, so a submit without a token gets a visible error rather than
+  // silently succeeding.
+  const blocked =
+    !!TURNSTILE_SITE_KEY && !turnstileToken && !turnstileUnavailable;
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -171,6 +179,7 @@ export default function NewsletterSignup({
           </div>
           <Turnstile
             onToken={setTurnstileToken}
+            onUnavailable={() => setTurnstileUnavailable(true)}
             resetKey={turnstileNonce}
             className="flex justify-center"
           />
@@ -204,6 +213,7 @@ export default function NewsletterSignup({
           </div>
           <Turnstile
             onToken={setTurnstileToken}
+            onUnavailable={() => setTurnstileUnavailable(true)}
             resetKey={turnstileNonce}
             className="flex justify-center"
           />
@@ -235,6 +245,7 @@ export default function NewsletterSignup({
           </div>
           <Turnstile
             onToken={setTurnstileToken}
+            onUnavailable={() => setTurnstileUnavailable(true)}
             resetKey={turnstileNonce}
             className="flex justify-center"
           />

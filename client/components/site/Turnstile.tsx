@@ -48,6 +48,14 @@ function loadScript(): Promise<void> {
 export interface TurnstileProps {
   /** Called with a fresh token, or null when it expires or errors. */
   onToken: (token: string | null) => void;
+  /**
+   * Called when the widget cannot produce a token at all — a misconfigured
+   * sitekey (Cloudflare error 400020), a blocked script, or Cloudflare being
+   * unreachable. The form uses this to stop gating the submit button, so a
+   * broken widget degrades to a visible server-side rejection instead of a
+   * permanently dead button.
+   */
+  onUnavailable?: () => void;
   /** Bump to force a new challenge — e.g. after a failed submit. */
   resetKey?: number;
   className?: string;
@@ -62,18 +70,26 @@ export interface TurnstileProps {
  */
 export default function Turnstile({
   onToken,
+  onUnavailable,
   resetKey = 0,
   className,
 }: TurnstileProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const widgetIdRef = useRef<string | null>(null);
-  // Keep the latest callback without re-rendering the widget on every change.
+  // Keep the latest callbacks without re-rendering the widget on every change.
   const onTokenRef = useRef(onToken);
   onTokenRef.current = onToken;
+  const onUnavailableRef = useRef(onUnavailable);
+  onUnavailableRef.current = onUnavailable;
 
   useEffect(() => {
     if (!TURNSTILE_SITE_KEY) return;
     let cancelled = false;
+
+    const fail = () => {
+      onTokenRef.current(null);
+      onUnavailableRef.current?.();
+    };
 
     loadScript()
       .then(() => {
@@ -81,16 +97,14 @@ export default function Turnstile({
         widgetIdRef.current = window.turnstile.render(containerRef.current, {
           sitekey: TURNSTILE_SITE_KEY,
           callback: (token: string) => onTokenRef.current(token),
+          // Expiry is recoverable — the widget re-challenges on its own, so
+          // only clear the token rather than declaring the widget unusable.
           "expired-callback": () => onTokenRef.current(null),
-          "error-callback": () => onTokenRef.current(null),
-          "timeout-callback": () => onTokenRef.current(null),
+          "error-callback": fail,
+          "timeout-callback": fail,
         });
       })
-      .catch(() => {
-        // Network blocked or Cloudflare unreachable: leave the token null and
-        // let the server reject it rather than silently allowing the post.
-        onTokenRef.current(null);
-      });
+      .catch(fail);
 
     return () => {
       cancelled = true;
