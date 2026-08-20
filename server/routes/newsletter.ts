@@ -1,16 +1,97 @@
 import { RequestHandler } from "express";
+import { createHmac, timingSafeEqual } from "node:crypto";
+import {
+  SITE_URL,
+  WELCOME_SUBJECT,
+  getWelcomeEmailHtml,
+  getWelcomeEmailText,
+} from "../emails/welcome";
 import { z } from "zod";
 import { verifyTurnstile, clientIp } from "../lib/turnstile";
 
 // Public site origin. Used for every link in outgoing email — these land in
 // inboxes we cannot edit later, so they must point at the live domain.
-const SITE_URL = "https://www.smithhealthwellness.com";
+const DEFAULT_FROM = "Kayce Smith <kayce@smithhealthwellness.com>";
 
 // Validation schema
 const subscribeSchema = z.object({
   email: z.string().email("Invalid email address"),
   turnstileToken: z.string().optional(),
 });
+
+/*
+ * One-click unsubscribe (RFC 8058). A one-click POST carries only
+ * "List-Unsubscribe=One-Click" in the body, so the address travels in the URL
+ * and must be signed. Mirrors api/newsletter/{subscribe,unsubscribe}.ts —
+ * the algorithm and secret must match across all of them.
+ *
+ * Without UNSUBSCRIBE_SECRET we cannot sign, so List-Unsubscribe-Post is
+ * omitted and the header points at the page. Declaring one-click against a URL
+ * that cannot honour it is worse than not declaring it: the provider reports
+ * success while nothing is unsubscribed.
+ */
+function signEmail(email: string, secret: string): string {
+  return createHmac("sha256", secret).update(email).digest("hex").slice(0, 32);
+}
+
+function unsubscribeHeaders(email: string): Record<string, string> {
+  const secret = process.env.UNSUBSCRIBE_SECRET;
+  const mailto = `<mailto:kayce@smithhealthwellness.com?subject=Unsubscribe>`;
+
+  if (!secret) {
+    return { "List-Unsubscribe": `${mailto}, <${SITE_URL}/unsubscribe>` };
+  }
+
+  const url =
+    `${SITE_URL}/api/newsletter/unsubscribe` +
+    `?e=${encodeURIComponent(email)}&t=${signEmail(email, secret)}`;
+
+  return {
+    "List-Unsubscribe": `${mailto}, <${url}>`,
+    "List-Unsubscribe-Post": "List-Unsubscribe=One-Click",
+  };
+}
+
+function verifiedOneClickEmail(query: unknown): string | null {
+  const secret = process.env.UNSUBSCRIBE_SECRET;
+  if (!secret) return null;
+
+  const q = (query || {}) as Record<string, unknown>;
+  const email = typeof q.e === "string" ? q.e : null;
+  const token = typeof q.t === "string" ? q.t : null;
+  if (!email || !token) return null;
+
+  const a = Buffer.from(token);
+  const b = Buffer.from(signEmail(email, secret));
+  if (a.length !== b.length || !timingSafeEqual(a, b)) {
+    console.warn("One-click unsubscribe: signature mismatch");
+    return null;
+  }
+  return email;
+}
+
+/*
+ * Resend rejects the whole send with a 422 if `from` is not exactly
+ * "email@domain" or "Name <email@domain>" — and a malformed
+ * NEWSLETTER_FROM_EMAIL (missing angle brackets, a trailing newline from a
+ * paste) then breaks every welcome email while the contact is still created,
+ * leaving subscribers on the list with nothing in their inbox. Validate the
+ * override and fall back to the known-good default rather than failing.
+ */
+function resolveFrom(): string {
+  const raw = process.env.NEWSLETTER_FROM_EMAIL?.trim();
+  if (!raw) return DEFAULT_FROM;
+
+  const bare = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
+  const named = /^[^<>]+<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$/;
+  if (bare.test(raw) || named.test(raw)) return raw;
+
+  console.warn(
+    `NEWSLETTER_FROM_EMAIL is not a valid sender ("${raw}") — ` +
+      `falling back to ${DEFAULT_FROM}. Expected "email@domain" or "Name <email@domain>".`,
+  );
+  return DEFAULT_FROM;
+}
 
 export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
   try {
@@ -79,12 +160,22 @@ export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
  */
 export const handleNewsletterUnsubscribe: RequestHandler = async (req, res) => {
   try {
-    const validation = subscribeSchema.safeParse(req.body);
-    if (!validation.success) {
-      return res.status(400).json({
-        success: false,
-        error: "Please enter a valid email address",
-      });
+    // Two callers: the mail provider's one-click POST (signed address in the
+    // URL) and the on-site form (JSON body).
+    const oneClick = verifiedOneClickEmail(req.query);
+
+    let email: string;
+    if (oneClick) {
+      email = oneClick;
+    } else {
+      const validation = subscribeSchema.safeParse(req.body);
+      if (!validation.success) {
+        return res.status(400).json({
+          success: false,
+          error: "Please enter a valid email address",
+        });
+      }
+      email = validation.data.email;
     }
 
     const resendApiKey = process.env.RESEND_API_KEY;
@@ -97,7 +188,7 @@ export const handleNewsletterUnsubscribe: RequestHandler = async (req, res) => {
     }
 
     const response = await fetch(
-      `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(validation.data.email)}`,
+      `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
       {
         method: "PATCH",
         headers: {
@@ -143,126 +234,12 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from:
-          process.env.NEWSLETTER_FROM_EMAIL ||
-          "Kayce Smith <kayce@smithhealthwellness.com>",
+        from: resolveFrom(),
         to: [email],
-        subject: "Welcome — I'm glad you're here",
-        html: `
-          <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
-            <!-- Header. Light only: both logo variants are dark ink and vanish
-                 on a dark or saturated band. -->
-            <div style="text-align: center; padding: 32px 24px 8px; background-color: #ffffff;">
-              <img src="${SITE_URL}/wellsmith-logo.png" alt="Smith Health &amp; Wellness" style="max-width: 220px; height: auto; display: block; margin: 0 auto;" />
-            </div>
-
-            <!-- Body -->
-            <div style="background-color: #F5F0E6; padding: 36px 32px; border-radius: 12px; margin: 16px 20px;">
-              <h1 style="color: #5B8C5A; font-size: 30px; line-height: 1.25; margin: 0 0 20px; font-weight: normal;">
-                I'm so glad you're here.
-              </h1>
-
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.65; color: #3a3a3a; margin: 0 0 16px;">
-                I'm Kayce — and before I was anyone's coach, I was the person
-                starting over on a Monday for the hundredth time. So I know what
-                it takes to actually make something stick.
-              </p>
-
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.65; color: #3a3a3a; margin: 0 0 16px;">
-                Every couple of weeks I'll send you something useful: a Lean
-                &amp; Green recipe worth repeating, a small habit that's easier
-                than it sounds, and honest notes from coaching real people
-                through real weeks. No lectures, no before-and-after theatrics.
-              </p>
-
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.65; color: #3a3a3a; margin: 0 0 28px;">
-                It won't always be easy — but it does get easier, and you don't
-                have to figure it out alone.
-              </p>
-
-              <!-- CTA. 19px bold clears the WCAG large-text threshold, so sage
-                   on white meets AA here. -->
-              <div style="text-align: center; margin: 0 0 8px;">
-                <a href="${SITE_URL}/book-assessment"
-                   style="display: inline-block; background-color: #5B8C5A; color: #ffffff; padding: 16px 34px; text-decoration: none; border-radius: 8px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 19px;">
-                  Book a free health assessment
-                </a>
-              </div>
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.6; color: #6b6257; text-align: center; margin: 12px 0 0;">
-                Thirty minutes, no pressure — just a conversation about where
-                you are and what would actually help.
-              </p>
-            </div>
-
-            <!-- Signature -->
-            <div style="padding: 8px 32px 24px;">
-              <div style="border-top: 2px solid #E8A87C; width: 48px; margin: 16px 0 20px;"></div>
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.6; color: #3a3a3a; margin: 0;">
-                Talk soon,<br />
-                <strong style="color: #5B8C5A; font-size: 18px;">Kayce Smith</strong><br />
-                <span style="color: #6b6257; font-size: 14px;">Independent Trilivy Certified Health Coach</span>
-              </p>
-            </div>
-
-            <!-- Footer -->
-            <div style="padding: 20px 32px 32px; border-top: 1px solid #e6ded0; text-align: center;">
-              <!-- Required health disclaimer. Keep verbatim. -->
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.6; color: #6b6257; margin: 0 0 16px; text-align: left;">
-                This content is provided by an independent Trilivy health coach
-                and is for general informational purposes only. It is not medical
-                advice, and your coach is not a medical provider. The Trilivy
-                5&amp;1 Reset is not appropriate for everyone &mdash; it is not
-                intended for women who are pregnant or nursing, people under 18,
-                sedentary adults 65+, people with gout, or those managing Type 1
-                diabetes. Consult your healthcare provider before starting this
-                or any weight-loss program, especially if you take medications
-                for diabetes, blood pressure, or thyroid conditions, or
-                medications such as Coumadin (warfarin), lithium, or diuretics.
-                Individual results vary. If you experience unusual symptoms or
-                unusually rapid weight loss, stop and contact your healthcare
-                provider.
-              </p>
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.6; color: #6b6257; margin: 0 0 8px;">
-                You're getting this because you subscribed at
-                smithhealthwellness.com. You can unsubscribe at any time.
-              </p>
-              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.6; color: #6b6257; margin: 0;">
-                <a href="${SITE_URL}" style="color: #247b69; text-decoration: none;">smithhealthwellness.com</a>
-                &nbsp;|&nbsp;
-                <a href="${SITE_URL}/unsubscribe" style="color: #247b69; text-decoration: underline;">Unsubscribe</a>
-                &nbsp;|&nbsp;
-                <a href="${SITE_URL}/privacy" style="color: #247b69; text-decoration: none;">Privacy Policy</a>
-              </p>
-            </div>
-          </div>
-        `,
-        text: `I'm so glad you're here.
-
-I'm Kayce — and before I was anyone's coach, I was the person starting over on a Monday for the hundredth time. So I know what it takes to actually make something stick.
-
-Every couple of weeks I'll send you something useful: a Lean & Green recipe worth repeating, a small habit that's easier than it sounds, and honest notes from coaching real people through real weeks. No lectures, no before-and-after theatrics.
-
-It won't always be easy — but it does get easier, and you don't have to figure it out alone.
-
-Book a free health assessment:
-${SITE_URL}/book-assessment
-
-Thirty minutes, no pressure — just a conversation about where you are and what would actually help.
-
-Talk soon,
-Kayce Smith
-Independent Trilivy Certified Health Coach
-
----
-
-This content is provided by an independent Trilivy health coach and is for general informational purposes only. It is not medical advice, and your coach is not a medical provider. The Trilivy 5&1 Reset is not appropriate for everyone — it is not intended for women who are pregnant or nursing, people under 18, sedentary adults 65+, people with gout, or those managing Type 1 diabetes. Consult your healthcare provider before starting this or any weight-loss program, especially if you take medications for diabetes, blood pressure, or thyroid conditions, or medications such as Coumadin (warfarin), lithium, or diuretics. Individual results vary. If you experience unusual symptoms or unusually rapid weight loss, stop and contact your healthcare provider.
-
-You're getting this because you subscribed at smithhealthwellness.com. You can unsubscribe at any time.
-
-smithhealthwellness.com: ${SITE_URL}
-Unsubscribe: ${SITE_URL}/unsubscribe
-Privacy Policy: ${SITE_URL}/privacy
-`,
+        headers: unsubscribeHeaders(email),
+        subject: WELCOME_SUBJECT,
+        html: getWelcomeEmailHtml(email),
+        text: getWelcomeEmailText(email),
       }),
     });
 
