@@ -147,59 +147,94 @@ async function sendWelcomeEmail(email: string): Promise<{ success: boolean; erro
           process.env.NEWSLETTER_FROM_EMAIL ||
           "Kayce Smith <kayce@smithhealthwellness.com>",
         to: [email],
-        subject: "Welcome to WellSmith - Your Health Journey Starts Here!",
+        subject: "Welcome — I'm glad you're here",
         html: `
-          <!DOCTYPE html>
-          <html>
-            <head>
-              <meta charset="utf-8">
-              <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>Welcome to WellSmith</title>
-            </head>
-            <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <div style="text-align: center; margin-bottom: 30px;">
-                <h1 style="color: #1babe0; font-size: 28px; margin-bottom: 10px;">Welcome to WellSmith!</h1>
-                <p style="font-size: 18px; color: #666;">Your health journey starts here</p>
+          <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+            <!-- Header. Light only: both logo variants are dark ink and vanish
+                 on a dark or saturated band. -->
+            <div style="text-align: center; padding: 32px 24px 8px; background-color: #ffffff;">
+              <img src="${SITE_URL}/wellsmith-logo.png" alt="Smith Health &amp; Wellness" style="max-width: 220px; height: auto; display: block; margin: 0 auto;" />
+            </div>
+
+            <!-- Body -->
+            <div style="background-color: #F5F0E6; padding: 36px 32px; border-radius: 12px; margin: 16px 20px;">
+              <h1 style="color: #5B8C5A; font-size: 30px; line-height: 1.25; margin: 0 0 20px; font-weight: normal;">
+                I'm so glad you're here.
+              </h1>
+
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.65; color: #3a3a3a; margin: 0 0 16px;">
+                I'm Kayce — and before I was anyone's coach, I was the person
+                starting over on a Monday for the hundredth time. So I know what
+                it takes to actually make something stick.
+              </p>
+
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.65; color: #3a3a3a; margin: 0 0 16px;">
+                Every couple of weeks I'll send you something useful: a Lean
+                &amp; Green recipe worth repeating, a small habit that's easier
+                than it sounds, and honest notes from coaching real people
+                through real weeks. No lectures, no before-and-after theatrics.
+              </p>
+
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.65; color: #3a3a3a; margin: 0 0 28px;">
+                It won't always be easy — but it does get easier, and you don't
+                have to figure it out alone.
+              </p>
+
+              <!-- CTA. 19px bold clears the WCAG large-text threshold, so sage
+                   on white meets AA here. -->
+              <div style="text-align: center; margin: 0 0 8px;">
+                <a href="${SITE_URL}/book-assessment"
+                   style="display: inline-block; background-color: #5B8C5A; color: #ffffff; padding: 16px 34px; text-decoration: none; border-radius: 8px; font-family: Arial, Helvetica, sans-serif; font-weight: bold; font-size: 19px;">
+                  Book a free health assessment
+                </a>
               </div>
-              
-              <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
-                <h2 style="color: #1d4388; margin-top: 0;">Hi there!</h2>
-                <p>Thank you for joining the WellSmith community! I'm Kayce Smith, your Independent Trilivy Certified Health Coach, and I'm thrilled to have you on this journey with us.</p>
-                
-                <p>As a subscriber, you'll receive:</p>
-                <ul style="color: #555;">
-                  <li>Weekly health tips and insights</li>
-                  <li>Delicious Lean & Green recipes</li>
-                  <li>Motivation and accountability support</li>
-                  <li>GLP-1 lifestyle guidance</li>
-                  <li>Exclusive coaching resources</li>
-                </ul>
-              </div>
-              
-              <div style="text-align: center; margin: 30px 0;">
-                <a href="${SITE_URL}/my-story" style="background-color: #1babe0; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold;">Read My Story</a>
-              </div>
-              
-              <div style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 30px;">
-                <p style="font-size: 14px; color: #666; text-align: center;">
-                  Ready to start your transformation?<br>
-                  <a href="${SITE_URL}/book-assessment" style="color: #1babe0;">Book a consultation with me</a>
-                </p>
-              </div>
-              
-              <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                <p style="font-size: 12px; color: #999;">
-                  WellSmith | Independent Trilivy Certified Health Coach<br>
-                  <a href="${SITE_URL}" style="color: #1babe0;">smithhealthwellness.com</a> | 
-                  <a href="https://instagram.com/smithkayce" style="color: #1babe0;">@smithkayce</a>
-                </p>
-                <p style="font-size: 12px; color: #999; margin-top: 10px;">
-                  <a href="${SITE_URL}/unsubscribe" style="color: #999;">Unsubscribe</a> | 
-                  <a href="${SITE_URL}/privacy" style="color: #999;">Privacy Policy</a>
-                </p>
-              </div>
-            </body>
-          </html>
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; line-height: 1.6; color: #6b6257; text-align: center; margin: 12px 0 0;">
+                Thirty minutes, no pressure — just a conversation about where
+                you are and what would actually help.
+              </p>
+            </div>
+
+            <!-- Signature -->
+            <div style="padding: 8px 32px 24px;">
+              <div style="border-top: 2px solid #E8A87C; width: 48px; margin: 16px 0 20px;"></div>
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 16px; line-height: 1.6; color: #3a3a3a; margin: 0;">
+                Talk soon,<br />
+                <strong style="color: #5B8C5A; font-size: 18px;">Kayce Smith</strong><br />
+                <span style="color: #6b6257; font-size: 14px;">Independent Trilivy Certified Health Coach</span>
+              </p>
+            </div>
+
+            <!-- Footer -->
+            <div style="padding: 20px 32px 32px; border-top: 1px solid #e6ded0; text-align: center;">
+              <!-- Required health disclaimer. Keep verbatim. -->
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.6; color: #6b6257; margin: 0 0 16px; text-align: left;">
+                This content is provided by an independent Trilivy health coach
+                and is for general informational purposes only. It is not medical
+                advice, and your coach is not a medical provider. The Trilivy
+                5&amp;1 Reset is not appropriate for everyone &mdash; it is not
+                intended for women who are pregnant or nursing, people under 18,
+                sedentary adults 65+, people with gout, or those managing Type 1
+                diabetes. Consult your healthcare provider before starting this
+                or any weight-loss program, especially if you take medications
+                for diabetes, blood pressure, or thyroid conditions, or
+                medications such as Coumadin (warfarin), lithium, or diuretics.
+                Individual results vary. If you experience unusual symptoms or
+                unusually rapid weight loss, stop and contact your healthcare
+                provider.
+              </p>
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.6; color: #6b6257; margin: 0 0 8px;">
+                You're getting this because you subscribed at
+                smithhealthwellness.com. You can unsubscribe at any time.
+              </p>
+              <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.6; color: #6b6257; margin: 0;">
+                <a href="${SITE_URL}" style="color: #247b69; text-decoration: none;">smithhealthwellness.com</a>
+                &nbsp;|&nbsp;
+                <a href="${SITE_URL}/unsubscribe" style="color: #247b69; text-decoration: underline;">Unsubscribe</a>
+                &nbsp;|&nbsp;
+                <a href="${SITE_URL}/privacy" style="color: #247b69; text-decoration: none;">Privacy Policy</a>
+              </p>
+            </div>
+          </div>
         `,
       }),
     });
