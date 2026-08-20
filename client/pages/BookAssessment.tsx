@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import ShareButton from "@/components/site/ShareButton";
 import SEO from "@/components/site/SEO";
+import Disclaimer from "@/components/site/Disclaimer";
 import type {
   HealthAssessmentRequest,
   HealthAssessmentResponse,
@@ -470,6 +471,10 @@ export default function BookAssessment() {
             </div>
           </form>
         </div>
+
+        {/* The form asks about pregnancy, gout, Type 1 diabetes and current
+            medications — the contraindications belong on this page. */}
+        <Disclaimer className="mt-10" />
       </section>
     </div>
   );

@@ -9,6 +9,22 @@ export default function Disclaimer({ className = "" }: { className?: string }) {
       <h2 className="text-sm font-semibold text-foreground">
         Important Disclaimers
       </h2>
+      {/* Required health disclaimer. Keep verbatim and keep it first — the
+          contraindications are the safety-critical part. The same text appears
+          in the welcome email footer; changes belong in both. */}
+      <p className="mt-2">
+        This content is provided by an independent Trilivy health coach and is
+        for general informational purposes only. It is not medical advice, and
+        your coach is not a medical provider. The Trilivy 5&1 Reset is not
+        appropriate for everyone — it is not intended for women who are pregnant
+        or nursing, people under 18, sedentary adults 65+, people with gout, or
+        those managing Type 1 diabetes. Consult your healthcare provider before
+        starting this or any weight-loss program, especially if you take
+        medications for diabetes, blood pressure, or thyroid conditions, or
+        medications such as Coumadin (warfarin), lithium, or diuretics.
+        Individual results vary. If you experience unusual symptoms or unusually
+        rapid weight loss, stop and contact your healthcare provider.
+      </p>
       <p className="mt-2">
         *Average weight loss on the Trilivy Optimal Weight 5 & 1 Plan® is 12 pounds.
         Clients are in weight loss, on average, for 12 weeks. Results may vary.

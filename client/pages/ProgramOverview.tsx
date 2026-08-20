@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import SEO from "@/components/site/SEO";
+import Disclaimer from "@/components/site/Disclaimer";
 
 export default function ProgramOverview() {
   return (
@@ -94,6 +95,12 @@ export default function ProgramOverview() {
           </div>
         </div>
       </section>
+
+      {/* This page describes the plan itself, so the contraindications belong
+          here alongside it. */}
+      <div className="mx-auto max-w-6xl px-4 pb-16">
+        <Disclaimer />
+      </div>
     </div>
   );
 }
