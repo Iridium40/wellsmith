@@ -229,6 +229,33 @@ async function sendWelcomeEmail(email: string) {
             </div>
           </div>
         `,
+        text: `I'm so glad you're here.
+
+I'm Kayce — and before I was anyone's coach, I was the person starting over on a Monday for the hundredth time. So I know what it takes to actually make something stick.
+
+Every couple of weeks I'll send you something useful: a Lean & Green recipe worth repeating, a small habit that's easier than it sounds, and honest notes from coaching real people through real weeks. No lectures, no before-and-after theatrics.
+
+It won't always be easy — but it does get easier, and you don't have to figure it out alone.
+
+Book a free health assessment:
+${SITE_URL}/book-assessment
+
+Thirty minutes, no pressure — just a conversation about where you are and what would actually help.
+
+Talk soon,
+Kayce Smith
+Independent Trilivy Certified Health Coach
+
+---
+
+This content is provided by an independent Trilivy health coach and is for general informational purposes only. It is not medical advice, and your coach is not a medical provider. The Trilivy 5&1 Reset is not appropriate for everyone — it is not intended for women who are pregnant or nursing, people under 18, sedentary adults 65+, people with gout, or those managing Type 1 diabetes. Consult your healthcare provider before starting this or any weight-loss program, especially if you take medications for diabetes, blood pressure, or thyroid conditions, or medications such as Coumadin (warfarin), lithium, or diuretics. Individual results vary. If you experience unusual symptoms or unusually rapid weight loss, stop and contact your healthcare provider.
+
+You're getting this because you subscribed at smithhealthwellness.com. You can unsubscribe at any time.
+
+smithhealthwellness.com: ${SITE_URL}
+Unsubscribe: ${SITE_URL}/unsubscribe
+Privacy Policy: ${SITE_URL}/privacy
+`,
       }),
     });
 
