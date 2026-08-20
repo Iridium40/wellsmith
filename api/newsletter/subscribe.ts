@@ -6,7 +6,7 @@ import {
   WELCOME_SUBJECT,
   getWelcomeEmailHtml,
   getWelcomeEmailText,
-} from '../../server/emails/welcome';
+} from '../../server/emails/welcome.js';
 
 // Email validation schema
 const emailSchema = z.object({
