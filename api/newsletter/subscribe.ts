@@ -7,6 +7,7 @@ import {
   getWelcomeEmailHtml,
   getWelcomeEmailText,
 } from '../../server/emails/welcome.js';
+import { DEFAULT_FROM, resolveFrom } from '../../server/lib/sender.js';
 
 // Email validation schema
 const emailSchema = z.object({
@@ -15,16 +16,17 @@ const emailSchema = z.object({
 });
 
 /*
- * Turnstile verification is duplicated here rather than imported from
- * server/lib/turnstile.ts on purpose.
+ * Turnstile verification is duplicated from server/lib/turnstile.ts.
  *
- * Vercel compiles each file under api/ into its own function but does not
- * bundle sources from outside that directory, so importing across the
- * boundary resolves to a path that does not exist in the deployed function
- * and the module fails to load — taking the whole endpoint down with
- * ERR_MODULE_NOT_FOUND before the handler ever runs. Keep this file
- * self-contained. server/lib/turnstile.ts remains the copy the Express
- * route uses; changes belong in both.
+ * Not a bundling limit: cross-directory imports work when the specifier
+ * carries the .js extension the TypeScript compiles to, which is how the
+ * welcome template is imported above. This package is "type": "module", so an
+ * extensionless relative import resolves literally and fails at runtime with
+ * ERR_MODULE_NOT_FOUND, taking the function down before the handler runs —
+ * that is what the original import hit.
+ *
+ * The copy could therefore be collapsed into a shared import. Until it is,
+ * server/lib/turnstile.ts is the Express copy and changes belong in both.
  */
 const TURNSTILE_VERIFY_URL =
   'https://challenges.cloudflare.com/turnstile/v0/siteverify';
@@ -82,30 +84,7 @@ function clientIp(headers: Record<string, unknown>): string | undefined {
 
 // Public site origin. Used for every link in outgoing email — these land in
 // inboxes we cannot edit later, so they must point at the live domain.
-const DEFAULT_FROM = 'Kayce Smith <kayce@smithhealthwellness.com>';
 
-/*
- * Resend rejects the whole send with a 422 if `from` is not exactly
- * "email@domain" or "Name <email@domain>" — and a malformed
- * NEWSLETTER_FROM_EMAIL (missing angle brackets, a trailing newline from a
- * paste) then breaks every welcome email while the contact is still created,
- * leaving subscribers on the list with nothing in their inbox. Validate the
- * override and fall back to the known-good default rather than failing.
- */
-function resolveFrom(): string {
-  const raw = process.env.NEWSLETTER_FROM_EMAIL?.trim();
-  if (!raw) return DEFAULT_FROM;
-
-  const bare = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
-  const named = /^[^<>]+<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$/;
-  if (bare.test(raw) || named.test(raw)) return raw;
-
-  console.warn(
-    `NEWSLETTER_FROM_EMAIL is not a valid sender ("${raw}") — ` +
-      `falling back to ${DEFAULT_FROM}. Expected "email@domain" or "Name <email@domain>".`,
-  );
-  return DEFAULT_FROM;
-}
 
 // Resend contact management - add to audience
 async function addToResendAudience(email: string) {

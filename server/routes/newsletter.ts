@@ -7,11 +7,11 @@ import {
   getWelcomeEmailText,
 } from "../emails/welcome";
 import { z } from "zod";
+import { resolveFrom } from "../lib/sender";
 import { verifyTurnstile, clientIp } from "../lib/turnstile";
 
 // Public site origin. Used for every link in outgoing email — these land in
 // inboxes we cannot edit later, so they must point at the live domain.
-const DEFAULT_FROM = "Kayce Smith <kayce@smithhealthwellness.com>";
 
 // Validation schema
 const subscribeSchema = z.object({
@@ -70,28 +70,6 @@ function verifiedOneClickEmail(query: unknown): string | null {
   return email;
 }
 
-/*
- * Resend rejects the whole send with a 422 if `from` is not exactly
- * "email@domain" or "Name <email@domain>" — and a malformed
- * NEWSLETTER_FROM_EMAIL (missing angle brackets, a trailing newline from a
- * paste) then breaks every welcome email while the contact is still created,
- * leaving subscribers on the list with nothing in their inbox. Validate the
- * override and fall back to the known-good default rather than failing.
- */
-function resolveFrom(): string {
-  const raw = process.env.NEWSLETTER_FROM_EMAIL?.trim();
-  if (!raw) return DEFAULT_FROM;
-
-  const bare = /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/;
-  const named = /^[^<>]+<[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+>$/;
-  if (bare.test(raw) || named.test(raw)) return raw;
-
-  console.warn(
-    `NEWSLETTER_FROM_EMAIL is not a valid sender ("${raw}") — ` +
-      `falling back to ${DEFAULT_FROM}. Expected "email@domain" or "Name <email@domain>".`,
-  );
-  return DEFAULT_FROM;
-}
 
 export const handleNewsletterSubscribe: RequestHandler = async (req, res) => {
   try {

@@ -1,16 +1,21 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { createHash } from 'node:crypto';
 import { z } from 'zod';
+import { resolveFrom } from '../server/lib/sender.js';
 
 /*
- * Self-contained on purpose.
+ * Self-contained rather than importing from server/routes/health-assessment.ts.
  *
- * Vercel compiles each file under api/ into its own function and does not
- * bundle sources from outside that directory. Importing the handler from
- * server/routes/health-assessment.ts resolved to a path that does not exist
- * in the deployed function, so every request died with ERR_MODULE_NOT_FOUND
- * before the handler ran. server/routes/health-assessment.ts remains the
- * copy the Express route uses; changes belong in both.
+ * The original import died at runtime with ERR_MODULE_NOT_FOUND. The cause was
+ * the specifier, not the bundling: this package is "type": "module", so Node
+ * resolves relative imports literally and an extensionless one never resolves.
+ * Cross-directory imports work when they carry the .js extension the
+ * TypeScript compiles to — see api/newsletter/subscribe.ts.
+ *
+ * So this copy is no longer required, only unfinished business: it could be
+ * collapsed back into a shared module the way the welcome email was.
+ * server/routes/health-assessment.ts is the Express copy; changes belong in
+ * both until then.
  */
 
 const schema = z.object({
@@ -81,9 +86,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     });
   }
 
-  const from =
-    process.env.NEWSLETTER_FROM_EMAIL ||
-    'Kayce Smith <kayce@smithhealthwellness.com>';
+  const from = resolveFrom();
   const to =
     process.env.ADMIN_EMAIL ||
     process.env.NEWSLETTER_TO_EMAIL ||

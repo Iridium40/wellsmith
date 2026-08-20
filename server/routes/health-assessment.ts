@@ -1,6 +1,7 @@
 import type { RequestHandler } from "express";
 import { createHash } from "node:crypto";
 import { z } from "zod";
+import { resolveFrom } from "../lib/sender";
 import type {
   HealthAssessmentRequest,
   HealthAssessmentResponse,
@@ -68,9 +69,7 @@ export const handleHealthAssessment: RequestHandler = async (req, res) => {
     });
   }
 
-  const from =
-    process.env.NEWSLETTER_FROM_EMAIL ||
-    "Kayce Smith <kayce@smithhealthwellness.com>";
+  const from = resolveFrom();
   const to =
     process.env.ADMIN_EMAIL ||
     process.env.NEWSLETTER_TO_EMAIL ||
